@@ -8,7 +8,7 @@ const args = require('yargs').argv;
 const srcFolder = path.resolve(__dirname, 'src');
 
 let BUILD_OPTIONS = {
-    title: 'SDL Themes Demo!',
+    title: 'Demo Application!',
     paths: {
         projectDir: path.resolve(__dirname),
         source: srcFolder,
@@ -25,7 +25,7 @@ let BUILD_OPTIONS = {
     mode: args.env || process.env.NODE_ENV || CONSTANTS.BUILD_MODES.PROD,
     server: {
         host: 'localhost',
-        port: 9009
+        port: 9090
     }
 };
 

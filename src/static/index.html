@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico"/>-->
+
+    <% for (let style of htmlWebpackPlugin.files.css) { %>
+    <link href="/<%= style %>" rel="stylesheet">
+    <% } %>
+    <% for (let js of htmlWebpackPlugin.files.js) { %>
+    <script src="/<%= js %>"></script>
+    <% } %>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+<div id="application"></div>
+</body>
+</html>
