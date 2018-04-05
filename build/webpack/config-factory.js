@@ -59,7 +59,7 @@ module.exports = (options) => {
                         {
                             loader: "babel-loader",
                             options: {
-                                presets: ["@babel/preset-env", {
+                                presets: ["env", {
                                     plugins: false
                                 }, "react", {}],
                                 plugins: mode === CONSTANTS.BUILD_MODES.DEV ?

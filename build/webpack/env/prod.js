@@ -60,7 +60,7 @@ module.exports = (options) => {
                 threshold: 10240,
                 minRatio: 0.4
             }),
-            new CopyWebpackPlugin([{from: path.resolve(source, "favicon.ico"), to: dist}], options)
+            // new CopyWebpackPlugin([{from: path.resolve(source, "favicon.ico"), to: dist}], options)
         ],
         externals: {
             "React": "react",
