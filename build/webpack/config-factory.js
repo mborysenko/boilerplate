@@ -1,19 +1,23 @@
-const merge = require("webpack-merge");
-const path = require("path");
-const CONSTANTS = require("../common/constants");
+import merge from "webpack-merge";
+import path from "path";
+import BUILD_MODES from "../common/constants";
+import webpack from "webpack";
 
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
-let extractStyle = new ExtractTextPlugin("styles/[name].css");
+import HtmlWebpackPlugin from "html-webpack-plugin"
+import HtmlWebpackTemplate from "html-webpack-template"
+import MiniCssExtractPlugin from "mini-css-extract-plugin"
 
-let webpack = require("webpack");
+import devConfig from "./env/dev";
+import prodConfig from "./env/prod";
+import testConfig from "./env/test";
 
 let envMapping = {
-    [CONSTANTS.BUILD_MODES.DEV]: require("./env/dev"),
-    [CONSTANTS.BUILD_MODES.PROD]: require("./env/prod"),
-    [CONSTANTS.BUILD_MODES.TEST]: require("./env/test"),
+    [BUILD_MODES.DEV]: devConfig,
+    [BUILD_MODES.PROD]: prodConfig,
+    [BUILD_MODES.TEST]: testConfig,
 };
 
-module.exports = (options) => {
+export default function webpackConfigFactory(options) {
 
     let {
         paths,
@@ -26,13 +30,20 @@ module.exports = (options) => {
         dist
     } = paths;
 
-
+    console.log(`Running mode is: ${mode}`);
     let envConfig = envMapping[mode];
 
+    if(!envConfig) {
+        console.warn(`Building mode is not set or is incorrect. Check NODE_ENV variable. Falling back to 'production'`);
+        mode = BUILD_MODES.PROD;
+        envConfig = envMapping[mode]
+    }
+
     let commonConfig = {
+        mode: mode,
         entry: {
             vendors: [
-                "babel-polyfill",
+                "@babel/polyfill",
                 "react",
                 "react-dom"
             ]
@@ -48,7 +59,7 @@ module.exports = (options) => {
                 path.resolve(projectDir, "node_modules")
             ],
             // Add '.ts' and '.tsx' as resolvable extensions.
-            extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".css", ".less",".dev.js"]
+            extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".dev.js"]
         },
         module: {
             rules: [
@@ -59,10 +70,8 @@ module.exports = (options) => {
                         {
                             loader: "babel-loader",
                             options: {
-                                presets: ["env", {
-                                    plugins: false
-                                }, "react", {}],
-                                plugins: mode === CONSTANTS.BUILD_MODES.DEV ?
+                                presets: ["@babel/env", {}, "@babel/react", {}],
+                                plugins: mode === BUILD_MODES.DEV ?
                                     ["react-hot-loader/babel"] :
                                     []
                             }
@@ -73,12 +82,11 @@ module.exports = (options) => {
                 },
                 {
                     test: /\.less$/,
-                    use: extractStyle.extract({
-                        use: [
-                            'css-loader',
-                            'less-loader'
-                        ]
-                    }),
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-loader',
+                        'less-loader'
+                    ],
                 },
                 {
                     test: /\.(eot|otf|svg|ttf|woff|woff2)$/,
@@ -93,13 +101,23 @@ module.exports = (options) => {
         },
         // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
         plugins: [
-            extractStyle,
             new webpack.NamedModulesPlugin(),
             new webpack.NoEmitOnErrorsPlugin(),
             new webpack.DefinePlugin({
                 'process.env': {
                     NODE_ENV: JSON.stringify(mode)
                 }
+            }),
+            new HtmlWebpackPlugin({
+                inject: false,
+                template: HtmlWebpackTemplate,
+                title: 'Task Manager',
+                appMountIds: ['app'],
+                mobile: false
+            }),
+            new MiniCssExtractPlugin({
+                filename: '[name].css',
+                chunkFilename: '[id].[hash].css',
             })
         ]
 

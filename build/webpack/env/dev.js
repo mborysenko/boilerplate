@@ -1,8 +1,9 @@
-let HMRPlugin = require("webpack/lib/HotModuleReplacementPlugin");
-let HTMLPlugin = require("html-webpack-plugin");
+import HMRPlugin from "webpack/lib/HotModuleReplacementPlugin";
+import HTMLPlugin from "html-webpack-plugin";
 
-const path = require("path");
-module.exports = (options) => {
+import path from "path";
+
+export default function devConfig(options) {
     const {
         paths,
         server,
@@ -12,7 +13,9 @@ module.exports = (options) => {
     const {
         source
     } = paths;
+
     let middlewareEntry = "webpack-hot-middleware/client?http://" + server.host + ":" + server.port;
+
     return {
         devtool: "cheap-source-map",
         entry: {
@@ -39,4 +42,4 @@ module.exports = (options) => {
             })
         ]
     }
-};
+}

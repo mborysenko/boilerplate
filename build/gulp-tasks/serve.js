@@ -1,21 +1,19 @@
-'use strict';
+import BUILD_MODES from "../common/constants";
+import opn from 'opn';
+import path from 'path';
+import webpack from 'webpack';
+import express from 'express';
+import dev from 'webpack-dev-middleware';
+import hot from 'webpack-hot-middleware';
+import webpackConfigFactory from '../webpack/config-factory';
 /**
  * Setup a server.
  * @module serve
  * @param {Object} options Build options.
  * @param {Object} gulp Instance of gulp.
  */
-module.exports = function (options) {
-    let CONSTANTS = require('../common/constants');
-
-    const open = require('open');
-    const path = require('path');
-    const webpack = require('webpack');
-    const express = require('express');
-
+export default function (options) {
     const app = express();
-    let dev = require('webpack-dev-middleware');
-    let hot = require('webpack-hot-middleware');
 
     let {
         server,
@@ -23,15 +21,13 @@ module.exports = function (options) {
         mode
     } = options;
 
-    const factoryWebpackConfig = require('../webpack/config-factory');
-
-    let webpackConfig = factoryWebpackConfig(options);
+    let webpackConfig = webpackConfigFactory(options);
 
 
     return function (cb) {
         let compiler = webpack(webpackConfig);
 
-        if (mode === CONSTANTS.BUILD_MODES.DEV) {
+        if (mode === BUILD_MODES.DEV) {
             app.use(dev(compiler, {
                 noInfo: true,
                 publicPath: "/"
@@ -39,10 +35,10 @@ module.exports = function (options) {
 
             app.use(hot(compiler));
         }
+
         serve(cb);
 
         function serve(callback) {
-
             app.get('/', function (req, res) {
                 res.sendFile(path.join(paths.dist, 'index.html'));
             });
@@ -53,11 +49,11 @@ module.exports = function (options) {
                 if (err) {
                     console.log(err);
                 } else {
-                    open(`http://${server.host}:${server.port}`);
+                    opn(`http://${server.host}:${server.port}`);
                 }
             });
 
-            callback();
+            callback && callback();
         }
     };
 };

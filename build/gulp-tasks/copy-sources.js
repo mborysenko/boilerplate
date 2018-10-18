@@ -6,7 +6,7 @@
  * @param {Object} options Build options.
  * @param {Object} gulp Instance of gulp.
  */
-module.exports = (options, gulp) => {
+export default function (options, gulp) {
     let debug = require('gulp-debug');
     let paths = options.paths;
 

@@ -1,18 +1,15 @@
-'use strict';
+import webpackConfigFactory from '../webpack/config-factory';
+import webpack from 'webpack';
 
 /**
  * Package current project.
  * @module package-project
- * @param {String} options Build options.
+ * @param {Object} options Build options.
  */
-module.exports = (options) => {
-	const factoryWebpackConfig = require('../webpack/config-factory');
-    const webpack = require('webpack');
-
+export default function bundle(options) {
     return (done) => {
-
         let firstTimeEmit = true;
-        webpack(factoryWebpackConfig(options), (error, stats) => {
+        webpack(webpackConfigFactory(options), (error, stats) => {
             console.log(stats.toString({
                 chunks: false,
                 colors: true
@@ -24,4 +21,4 @@ module.exports = (options) => {
             }
         });
     }
-};
+}

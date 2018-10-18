@@ -16,7 +16,7 @@ declare const module: { hot: any };
 const render = (Component) => {
     ReactDOM.render(
         <AppContainer>
-            <Component/>
+            <Component />
         </AppContainer>,
         document.getElementById('application')
     );

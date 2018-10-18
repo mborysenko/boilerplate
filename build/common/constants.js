@@ -4,4 +4,7 @@ const BUILD_MODES = {
     PROD: 'production'
 };
 
-module.exports.BUILD_MODES = BUILD_MODES;
+export {
+    BUILD_MODES as default,
+}
+
