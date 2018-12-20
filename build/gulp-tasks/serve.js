@@ -39,7 +39,7 @@ export default function (options) {
         serve(cb);
 
         function serve(callback) {
-            app.get('/', function (req, res) {
+            app.get('/*', function (req, res) {
                 res.sendFile(path.join(paths.dist, 'index.html'));
             });
 
