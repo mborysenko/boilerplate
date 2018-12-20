@@ -65,7 +65,7 @@ export default function webpackConfigFactory(options) {
             rules: [
                 // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
                 {
-                    test: /\.tsx$/,
+                    test: /\.(tsx|ts)$/,
                     use: [
                         {
                             loader: "babel-loader",
