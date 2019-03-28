@@ -1,6 +1,7 @@
 import * as React from "react";
+import cx from "classnames";
 
-import "styles";
+import * as styles from "./app.less";
 
 /* React Router stuff */
 import {BrowserRouter as Router, Route} from "react-router-dom";
@@ -29,7 +30,7 @@ export class App extends React.Component<IAppProperties, IAppState> {
     public render(): JSX.Element {
         return <Provider store={store}>
             <Router>
-                <div>Welcome to Demo Application</div>
+                <div className={cx(styles.application, styles.__apple)}>Welcome to Demo Application</div>
             </Router>
         </Provider>;
     }
