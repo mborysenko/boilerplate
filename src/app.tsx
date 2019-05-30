@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "styles";
+import styles from "./styles.less";
 
 /* React Router stuff */
 import {BrowserRouter as Router, Route} from "react-router-dom";
@@ -29,7 +29,7 @@ export class App extends React.Component<IAppProperties, IAppState> {
     public render(): JSX.Element {
         return <Provider store={store}>
             <Router>
-                <div>Welcome to Demo Application</div>
+                <div className={styles.page}>Welcome to Demo Application</div>
             </Router>
         </Provider>;
     }

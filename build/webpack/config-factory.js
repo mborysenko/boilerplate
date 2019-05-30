@@ -83,8 +83,15 @@ export default function webpackConfigFactory(options) {
                 {
                     test: /\.less$/,
                     use: [
-                        MiniCssExtractPlugin.loader,
-                        'css-loader',
+                        "style-loader",
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                sourceMap: true,
+                                localIdentName: "[local]___[hash:base64:5]"
+                            }
+                        },
                         'less-loader'
                     ],
                 },
