@@ -43,7 +43,6 @@ export default function webpackConfigFactory(options) {
         mode: mode,
         entry: {
             vendors: [
-                "@babel/polyfill",
                 "react",
                 "react-dom"
             ]
@@ -91,8 +90,10 @@ export default function webpackConfigFactory(options) {
                             loader: 'css-loader',
                             options: {
                                 sourceMap: true,
-                                modules: true,
-                                localIdentName: "[local]___[hash:base64:5]"
+                                modules: {
+                                    mode: "local",
+                                    localIdentName: "[local]-[hash:base64:5]"
+                                }
                             }
                         },{
                             loader: "less-loader"
