@@ -43,7 +43,6 @@ export default function webpackConfigFactory(options) {
         mode: mode,
         entry: {
             vendors: [
-                "@babel/polyfill",
                 "react",
                 "react-dom"
             ]
@@ -83,16 +82,22 @@ export default function webpackConfigFactory(options) {
                 {
                     test: /\.less$/,
                     use: [
-                        "style-loader",
+                        // MiniCssExtractPlugin.loader,
+                        {
+                            loader: "style-loader"
+                        },
                         {
                             loader: 'css-loader',
                             options: {
-                                modules: true,
                                 sourceMap: true,
-                                localIdentName: "[local]___[hash:base64:5]"
+                                modules: {
+                                    mode: "local",
+                                    localIdentName: "[local]-[hash:base64:5]"
+                                }
                             }
-                        },
-                        'less-loader'
+                        },{
+                            loader: "less-loader"
+                        }
                     ],
                 },
                 {

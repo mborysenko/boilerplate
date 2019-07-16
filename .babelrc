@@ -4,10 +4,11 @@
         [
             "@babel/env",
             {
-                "useBuiltIns": "entry",
+                "useBuiltIns": "usage",
                 "shippedProposals": true,
                 "spec": true,
-                "debug": false
+                "debug": false,
+                "corejs": 3
             }
         ]
     ],
