@@ -2,6 +2,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {AppContainer} from "react-hot-loader";
 import App from "./app";
+import "core-js/stable";
+import "regenerator-runtime/runtime"
 
 declare const require: {
     (path: string): any;
