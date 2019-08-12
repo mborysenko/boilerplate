@@ -53,7 +53,7 @@
         "less-loader": "^5.0.0",
         "lodash": "^4.17.14",
         "mini-css-extract-plugin": "^0.7.0",
-        "opn": "6.0.0",
+        "open": "6.0.0",
         "react-hot-loader": "^4.12.6",
         "resolve-url-loader": "^3.1.0",
         "run-sequence": "^2.2.1",
