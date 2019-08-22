@@ -1,5 +1,5 @@
 import BUILD_MODES from "../common/constants";
-import opn from 'opn';
+import open from 'open';
 import path from 'path';
 import webpack from 'webpack';
 import express from 'express';
@@ -39,17 +39,20 @@ export default function (options) {
         serve(cb);
 
         function serve(callback) {
+            //Middleware
+            app.use('/assets', express.static(path.join(paths.dist, 'assets/')));
+
+            //Routing
             app.get('/*', function (req, res) {
                 res.sendFile(path.join(paths.dist, 'index.html'));
             });
 
-            app.use('/assets', express.static(path.join(paths.dist, 'assets')));
-
+            //Starting
             app.listen(server.port, function (err) {
                 if (err) {
                     console.log(err);
                 } else {
-                    opn(`http://${server.host}:${server.port}`);
+                    open(`http://${server.host}:${server.port}`);
                 }
             });
 
