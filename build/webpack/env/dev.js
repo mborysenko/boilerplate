@@ -1,5 +1,6 @@
 import HMRPlugin from "webpack/lib/HotModuleReplacementPlugin";
 import HTMLPlugin from "html-webpack-plugin";
+import HtmlWebpackTemplate from "html-webpack-template"
 
 import path from "path";
 
@@ -33,8 +34,9 @@ export default function devConfig(options) {
             new HMRPlugin(),
             new HTMLPlugin({
                 title: title,
-                template: path.resolve(source, "static/index.html"),
+                template: HtmlWebpackTemplate,
                 filename: 'index.html',
+                appMountIds: ['application'],
                 hash: true,
                 minify: false,
                 showErrors: true,

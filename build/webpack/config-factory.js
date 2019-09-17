@@ -124,7 +124,7 @@ export default function webpackConfigFactory(options) {
                 inject: false,
                 template: HtmlWebpackTemplate,
                 title: 'Task Manager',
-                appMountIds: ['app'],
+                appMountIds: ['application'],
                 mobile: false
             }),
             new MiniCssExtractPlugin({
