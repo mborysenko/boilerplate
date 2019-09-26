@@ -4,10 +4,11 @@ import "core-js/stable";
 import "regenerator-runtime/runtime"
 
 import App from './app';
+import configuration from "../build/configuration";
 
 window.onload = () => {
     ReactDOM.render(
         <App />,
-        document.getElementById('application')
+        document.getElementById(configuration.mountPoint)
     );
 };

@@ -3,13 +3,13 @@ import path from "path";
 import BUILD_MODES from "../common/constants";
 import webpack from "webpack";
 
-import HtmlWebpackPlugin from "html-webpack-plugin"
+import HTMLPlugin from "html-webpack-plugin"
 import HtmlWebpackTemplate from "html-webpack-template"
-import MiniCssExtractPlugin from "mini-css-extract-plugin"
 
 import devConfig from "./env/dev";
 import prodConfig from "./env/prod";
 import testConfig from "./env/test";
+import configuration from "../configuration";
 
 let envMapping = {
     [BUILD_MODES.DEV]: devConfig,
@@ -21,8 +21,13 @@ export default function webpackConfigFactory(options) {
 
     let {
         paths,
+        title,
         mode
     } = options;
+
+    let {
+        mountPoint,
+    } = configuration;
 
     let {
         projectDir,
@@ -120,18 +125,23 @@ export default function webpackConfigFactory(options) {
                     NODE_ENV: JSON.stringify(mode)
                 }
             }),
-            new HtmlWebpackPlugin({
-                inject: false,
+            new HTMLPlugin({
                 template: HtmlWebpackTemplate,
-                title: 'Task Manager',
-                appMountIds: ['application'],
-                mobile: false
-            }),
-            new MiniCssExtractPlugin({
-                filename: '[name].css',
-                chunkFilename: '[id].[hash].css',
-            })
-        ]
+                filename: 'index.html',
+                favicon: "src/static/favicon.ico",
+                title: title,
+                hash: true,
+                appMountIds: [mountPoint],
+                minify: {
+                    removeAttributeQuotes: true,
+                    removeComments: true,
+                    removeEmptyAttributes: true,
+                    useShortDoctype: true,
+                    collapseWhitespace: true
+                },
+                showErrors: true,
+                inject: false
+            }),        ]
 
         // When importing a module whose path matches one of the following, just
         // assume a corresponding global variable exists and use that instead.

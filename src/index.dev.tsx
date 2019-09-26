@@ -5,6 +5,8 @@ import App from "./app";
 import "core-js/stable";
 import "regenerator-runtime/runtime"
 
+import configuration from "../build/configuration";
+
 declare const require: {
     (path: string): any;
     <T>(path: string): T;
@@ -20,7 +22,7 @@ const render = (Component) => {
         <AppContainer>
             <Component />
         </AppContainer>,
-        document.getElementById('application')
+        document.getElementById(configuration.mountPoint)
     );
 };
 
