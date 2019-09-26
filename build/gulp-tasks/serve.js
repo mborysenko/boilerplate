@@ -42,7 +42,11 @@ export default function (options) {
             //Middleware
             app.use('/assets', express.static(path.join(paths.dist, 'assets/')));
 
-            //Routing
+            //Routing. Order does matter
+            app.get('/favicon.ico', function (req, res) {
+                res.sendFile(path.join(paths.dist, 'favicon.ico'));
+            });
+
             app.get('/*', function (req, res) {
                 res.sendFile(path.join(paths.dist, 'index.html'));
             });
