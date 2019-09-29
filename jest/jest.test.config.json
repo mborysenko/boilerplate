@@ -7,21 +7,21 @@
     "bail": false,
     "collectCoverage": true,
     "collectCoverageFrom": [
-        "<rootDir>/src/bus/**/*.{js,jsx}",
-        "<rootDir>/src/bus/ui/*.{js,jsx}",
-        "<rootDir>/src/init/store.js"
+        "<rootDir>/src/app.tsx",
+        "<rootDir>/src/reducers/**/*.{ts,tsx}",
+        "<rootDir>/src/components/**/*.{ts,tsx}",
+        "<rootDir>/src/actions/*.{ts,tsx}"
     ],
     "coveragePathIgnorePatterns": [
         "/node_modules/",
         "/build/",
         "/coverage/",
-        "/styles/",
-        "<rootDir>/src/index.js",
-        "<rootDir>/src/init/middleware",
-        "<rootDir>/src/pages/index.js",
-        "<rootDir>/src/views/index.js",
+        "/dist/",
+        "<rootDir>/src/index.tsx",
+        "<rootDir>/src/index.dev.tsx",
         "<rootDir>/src/components/index.js",
-        "<rootDir>/src/models/intl/sagas/workers/index.js"
+        "<rootDir>/src/actions/index.js",
+        "<rootDir>/src/reducers/index.js"
     ],
     "coverageThreshold": {
         "global": {
@@ -31,14 +31,17 @@
             "statements": 1
         }
     },
-    "modulePaths": ["<rootDir>/src", "<rootDir>/node_modules"],
-    "moduleFileExtensions": ["js", "json", "css", "ts", "tsx"],
+    "modulePaths": [
+        "<rootDir>/src",
+        "<rootDir>/node_modules"
+    ],
+    "moduleFileExtensions": [ "js", "json", "less", "ts", "tsx" ],
     "setupFiles": ["<rootDir>/jest/scripts/setupFiles.js"],
     "setupTestFrameworkScriptFile":
         "<rootDir>/jest/scripts/setupEnzymeEnvironment.js",
     "snapshotSerializers": ["enzyme-to-json/serializer"],
     "moduleNameMapper": {
-        "\\.(css|m.css)$": "identity-obj-proxy",
+        "\\.(less|m.less)$": "identity-obj-proxy",
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
             "<rootDir>/__mocks__/fileMock.js"
     },
