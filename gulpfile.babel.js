@@ -6,7 +6,7 @@ import gulp from 'gulp';
 import bundle from './build/gulp-tasks/package-project';
 import start from './build/gulp-tasks/serve';
 
-const srcFolder = path.resolve(__dirname, 'src');
+const srcFolder = path.resolve(__dirname, 'source');
 
 let BUILD_OPTIONS = {
     title: 'Demo Application!',

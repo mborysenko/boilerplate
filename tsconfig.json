@@ -6,13 +6,16 @@
         "module": "es6",
         "target": "es6",
         "jsx": "react",
+        "jsxFactory": "dom",
         "moduleResolution": "node",
         "typeRoots": [
             "node_modules/@types"
-        ]
+        ],
+        "allowSyntheticDefaultImports": true
     },
     "exclude": [
         "node_modules",
-        "dist"
+        "dist",
+        "src"
     ]
 }

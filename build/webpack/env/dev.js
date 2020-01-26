@@ -20,7 +20,7 @@ export default function devConfig(options) {
             app: [
                 "react-hot-loader/patch",
                 middlewareEntry,
-                path.resolve(source, "index.dev.tsx")
+                path.resolve(source, "index.tsx")
             ],
             vendors: [
                 "react-hot-loader/patch",

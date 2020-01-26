@@ -106,6 +106,27 @@ export default function webpackConfigFactory(options) {
                     ],
                 },
                 {
+                    test: /\.scss$/,
+                    use: [
+                        // MiniCssExtractPlugin.loader,
+                        {
+                            loader: "style-loader"
+                        },
+                        {
+                            loader: 'css-loader',
+                        }, {
+                            loader: 'sass-loader',
+                            options: {
+                                implementation: require('sass'),
+                                sourceMap: true,
+                                sassOptions: {
+                                    fiber: false,
+                                },
+                            }
+                        }
+                    ],
+                },
+                {
                     test: /\.(eot|otf|svg|ttf|woff|woff2)$/,
                     use: {
                         loader: 'file-loader',
