@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { registerRootRouting, RoutingArea } from '../../common/routing';
 import { Explorer } from '../components';
 
-console.log("Explorer routing registered");
 registerRootRouting([
     {
         id: 'exploreSpace',

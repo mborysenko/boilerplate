@@ -14,7 +14,6 @@ const registerRootRouting: (routing: EnhancedRootRoute[]) => void = (routing = [
             registry[id] = [rootRouting];
         }
     });
-    console.log("Registry: ", registry)
 };
 
 const flattenRoutes = (
@@ -58,7 +57,7 @@ const useRootRouting: () => EnhancedRootRoute[] = () => {
 
             routeList = [...routeList, ...routing];
         }
-        console.log(routeList);
+
         setRootRoutes(routeList);
     }, [setRootRoutes]);
 
