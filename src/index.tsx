@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import "core-js/stable";
 import "regenerator-runtime/runtime"
 
-import App from './app';
+import { App } from './App';
 import configuration from "../build/configuration";
 
 window.onload = () => {

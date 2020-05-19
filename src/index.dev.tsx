@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {AppContainer} from "react-hot-loader";
-import App from "./app";
+import { AppContainer } from "react-hot-loader";
+import { App } from "./App";
 import "core-js/stable";
 import "regenerator-runtime/runtime"
 
@@ -20,7 +20,7 @@ declare const module: { hot: any };
 const render = (Component) => {
     ReactDOM.render(
         <AppContainer>
-            <Component />
+            <Component/>
         </AppContainer>,
         document.getElementById(configuration.mountPoint)
     );
@@ -32,8 +32,8 @@ window.onload = () => {
 
 // Hot Module Replacement API
 if (module.hot) {
-    module.hot.accept('./app', () => {
-        let NextApp = require('./app').default;
+    module.hot.accept('./App', () => {
+        let NextApp = require('./App');
         render(NextApp);
     });
 }

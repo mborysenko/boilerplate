@@ -132,6 +132,7 @@ export default function webpackConfigFactory(options) {
                 title: title,
                 hash: true,
                 appMountIds: [mountPoint],
+                baseHref: '/',
                 minify: {
                     removeAttributeQuotes: true,
                     removeComments: true,
