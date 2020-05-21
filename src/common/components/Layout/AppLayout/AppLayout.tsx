@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { AppLayoutProps } from '../index';
+import { AppLayoutProps } from './API';
 
 const AppLayout: React.FunctionComponent<AppLayoutProps & React.HTMLAttributes<HTMLDivElement>> = ({
     children,

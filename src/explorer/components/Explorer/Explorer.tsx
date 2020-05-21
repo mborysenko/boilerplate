@@ -5,35 +5,33 @@ import { Column, LayoutList, LayoutListDirection, Row } from '../../../common/co
 import { RoutingArea } from '../../../common/routing';
 
 import { Area } from '../../../common/components/Layout';
+import { Box } from '../../../common/components/Layout/Box';
 
-interface ExplorerProps {}
+interface ExplorerProps {
+}
 
 const Explorer: React.FunctionComponent<ExplorerProps> = () => {
     return (
-        <LayoutList direction={LayoutListDirection.VERTICAL}>
-            <Row id={'header'}>
+        <LayoutList fullScreen={true} direction={LayoutListDirection.VERTICAL}>
+            <Row>
+                <Area area={RoutingArea.HEADER}/>
+            </Row>
+            <Row>
+                <Area area={RoutingArea.MENU}/>
+            </Row>
+            <Row fill={true}>
                 <Column>
-                    <Area area={RoutingArea.HEADER} />
+                    <Area area={RoutingArea.LEFT}/>
+                </Column>
+                <Column fill={true}>
+                    <Area area={RoutingArea.MAIN}/>
+                </Column>
+                <Column>
+                    <Area area={RoutingArea.RIGHT}/>
                 </Column>
             </Row>
             <Row>
-                <Column>
-                    <Area area={RoutingArea.MENU} />
-                </Column>
-            </Row>
-            <Row shouldFill={true}>
-                <Column>
-                    <Area area={RoutingArea.LEFT} />
-                </Column>
-                <Column shouldFill={true}>
-                    <Area area={RoutingArea.MAIN} />
-                </Column>
-                <Column>
-                    <Area area={RoutingArea.RIGHT} />
-                </Column>
-            </Row>
-            <Row>
-                <Area area={RoutingArea.FOOTER} />
+                <Area area={RoutingArea.FOOTER}/>
             </Row>
         </LayoutList>
     );

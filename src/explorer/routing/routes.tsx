@@ -15,8 +15,7 @@ registerRootRouting([
                 rendering: [{
                     area: RoutingArea.HEADER,
                     render: props => {
-                        return <div>
-                            <table>
+                        return <table>
                                 <tbody>
                                 <tr>
                                     <td><NavLink to={'/explorer/dashboard'}>Dashboard</NavLink></td>
@@ -24,8 +23,7 @@ registerRootRouting([
                                     <td><NavLink to={'/explorer/settings'}>Settings</NavLink></td>
                                 </tr>
                                 </tbody>
-                            </table>
-                        </div>;
+                            </table>;
                     },
                 }],
                 exact: false,
@@ -36,8 +34,7 @@ registerRootRouting([
                             {
                                 area: RoutingArea.MENU,
                                 render: props => {
-                                    return <div>
-                                        <table>
+                                    return <table>
                                             <tbody>
                                             <tr>
                                                 <td><NavLink to={'/explorer/content/repo'}>Repository</NavLink></td>
@@ -46,8 +43,7 @@ registerRootRouting([
                                                 <td><NavLink to={'/explorer/content/translation/job'}>Translation Job</NavLink></td>
                                             </tr>
                                             </tbody>
-                                        </table>
-                                    </div>;
+                                        </table>;
                                 },
                             },
                             {

@@ -1,3 +1,4 @@
-export interface ColumnProps {
-    shouldFill?: boolean;
+import { BoxProps } from '../Box';
+
+export interface ColumnProps extends BoxProps {
 }

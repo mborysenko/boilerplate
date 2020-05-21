@@ -1,5 +1,6 @@
 export interface LayoutListProps {
-    direction: LayoutListDirection;
+    direction?: LayoutListDirection;
+    fullScreen?: boolean;
 }
 
 export enum LayoutListDirection {
