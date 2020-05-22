@@ -5,6 +5,7 @@ import webpack from "webpack";
 
 import HTMLPlugin from "html-webpack-plugin"
 import HtmlWebpackTemplate from "html-webpack-template"
+import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin"
 
 import devConfig from "./env/dev";
 import prodConfig from "./env/prod";
@@ -38,7 +39,7 @@ export default function webpackConfigFactory(options) {
     console.log(`Running mode is: ${mode}`);
     let envConfig = envMapping[mode];
 
-    if(!envConfig) {
+    if (!envConfig) {
         console.warn(`Building mode is not set or is incorrect. Check NODE_ENV variable. Falling back to 'production'`);
         mode = BUILD_MODES.PROD;
         envConfig = envMapping[mode]
@@ -63,7 +64,8 @@ export default function webpackConfigFactory(options) {
                 path.resolve(projectDir, "node_modules")
             ],
             // Add '.ts' and '.tsx' as resolvable extensions.
-            extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".dev.js"]
+            extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".dev.js"],
+            plugins: [new TsconfigPathsPlugin()]
         },
         module: {
             rules: [
@@ -100,7 +102,7 @@ export default function webpackConfigFactory(options) {
                                     localIdentName: "[local]-[hash:base64:5]"
                                 }
                             }
-                        },{
+                        }, {
                             loader: "less-loader"
                         }
                     ],
@@ -142,7 +144,7 @@ export default function webpackConfigFactory(options) {
                 },
                 showErrors: true,
                 inject: false
-            }),        ]
+            }),]
 
         // When importing a module whose path matches one of the following, just
         // assume a corresponding global variable exists and use that instead.
