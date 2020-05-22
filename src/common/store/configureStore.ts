@@ -3,12 +3,12 @@ import { History } from 'history';
 import { applyMiddleware, createStore, Store } from 'redux';
 
 import { rootReducer } from './rootReducer';
-import { State } from './State';
+import { ApplicationState } from './ApplicationState';
 
-export function configureStore(history: History): Store<State> {
+export function configureStore(history: History): Store<ApplicationState> {
     const historyMiddleware = routerMiddleware(history);
     const middleware = [historyMiddleware];
 
-    const store = createStore(rootReducer(history));
+    const store = createStore(rootReducer(history), applyMiddleware(...middleware));
     return store;
 }

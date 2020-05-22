@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ColumnProps } from './API';
 import { forwardRef } from 'react';
 import styled from 'styled-components';
+
 import { Box } from '../Box';
 
 const Column = styled(forwardRef<HTMLDivElement, ColumnProps & React.HTMLAttributes<HTMLDivElement>>((props, ref) => {
@@ -9,7 +10,7 @@ const Column = styled(forwardRef<HTMLDivElement, ColumnProps & React.HTMLAttribu
 }))`
     display: flex;
     flex-flow: column;
-    flex: ${({fill}) => fill ? '1 1 auto' : ''};
+    flex: ${({fill}) => fill ? `1 1 auto` : ''};
     align-items: flex-start;
     justify-content: space-between;
 `;

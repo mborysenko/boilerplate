@@ -1,11 +1,6 @@
 import * as React from 'react';
-
-import { Column, LayoutList, LayoutListDirection, Row } from '../../../common/components';
-
-import { RoutingArea } from '../../../common/routing';
-
-import { Area } from '../../../common/components/Layout';
-import { Box } from '../../../common/components/Layout/Box';
+import { Column, LayoutList, LayoutListDirection, Row } from '@common/components';
+import { RoutingArea, Area } from '@common/routing';
 
 interface ExplorerProps {
 }

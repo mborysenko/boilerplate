@@ -18,11 +18,12 @@ const LayoutList = styled(
         right: 0;
         bottom: 0;
     `};
+
     ${({ direction = LayoutListDirection.HORIZONTAL }) => {
-        return (direction === LayoutListDirection.HORIZONTAL) ? css`
-            flex-direction: row;
-        ` : css`
+        return (direction === LayoutListDirection.VERTICAL) ? css`
             flex-direction: column;
+        ` : css`
+            flex-direction: row;
         `
     }
 }`;

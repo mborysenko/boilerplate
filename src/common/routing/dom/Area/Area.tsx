@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
 
-import { EnhancedAreaRoute, RoutingArea, useRoutesForArea } from '../../../../common/routing';
+import { EnhancedAreaRoute, RoutingArea, useRoutesForArea } from '@common/routing';
 
 interface AreaProps {
     area: RoutingArea;
