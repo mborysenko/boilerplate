@@ -8,3 +8,7 @@ const useCurrentRoute = () => {
 
     return path;
 };
+
+export {
+    useCurrentRoute,
+}

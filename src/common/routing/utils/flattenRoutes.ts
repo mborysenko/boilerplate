@@ -12,7 +12,7 @@ const flattenRoutes = (
         const { rendering } = sealed;
 
         sealed.path = `${rootRoute.path}${sealed.path}`.replace(/\/{2,}/gi, '/');
-        const areaRendering = rendering.find(item => item.area === area);
+        const areaRendering = rendering && rendering.find(item => item.area === area);
         if (areaRendering) {
             sealed.rendering = [areaRendering];
         }

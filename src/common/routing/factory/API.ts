@@ -3,8 +3,8 @@ import * as React from 'react';
 import { RouteChildrenProps, RouteComponentProps, RouteProps } from 'react-router';
 
 export enum RoutingArea {
-    HEADER = 'header',
-    MENU = 'menu',
+    HEADING = 'heading',
+    SUBHEADING = 'subheading',
     BODY = 'body',
     MAIN = 'center',
     LEFT = 'left',
@@ -16,9 +16,13 @@ export interface RoutingRegistry {
     [id: string]: EnhancedRootRoute[];
 }
 
-export interface EnhancedRootRoute extends RouteProps {
-    id: string;
-    routes?: EnhancedAreaRoute[];
+export interface RouteNavigationOptions {
+    label?: string;
+}
+
+export interface RouteWithNavigation<OPTIONS> {
+    navigation?: OPTIONS;
+    redirect?: string;
 }
 
 export interface AreaRouteRendering {
@@ -27,15 +31,17 @@ export interface AreaRouteRendering {
     render?: (props: RouteComponentProps<any>) => React.ReactNode;
     children?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode;
 }
-export interface NavigationOptions {
-    label: string;
+
+export interface EnhancedRootRoute extends RouteProps, RouteWithNavigation<RouteNavigationOptions> {
+    id: string;
+    routes?: EnhancedAreaRoute[];
 }
 
-export interface EnhancedAreaRoute {
-    navigation?: NavigationOptions;
-    rendering: AreaRouteRendering[];
+export interface EnhancedAreaRoute extends RouteWithNavigation<RouteNavigationOptions> {
+    path: string | string[];
+    rendering?: AreaRouteRendering[];
     location?: History.Location;
-    path?: string | string[];
+    redirect?: string;
     exact?: boolean;
     sensitive?: boolean;
     strict?: boolean;
