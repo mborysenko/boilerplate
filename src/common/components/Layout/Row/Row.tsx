@@ -4,14 +4,16 @@ import { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { Box } from '../Box';
 
-const Row = styled(forwardRef<HTMLDivElement, RowProps & React.HTMLAttributes<HTMLElement>>((props, ref) => {
-    return <Box {...props} ref={ref} />
-}))`
+const Row = styled(
+    forwardRef<HTMLDivElement, RowProps & React.HTMLAttributes<HTMLDivElement>>(({ greedy, ...other }, ref) => {
+        return <Box greedy={greedy} {...other} ref={ref}/>;
+    })
+)`
     display: flex;
     flex-flow: row;
     align-items: flex-start;
     justify-content: stretch;
-    ${({ fill }) => (fill) ? css`flex-grow: 1;` : css`flex-grow: 0;`};
+    ${({ greedy }) => (greedy) ? css`flex-grow: 1;` : css`flex-grow: 0;`};
 `;
 
 export {

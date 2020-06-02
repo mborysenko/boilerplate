@@ -1,3 +1,3 @@
 export interface BoxProps {
-    fill?: boolean;
+    greedy?: boolean;
 }

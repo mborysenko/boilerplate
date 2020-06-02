@@ -10,6 +10,7 @@ const Div = forwardRef<HTMLDivElement, BoxProps & React.HTMLAttributes<HTMLDivEl
         children,
         className,
         onClick,
+        greedy,
         ...other
     },
     ref: Ref<HTMLDivElement>) => {
@@ -28,7 +29,7 @@ const Box = styled(Div)`
     ::after {
         box-sizing: border-box;
     }
-    ${({ fill }) => fill && css`
+    ${({ greedy }) => greedy && css`
         flex-flow: column nowrap;
         flex: 1 1 0px;
         min-width: 0;

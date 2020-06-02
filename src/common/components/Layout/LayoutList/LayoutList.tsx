@@ -6,7 +6,10 @@ import { forwardRef, Ref } from 'react';
 
 const LayoutList = styled(
     forwardRef<HTMLDivElement, LayoutListProps & React.HTMLAttributes<HTMLDivElement>>(
-        ({ ...other }, ref: Ref<HTMLDivElement>) => {
+        ({
+             fullScreen,
+             ...other
+         }, ref: Ref<HTMLDivElement>) => {
             return <Box {...other} ref={ref}/>
         }
     ))`
@@ -20,12 +23,12 @@ const LayoutList = styled(
     `};
 
     ${({ direction = LayoutListDirection.HORIZONTAL }) => {
-        return (direction === LayoutListDirection.VERTICAL) ? css`
+    return (direction === LayoutListDirection.VERTICAL) ? css`
             flex-direction: column;
         ` : css`
             flex-direction: row;
         `
-    }
+}
 }`;
 
 export {

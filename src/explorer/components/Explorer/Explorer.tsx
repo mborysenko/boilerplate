@@ -9,16 +9,16 @@ const Explorer: React.FunctionComponent<ExplorerProps> = () => {
     return (
         <LayoutList fullScreen={true} direction={LayoutListDirection.VERTICAL}>
             <Row>
-                <Area area={RoutingArea.HEADER}/>
+                <Area area={RoutingArea.HEADING}/>
             </Row>
             <Row>
-                <Area area={RoutingArea.MENU}/>
+                <Area area={RoutingArea.SUBHEADING}/>
             </Row>
-            <Row fill={true}>
+            <Row greedy={true}>
                 <Column>
                     <Area area={RoutingArea.LEFT}/>
                 </Column>
-                <Column fill={true}>
+                <Column greedy={true}>
                     <Area area={RoutingArea.MAIN}/>
                 </Column>
                 <Column>
