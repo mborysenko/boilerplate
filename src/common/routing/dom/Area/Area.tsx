@@ -7,13 +7,12 @@ interface AreaProps {
     area: RoutingArea;
 }
 
-const renderRedirect = (to: string) => {
-    return <Redirect to={to}/>
+const renderRedirect = (from: string, to: string) => {
+    return <Redirect key={`${from}-${to}`} exact={true} {...{from, to}}/>
 }
 
 const Area: React.FunctionComponent<AreaProps> = ({ area }) => {
     const routes: EnhancedAreaRoute[] = useRoutesForArea(area);
-    console.log(routes);
     return (
         <>
             <Switch>
@@ -24,9 +23,9 @@ const Area: React.FunctionComponent<AreaProps> = ({ area }) => {
                                  redirect
                              }) => {
                     const { render, component } = rendering[0];
-                    return (<Route key={`${path}`} {...{ path, exact, render, component }}>
-                        {(redirect && redirect !== '') && renderRedirect(redirect)}
-                    </Route>);
+                    return (redirect && redirect !== '')
+                        ? renderRedirect(path as string, redirect)
+                        : <Route key={`${path}`} {...{ path, exact, render, component }} />;
                 })}
             </Switch>
         </>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavLink, Redirect, Route } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 import { registerRootRouting, RoutingArea } from '@common/routing';
 
@@ -12,7 +12,7 @@ registerRootRouting([
         exact: true,
         routes: [
             {
-                path: '/content',
+                path: '/',
                 rendering: [
                     {
                         area: RoutingArea.HEADING,
@@ -28,9 +28,16 @@ registerRootRouting([
                             </table>;
                         },
                     },
+                ],
+                exact: false,
+            },
+            {
+                path: '/content',
+                rendering: [
                     {
                         area: RoutingArea.SUBHEADING,
                         render: props => {
+                            console.log(props);
                             return <table>
                                 <tbody>
                                 <tr>
@@ -65,12 +72,6 @@ registerRootRouting([
                                 area: RoutingArea.MAIN,
                                 render: props => {
                                     return <div>List View 1</div>;
-                                },
-                            },
-                            {
-                                area: RoutingArea.RIGHT,
-                                render: props => {
-                                    return <div>Information Panel</div>;
                                 },
                             },
                         ],
@@ -155,6 +156,7 @@ registerRootRouting([
     {
         id: 'pageNotFound',
         path: '/error/404',
+        exact: true,
         routes: [],
         render: props => {
             return <LayoutList fullScreen={true}><Column greedy={true}>404. Page not found.</Column></LayoutList>;
@@ -167,5 +169,11 @@ registerRootRouting([
         render: props => {
             return <Redirect to={'/explorer/content'} />;
         }
+    },
+    {
+        id: 'defaultRoute',
+        path: '/explorer',
+        routes: [],
+        redirect: '/explorer/content',
     },
 ]);

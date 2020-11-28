@@ -1,33 +1,40 @@
 import * as React from 'react';
 import { Column, LayoutList, LayoutListDirection, Row } from '@common/components';
-import { RoutingArea, Area } from '@common/routing';
+import { RoutingArea, Area, isAreaVisible } from '@common/routing';
+import { RouteComponentProps } from 'react-router';
 
-interface ExplorerProps {
+interface ExplorerProps extends RouteComponentProps {
 }
 
-const Explorer: React.FunctionComponent<ExplorerProps> = () => {
+const Explorer: React.FunctionComponent<ExplorerProps> = (props) => {
+    const {
+        location,
+        match,
+    } = props;
     return (
         <LayoutList fullScreen={true} direction={LayoutListDirection.VERTICAL}>
-            <Row>
+            <Row>Explorer</Row>
+            {isAreaVisible(RoutingArea.HEADING, location.pathname) && <Row>
                 <Area area={RoutingArea.HEADING}/>
-            </Row>
-            <Row>
+            </Row>}
+            {isAreaVisible(RoutingArea.SUBHEADING, location.pathname) && <Row>
                 <Area area={RoutingArea.SUBHEADING}/>
-            </Row>
+            </Row>}
             <Row greedy={true}>
+                {isAreaVisible(RoutingArea.LEFT, location.pathname) &&
                 <Column>
                     <Area area={RoutingArea.LEFT}/>
-                </Column>
+                </Column>}
                 <Column greedy={true}>
                     <Area area={RoutingArea.MAIN}/>
                 </Column>
-                <Column>
+                {isAreaVisible(RoutingArea.RIGHT, location.pathname) && <Column>
                     <Area area={RoutingArea.RIGHT}/>
-                </Column>
+                </Column>}
             </Row>
-            <Row>
+            {isAreaVisible(RoutingArea.FOOTER, location.pathname) && <Row>
                 <Area area={RoutingArea.FOOTER}/>
-            </Row>
+            </Row>}
         </LayoutList>
     );
 };

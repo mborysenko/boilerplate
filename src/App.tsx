@@ -18,8 +18,13 @@ export const App: React.FunctionComponent<ApplicationProps> = () => {
         <Provider store={store}>
             <ConnectedRouter history={history}>
                 <Switch>
-                   {routes.map(({ path, redirect, ...other}) => {
-                        return <Route key={path as string} {...other} />;
+                    {routes.map(({ path, redirect, component, children, ...other }) => {
+                        const relevant: any = {};
+                        (children) ? relevant.children = children : relevant.component = component;
+
+                        return redirect
+                            ? <Redirect key={`${path}-${redirect}`} exact={true} from={path as string} to={redirect!}/>
+                            : <Route key={path as string} {...relevant} {...other} />
                     })}
                 </Switch>
             </ConnectedRouter>
