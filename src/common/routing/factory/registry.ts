@@ -1,6 +1,6 @@
-import { RoutingRegistry } from './API';
+import { EnhancedRootRoute } from './API';
 
-const registry: RoutingRegistry = {};
+let registry: EnhancedRootRoute[] = [];
 
 export {
     registry,

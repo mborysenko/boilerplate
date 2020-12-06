@@ -3,7 +3,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { useRootRouting } from '@common/routing';
+import { getRoutingRegistry } from '@common/routing';
 import { history, store } from '@common/store';
 
 //Routing
@@ -12,7 +12,7 @@ import '@explorer/routing';
 export type ApplicationProps = {};
 
 export const App: React.FunctionComponent<ApplicationProps> = () => {
-    const routes = useRootRouting();
+    const routes = getRoutingRegistry();
 
     return (
         <Provider store={store}>

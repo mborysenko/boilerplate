@@ -1,17 +1,18 @@
-import { EnhancedAreaRoute, EnhancedRootRoute, RoutingArea } from '@common';
+import { EnhancedAreaRoute, RouteWithChildren, RoutingArea } from '@common';
 
 const flattenRoutes = (
-    routes: EnhancedAreaRoute[] = [],
+    routes: RouteWithChildren[] = [],
     area: RoutingArea,
-    rootRoute: EnhancedRootRoute | EnhancedAreaRoute,
+    rootRoute?: RouteWithChildren,
 ): EnhancedAreaRoute[] => {
     let result: EnhancedAreaRoute[] = [];
     routes.forEach(route => {
         let childrenRoutes: EnhancedAreaRoute[] = [];
         const sealed = Object.assign({}, route);
         const { rendering } = sealed;
+        const firstPart = rootRoute?.path || '';
 
-        sealed.path = `${rootRoute.path}${sealed.path}`.replace(/\/{2,}/gi, '/');
+        sealed.path = `${firstPart}${sealed.path}`.replace(/\/{2,}/gi, '/');
         const areaRendering = rendering && rendering.find(item => item.area === area);
         if (areaRendering) {
             sealed.rendering = [areaRendering];

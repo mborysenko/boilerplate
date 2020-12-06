@@ -9,28 +9,8 @@ registerRootRouting([
     {
         id: 'exploreSpace',
         path: '/explorer',
-        exact: true,
+        exact: false,
         routes: [
-            {
-                path: '/',
-                rendering: [
-                    {
-                        area: RoutingArea.HEADING,
-                        render: props => {
-                            return <table>
-                                <tbody>
-                                <tr>
-                                    <td><NavLink to={'/explorer/dashboard'}>Dashboard</NavLink></td>
-                                    <td><NavLink to={'/explorer/content'}>Content</NavLink></td>
-                                    <td><NavLink to={'/explorer/settings'}>Settings</NavLink></td>
-                                </tr>
-                                </tbody>
-                            </table>;
-                        },
-                    },
-                ],
-                exact: false,
-            },
             {
                 path: '/content',
                 rendering: [
@@ -107,6 +87,7 @@ registerRootRouting([
                     },
                     {
                         path: '/translation',
+                        exact: true,
                         rendering: [
                             {
                                 area: RoutingArea.LEFT,
@@ -124,6 +105,12 @@ registerRootRouting([
                                 area: RoutingArea.RIGHT,
                                 render: props => {
                                     return <div>Job Details</div>;
+                                },
+                            },
+                            {
+                                area: RoutingArea.FOOTER,
+                                render: props => {
+                                    return <div style={{ width: "100%", height: "100px", backgroundColor: "#347b85"}}>Footer</div>;
                                 },
                             },
                         ],
@@ -152,6 +139,22 @@ registerRootRouting([
             },
         ],
         component: Explorer,
+        rendering: [
+            {
+                area: RoutingArea.HEADING,
+                render: props => {
+                    return <table>
+                        <tbody>
+                        <tr>
+                            <td><NavLink to={'/explorer/dashboard'}>Dashboard</NavLink></td>
+                            <td><NavLink to={'/explorer/content'}>Content</NavLink></td>
+                            <td><NavLink to={'/explorer/settings'}>Settings</NavLink></td>
+                        </tr>
+                        </tbody>
+                    </table>;
+                },
+            },
+        ]
     },
     {
         id: 'pageNotFound',

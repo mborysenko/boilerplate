@@ -1,3 +1,3 @@
 export * from './useCurrentRoute';
-export * from './useRootRouting';
+export * from './getRoutingRegistry';
 export * from './useRoutesForArea';
