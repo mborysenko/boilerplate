@@ -1,4 +1,3 @@
-import * as History from 'history';
 import * as React from 'react';
 import { RouteChildrenProps, RouteComponentProps, RouteProps } from 'react-router';
 
@@ -10,10 +9,6 @@ export enum RoutingArea {
     LEFT = 'left',
     RIGHT = 'right',
     FOOTER = 'footer',
-}
-
-export interface RoutingRegistry {
-    [id: string]: EnhancedRootRoute[];
 }
 
 export interface RouteNavigationOptions {
@@ -32,18 +27,17 @@ export interface AreaRouteRendering {
     children?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode;
 }
 
-export interface EnhancedRootRoute extends RouteProps, RouteWithNavigation<RouteNavigationOptions> {
-    id: string;
+export interface RouteWithChildren extends RouteProps, RouteWithNavigation<RouteNavigationOptions> {
     routes?: EnhancedAreaRoute[];
+    rendering?: AreaRouteRendering[];
 }
 
-export interface EnhancedAreaRoute extends RouteWithNavigation<RouteNavigationOptions> {
-    path: string | string[];
-    rendering?: AreaRouteRendering[];
-    location?: History.Location;
-    redirect?: string;
-    exact?: boolean;
-    sensitive?: boolean;
-    strict?: boolean;
-    routes?: EnhancedAreaRoute[];
+export interface EnhancedRouteWithId {
+    id: string;
+}
+
+export interface EnhancedRootRoute extends EnhancedRouteWithId, RouteWithChildren {
+}
+
+export interface EnhancedAreaRoute extends RouteWithChildren {
 }
