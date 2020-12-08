@@ -9,6 +9,8 @@ export enum RoutingArea {
     LEFT = 'left',
     RIGHT = 'right',
     FOOTER = 'footer',
+    FOOTER_LEFT = 'footer_left',
+    FOOTER_RIGHT = 'footer_right',
 }
 
 export interface RouteNavigationOptions {
