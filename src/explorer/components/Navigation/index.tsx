@@ -1,1 +1,1 @@
-// global navigation
+export * from './Navigation';
