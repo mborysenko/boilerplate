@@ -3,7 +3,8 @@ import { NavLink, Redirect } from 'react-router-dom';
 
 import { registerRootRouting, RoutingArea } from '@common/routing';
 
-import { Column, Explorer, LayoutList } from '../components';
+import { Column, LayoutList } from '@common/components';
+import { Explorer, Footer, Navigation } from '@explorer/components';
 
 registerRootRouting([
     {
@@ -17,7 +18,6 @@ registerRootRouting([
                     {
                         area: RoutingArea.SUBHEADING,
                         render: props => {
-                            console.log(props);
                             return <table>
                                 <tbody>
                                 <tr>
@@ -107,12 +107,6 @@ registerRootRouting([
                                     return <div>Job Details</div>;
                                 },
                             },
-                            {
-                                area: RoutingArea.FOOTER,
-                                render: props => {
-                                    return <div style={{ width: "100%", height: "100px", backgroundColor: "#347b85"}}>Footer</div>;
-                                },
-                            },
                         ],
                         navigation: {
                             label: 'Translations',
@@ -142,17 +136,10 @@ registerRootRouting([
         rendering: [
             {
                 area: RoutingArea.HEADING,
-                render: props => {
-                    return <table>
-                        <tbody>
-                        <tr>
-                            <td><NavLink to={'/explorer/dashboard'}>Dashboard</NavLink></td>
-                            <td><NavLink to={'/explorer/content'}>Content</NavLink></td>
-                            <td><NavLink to={'/explorer/settings'}>Settings</NavLink></td>
-                        </tr>
-                        </tbody>
-                    </table>;
-                },
+                component: Navigation,
+            },{
+                area: RoutingArea.FOOTER,
+                component: Footer,
             },
         ]
     },
