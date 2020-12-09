@@ -23,7 +23,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> = ({ path})=> 
         <tbody>
         <tr>
             {navigationItems.map(({to, label}) => {
-                return <td><NavLink activeClassName={'active'} to={to}>{label}</NavLink></td>
+                return <td key={to}><NavLink activeClassName={'active'} to={to}>{label}</NavLink></td>
             })}
         </tr>
         </tbody>
