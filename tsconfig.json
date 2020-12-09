@@ -10,7 +10,7 @@
         "jsx": "react",
         "moduleResolution": "node",
         "typeRoots": [
-            "node_modules/@types"
+            "node_modules/@types",
         ],
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
@@ -37,6 +37,7 @@
     ],
     "include": [
         "./src/**/*.ts",
-        "./src/**/*.tsx"
+        "./src/**/*.tsx",
+        "./build/types/less.d.ts"
     ]
 }

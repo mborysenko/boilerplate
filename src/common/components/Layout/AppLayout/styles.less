@@ -1,0 +1,30 @@
+.flexBox {
+
+}
+.fullPage {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.row {
+    display: flex;
+    flex-flow: row;
+    flex: 1 auto;
+    flex-wrap: nowrap;
+    .column {
+        flex-flow: column;
+        flex: 1 auto;
+        align-items: stretch;
+        &.left {
+
+        }
+        &.main {
+            flex-grow: 3;
+        }
+        &.right {
+
+        }
+    }
+}
