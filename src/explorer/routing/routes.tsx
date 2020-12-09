@@ -42,6 +42,14 @@ registerRootRouting([
                             return <div>Content Section 1</div>;
                         },
                     },
+                    {
+                        area: RoutingArea.FOOTER_LEFT,
+                        render: () => {
+                            return <div>
+                                Breadcrumbs
+                            </div>
+                        },
+                    },
                 ],
                 exact: false,
                 routes: [
@@ -137,9 +145,18 @@ registerRootRouting([
             {
                 area: RoutingArea.HEADING,
                 component: Navigation,
-            },{
+            },
+            {
                 area: RoutingArea.FOOTER,
                 component: Footer,
+            },
+            {
+                area: RoutingArea.FOOTER_RIGHT,
+                render: () => {
+                    return <div>
+                        Copyright
+                    </div>
+                },
             },
         ]
     },
