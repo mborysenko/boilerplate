@@ -30,10 +30,9 @@ const Box = styled(Div)`
         box-sizing: border-box;
     }
     ${({ greedy }) => greedy && css`
-        flex-flow: column nowrap;
-        flex: 1 1 0px;
-        min-width: 0;
-        min-height: 0;
+        flex-flow: column;
+        flex-wrap: nowrap;
+        flex: 1 auto;
     `}
 `;
 

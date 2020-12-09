@@ -10,7 +10,6 @@ const Column = styled(forwardRef<HTMLDivElement, ColumnProps & React.HTMLAttribu
 }))`
     display: flex;
     flex-flow: column;
-    flex: ${({ greedy }) => greedy ? `1 1 auto` : ''};
     align-items: flex-start;
     justify-content: space-between;
 `;

@@ -11,11 +11,13 @@ const Row = styled(
 )`
     display: flex;
     flex-flow: row;
-    align-items: flex-start;
-    justify-content: stretch;
-    ${({ greedy }) => (greedy) ? css`flex-grow: 1;` : css`flex-grow: 0;`};
+    ${({asGrid}) => asGrid ? css`
+        align-items: stretch;
+        flex-wrap: nowrap;
+    ` : css`
+        align-items: flex-start;
+    `}
 `;
-
 export {
     Row
 }
