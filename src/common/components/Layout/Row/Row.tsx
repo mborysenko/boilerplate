@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { Box } from '../Box';
 
 const Row = styled(
-    forwardRef<HTMLDivElement, RowProps & React.HTMLAttributes<HTMLDivElement>>(({ greedy, ...other }, ref) => {
+    forwardRef<HTMLDivElement, RowProps & React.HTMLAttributes<HTMLDivElement>>(({ greedy, asGrid, ...other }, ref) => {
         return <Box greedy={greedy} {...other} ref={ref}/>;
     })
 )`
