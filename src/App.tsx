@@ -3,11 +3,12 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { getRoutingRegistry } from '@common/routing';
+import { EnhancedRootRoute, getRoutingRegistry } from '@common/routing';
 import { history, store } from '@common/store';
 
 //Routing
 import '@explorer/routing';
+import { RouteProps } from 'react-router';
 
 export type ApplicationProps = {};
 
@@ -18,13 +19,20 @@ export const App: React.FunctionComponent<ApplicationProps> = () => {
         <Provider store={store}>
             <ConnectedRouter history={history}>
                 <Switch>
-                    {routes.map(({ path, redirect, component, children, ...other }) => {
-                        const relevant: any = {};
-                        (children) ? relevant.children = children : relevant.component = component;
+                    {routes.map(({ path, redirect, component, children, render , exact}) => {
+                        const relevant: RouteProps = {
+                            component,
+                            render,
+                            children,
+                            exact,
+                        };
+                        const id = Array.isArray(path) ? path.join('_') : path;
 
                         return redirect
-                            ? <Redirect key={`${path}-${redirect}`} exact={true} from={path as string} to={redirect!}/>
-                            : <Route key={path as string} {...relevant} {...other} />
+                            ? <Route key={id} exact={exact} path={path}>
+                                <Redirect to={redirect!}/>
+                            </Route>
+                            : <Route key={id} path={path} {...relevant} />
                     })}
                 </Switch>
             </ConnectedRouter>

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Redirect } from 'react-router-dom';
 
 import { registerRootRouting, RoutingArea } from '@common/routing';
 
@@ -177,7 +176,7 @@ registerRootRouting([
                     </div>
                 },
             },
-        ]
+        ],
     },
     {
         id: 'pageNotFound',
@@ -189,17 +188,9 @@ registerRootRouting([
         }
     },
     {
-        id: 'default',
-        path: '/*',
-        routes: [],
-        render: props => {
-            return <Redirect to={'/explorer/content'}/>;
-        }
-    },
-    {
         id: 'defaultRoute',
-        path: '/explorer',
-        routes: [],
+        exact: true,
+        path: ['/*'],
         redirect: '/explorer/content',
     },
 ]);
