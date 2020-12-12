@@ -22,11 +22,8 @@ export interface RouteWithNavigation<OPTIONS> {
     redirect?: string;
 }
 
-export interface AreaRouteRendering {
+export interface AreaRouteRendering extends Pick<RouteProps, 'component' | 'render' | 'children'> {
     area: RoutingArea;
-    component?: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
-    render?: (props: RouteComponentProps<any>) => React.ReactNode;
-    children?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode;
 }
 
 export interface RouteWithChildren extends RouteProps, RouteWithNavigation<RouteNavigationOptions> {
