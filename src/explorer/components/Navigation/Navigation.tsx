@@ -2,28 +2,19 @@ import { NavLink } from 'react-router-dom';
 import * as React from 'react';
 import { RouteProps } from 'react-router';
 
-export interface NavigationProps extends RouteProps {
+export interface NavigationDataItem {
+    to: string;
+    label: string;
 }
-export const Navigation: React.FunctionComponent<NavigationProps> = ({ path})=> {
-    const navigationItems = [
-        {
-            to: '/explorer/dashboard',
-            label: 'Dashboard',
-        },
-        {
-            to: '/explorer/content',
-            label: 'Content',
-        },
-        {
-            to: '/explorer/settings',
-            label: 'Settings',
-        },
-    ]//useNavigationForPath(path);
+export interface NavigationProps extends RouteProps {
+    items: NavigationDataItem[];
+};
+export const Navigation: React.FunctionComponent<NavigationProps> = ({ path, items})=> {
     return <table>
         <tbody>
         <tr>
-            {navigationItems.map(({to, label}) => {
-                return <td key={to}><NavLink activeClassName={'active'} to={to}>{label}</NavLink></td>
+            {items.map(({to, label}) => {
+                return <td key={`${to}_${label}`}><NavLink activeClassName={'active'} to={to}>{label}</NavLink></td>
             })}
         </tr>
         </tbody>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { registerRootRouting, RoutingArea } from '@common/routing';
 
@@ -17,18 +17,24 @@ registerRootRouting([
                 rendering: [
                     {
                         area: RoutingArea.SUBHEADING,
-                        render: props => {
-                            return <table>
-                                <tbody>
-                                <tr>
-                                    <td><NavLink to={'/explorer/content/repo'}>Repository</NavLink></td>
-                                    <td><NavLink to={'/explorer/content/publishing'}>Publishing Queue</NavLink></td>
-                                    <td><NavLink to={'/explorer/content/translation'}>Translation Jobs</NavLink></td>
-                                    <td><NavLink to={'/explorer/content/translation/job'}>Translation Job</NavLink></td>
-                                </tr>
-                                </tbody>
-                            </table>;
-                        },
+                        render: props => <Navigation items={[
+                                {
+                                    to: '/explorer/content/repo',
+                                    label: 'Repository',
+                                },
+                                {
+                                    to: '/explorer/content/publishing',
+                                    label: 'Publishing Queue',
+                                },
+                                {
+                                    to: '/explorer/content/translation',
+                                    label: 'Translation Jobs',
+                                },
+                                {
+                                    to: '/explorer/content/translation/job',
+                                    label: 'Translation Job',
+                                },
+                            ]} {...props}/>,
                     },
                     {
                         area: RoutingArea.LEFT,
@@ -124,7 +130,7 @@ registerRootRouting([
                             navigation: {
                                 label: 'Translation Jobs',
                             },
-                            rendering:[
+                            rendering: [
                                 {
                                     area: RoutingArea.RIGHT,
                                     render: props => {
@@ -144,7 +150,20 @@ registerRootRouting([
         rendering: [
             {
                 area: RoutingArea.HEADING,
-                component: Navigation,
+                render: props => <Navigation items={[
+                    {
+                        to: '/explorer/dashboard',
+                        label: 'Dashboard',
+                    },
+                    {
+                        to: '/explorer/content',
+                        label: 'Content',
+                    },
+                    {
+                        to: '/explorer/settings',
+                        label: 'Settings',
+                    },
+                ]} {...props}/>,
             },
             {
                 area: RoutingArea.FOOTER,
@@ -174,7 +193,7 @@ registerRootRouting([
         path: '/*',
         routes: [],
         render: props => {
-            return <Redirect to={'/explorer/content'} />;
+            return <Redirect to={'/explorer/content'}/>;
         }
     },
     {
