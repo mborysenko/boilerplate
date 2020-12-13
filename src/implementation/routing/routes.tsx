@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { registerRootRouting, RoutingArea } from '@common/routing';
+import { Navigation, registerRootRouting, RoutingArea } from '@common/routing';
 
-import { Column, LayoutList } from '@common/components';
-import { Explorer, Footer, Navigation } from '@explorer/components';
+import { AppLayout } from '@common/components';
+import { Footer, ErrorPage, Copyright, Breadcrumbs } from '../components/dom';
 
 registerRootRouting([
     {
@@ -29,13 +29,10 @@ registerRootRouting([
                                     to: '/explorer/content/translation',
                                     label: 'Translation Jobs',
                                 },
-                                {
-                                    to: '/explorer/content/translation/job',
-                                    label: 'Translation Job',
-                                },
                             ]} {...props}/>,
                     },
                     {
+                        exact: true,
                         area: RoutingArea.LEFT,
                         render: props => {
                             return <div>TreeView</div>;
@@ -49,11 +46,7 @@ registerRootRouting([
                     },
                     {
                         area: RoutingArea.FOOTER_LEFT,
-                        render: () => {
-                            return <div>
-                                Breadcrumbs
-                            </div>
-                        },
+                        component: Breadcrumbs,
                     },
                 ],
                 exact: false,
@@ -75,12 +68,12 @@ registerRootRouting([
                     {
                         path: '/publishing',
                         rendering: [
-                            /*{
+                            {
                                 area: RoutingArea.LEFT,
                                 render: props => {
                                     return <div>Publishing Servers List</div>;
                                 },
-                            },*/
+                            },
                             {
                                 area: RoutingArea.MAIN,
                                 render: props => {
@@ -103,12 +96,6 @@ registerRootRouting([
                         exact: true,
                         rendering: [
                             {
-                                area: RoutingArea.LEFT,
-                                render: props => {
-                                    return <div>Jobs List</div>;
-                                },
-                            },
-                            {
                                 area: RoutingArea.MAIN,
                                 render: props => {
                                     return <div>Jobs List</div>;
@@ -124,20 +111,6 @@ registerRootRouting([
                         navigation: {
                             label: 'Translations',
                         },
-                        routes: [{
-                            path: '/job',
-                            navigation: {
-                                label: 'Translation Jobs',
-                            },
-                            rendering: [
-                                {
-                                    area: RoutingArea.RIGHT,
-                                    render: props => {
-                                        return <div>JOB METADATA FORM</div>
-                                    }
-                                }
-                            ]
-                        }]
                     },
                 ],
                 navigation: {
@@ -145,7 +118,7 @@ registerRootRouting([
                 }
             },
         ],
-        component: Explorer,
+        component: AppLayout,
         rendering: [
             {
                 area: RoutingArea.HEADING,
@@ -170,11 +143,7 @@ registerRootRouting([
             },
             {
                 area: RoutingArea.FOOTER_RIGHT,
-                render: () => {
-                    return <div>
-                        Copyright
-                    </div>
-                },
+                component: Copyright,
             },
         ],
     },
@@ -183,14 +152,12 @@ registerRootRouting([
         path: '/error/404',
         exact: true,
         routes: [],
-        render: props => {
-            return <LayoutList fullScreen={true}><Column greedy={true}>404. Page not found.</Column></LayoutList>;
-        }
+        component: ErrorPage
     },
     {
         id: 'defaultRoute',
         exact: true,
         path: ['/*'],
-        redirect: '/explorer/content',
+        redirect: '/error/404',
     },
 ]);

@@ -10,7 +10,7 @@ const Column = styled(forwardRef<HTMLDivElement, ColumnProps & React.HTMLAttribu
 }))`
     display: flex;
     flex-flow: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: space-between;
 `;
 
