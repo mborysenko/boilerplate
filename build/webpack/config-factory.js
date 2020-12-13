@@ -61,7 +61,7 @@ export default function webpackConfigFactory(options) {
             modules: [
                 projectDir,
                 source,
-                path.resolve(projectDir, "node_modules")
+                "node_modules",
             ],
             // Add '.ts' and '.tsx' as resolvable extensions.
             extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".dev.js"],
