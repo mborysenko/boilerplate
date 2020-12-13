@@ -1,0 +1,28 @@
+.navigation {
+    padding: 0;
+    margin: 0;
+    font-size: 0.75em;
+
+    .item {
+
+        a {
+            padding: 0.5em 0.75em 0.75em;
+            text-decoration: none;
+
+            &.active {
+                padding: 0.5em 0.75em 0.25em 0.75em;
+                border-bottom: 0.25em solid #4fb9f1;
+            }
+        }
+    }
+
+    &.horizontal {
+        display: flex;
+        flex-flow: row;
+        flex: 1 1 auto;
+
+        .item {
+            display: flex;
+        }
+    }
+}
