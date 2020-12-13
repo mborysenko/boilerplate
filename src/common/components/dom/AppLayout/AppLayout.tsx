@@ -1,40 +1,45 @@
 import * as React from 'react';
-import { Column, LayoutList, LayoutListDirection, Row } from '@common/components';
+import {
+    AppLayoutProps,
+    Column,
+    ColumnDecorator,
+    DecoratorPosition,
+    LayoutList,
+    LayoutListDirection,
+    Row
+} from '@common/components';
 import { RoutingArea, Area, isAreaVisible } from '@common/routing';
-import { RouteComponentProps } from 'react-router';
 
-interface ExplorerProps extends RouteComponentProps {
-}
+const AppLayout: React.FunctionComponent<AppLayoutProps> = ({ ...rest }) => {
 
-const Explorer: React.FunctionComponent<ExplorerProps> = (props) => {
     const {
         location,
-    } = props;
+    } = rest;
     return (
         <LayoutList fullScreen={true} direction={LayoutListDirection.VERTICAL}>
             {isAreaVisible(RoutingArea.HEADING, location.pathname) && <Row>
-                <Area area={RoutingArea.HEADING}/>
+                <Area area={RoutingArea.HEADING} {...rest}/>
             </Row>}
             {isAreaVisible(RoutingArea.SUBHEADING, location.pathname) && <Row>
-                <Area area={RoutingArea.SUBHEADING}/>
+                <Area area={RoutingArea.SUBHEADING} {...rest}/>
             </Row>}
             <Row greedy={true} asGrid={true}>
                 {isAreaVisible(RoutingArea.LEFT, location.pathname) &&
                 <Column>
-                    <Area area={RoutingArea.LEFT}/>
+                    <ColumnDecorator position={DecoratorPosition.LEFT}><Area area={RoutingArea.LEFT} {...rest}/></ColumnDecorator>
                 </Column>}
                 <Column greedy={true}>
-                    <Area area={RoutingArea.MAIN}/>
+                    <ColumnDecorator><Area area={RoutingArea.MAIN}/></ColumnDecorator>
                 </Column>
                 {isAreaVisible(RoutingArea.RIGHT, location.pathname) && <Column>
-                    <Area area={RoutingArea.RIGHT}/>
+                    <ColumnDecorator position={DecoratorPosition.RIGHT}><Area area={RoutingArea.RIGHT} {...rest}/></ColumnDecorator>
                 </Column>}
             </Row>
             {isAreaVisible(RoutingArea.FOOTER, location.pathname) && <Row>
-                <Area area={RoutingArea.FOOTER}/>
+                <Area area={RoutingArea.FOOTER} {...rest}/>
             </Row>}
         </LayoutList>
     );
 };
 
-export { Explorer };
+export { AppLayout };
