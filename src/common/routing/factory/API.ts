@@ -22,7 +22,7 @@ export interface RouteWithNavigation<OPTIONS> {
     redirect?: string;
 }
 
-export interface AreaRouteRendering extends Pick<RouteProps, 'component' | 'render' | 'children'> {
+export interface AreaRouteRendering extends Pick<RouteProps, 'component' | 'render' | 'children' | 'exact'> {
     area: RoutingArea;
 }
 
