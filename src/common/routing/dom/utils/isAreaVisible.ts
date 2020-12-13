@@ -4,7 +4,7 @@ import { takeLast } from 'ramda';
 export const isAreaVisible = (area: RoutingArea, currentPath: string): boolean => {
     const takeLastOf = takeLast(1);
     const parts = currentPath.split('/');
-    const routes = useRoutesForArea(area);
+    const routes = useRoutesForArea(area, currentPath);
     const fr = routes.filter(({ path, exact }) => {
         let toFilterOut = false;
 

@@ -11,8 +11,8 @@ const renderRedirect = (from: string, to: string) => {
     return <Redirect key={`${from}-${to}`} exact={true} {...{ from, to }}/>
 }
 
-const Area: React.FunctionComponent<AreaProps> = ({ area }) => {
-    const routes: EnhancedAreaRoute[] = useRoutesForArea(area);
+const Area: React.FunctionComponent<AreaProps & RouteProps> = ({ area, location }) => {
+    const routes: EnhancedAreaRoute[] = useRoutesForArea(area, location?.pathname!);
     return (
         <>
             <Switch>

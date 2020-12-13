@@ -2,14 +2,14 @@ import { getRoutingRegistry } from './getRoutingRegistry';
 import { RoutingArea, EnhancedAreaRoute, flattenRoutes, RouteWithChildren } from '@common';
 import * as React from 'react';
 
-const useRoutesForArea: (area: RoutingArea) => EnhancedAreaRoute[] = area => {
+const useRoutesForArea: (area: RoutingArea, currentPath: string) => EnhancedAreaRoute[] = (area, currentPath) => {
     const rootRoutes = getRoutingRegistry();
-    const [areaRoutes, setAreaRoutes] = React.useState<EnhancedAreaRoute[]>(flattenRoutes(rootRoutes, area));
+    const [areaRoutes, setAreaRoutes] = React.useState<EnhancedAreaRoute[]>([]);
 
     React.useEffect(() => {
-        let result: EnhancedAreaRoute[] = flattenRoutes(rootRoutes, area);
+        let result: EnhancedAreaRoute[] = flattenRoutes(rootRoutes, area, currentPath);
         setAreaRoutes(result);
-    }, [rootRoutes, area]);
+    }, [rootRoutes, area, currentPath]);
 
     return areaRoutes;
 };
