@@ -56,7 +56,7 @@ export default function (options) {
                 if (err) {
                     console.log(err);
                 } else {
-                    open(`http://${server.host}:${server.port}/explorer/`);
+                    open(`http://${server.host}:${server.port}/`);
                 }
             });
 
