@@ -18,10 +18,10 @@ const AppLayout: React.FunctionComponent<AppLayoutProps> = ({ ...rest }) => {
     return (
         <LayoutList fullScreen={true} direction={LayoutListDirection.VERTICAL}>
             {isAreaVisible(RoutingArea.HEADING, location.pathname) && <Row>
-                <Area area={RoutingArea.HEADING} {...rest}/>
+                <ColumnDecorator position={DecoratorPosition.BOTTOM}><Area area={RoutingArea.HEADING} {...rest}/></ColumnDecorator>
             </Row>}
             {isAreaVisible(RoutingArea.SUBHEADING, location.pathname) && <Row>
-                <Area area={RoutingArea.SUBHEADING} {...rest}/>
+                <ColumnDecorator position={DecoratorPosition.BOTTOM}><Area area={RoutingArea.SUBHEADING} {...rest}/></ColumnDecorator>
             </Row>}
             <Row greedy={true} asGrid={true}>
                 {isAreaVisible(RoutingArea.LEFT, location.pathname) &&
@@ -36,7 +36,7 @@ const AppLayout: React.FunctionComponent<AppLayoutProps> = ({ ...rest }) => {
                 </Column>}
             </Row>
             {isAreaVisible(RoutingArea.FOOTER, location.pathname) && <Row>
-                <Area area={RoutingArea.FOOTER} {...rest}/>
+                <ColumnDecorator position={DecoratorPosition.TOP}><Area area={RoutingArea.FOOTER} {...rest}/></ColumnDecorator>
             </Row>}
         </LayoutList>
     );
