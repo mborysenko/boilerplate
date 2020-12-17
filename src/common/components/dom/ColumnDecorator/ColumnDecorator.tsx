@@ -12,12 +12,20 @@ const ColumnDecorator = styled(
     display: flex;
     flex: 1 1 auto;
     min-width: 240px;
-    padding: 1em;
     ${({ position }) => position === DecoratorPosition.LEFT && css`
-        border-right: 1px solid #dddddd;
+        border-right: 1px solid #dfdfdf;
     `}
     ${({ position }) => position === DecoratorPosition.RIGHT && css`
-        border-left: 1px solid #dddddd;
+        border-left: 1px solid #dfdfdf;
+    `}
+    ${({ position }) => position === DecoratorPosition.TOP && css`
+        border-top: 1px solid #dfdfdf;
+    `}
+    ${({ position }) => position === DecoratorPosition.BOTTOM && css`
+        border-bottom: 1px solid #dfdfdf;
+    `}
+    ${({ position }) => position === DecoratorPosition.ALL && css`
+        border: 1px solid #dfdfdf;
     `}
     align-items: stretch;
     justify-content: space-between;
