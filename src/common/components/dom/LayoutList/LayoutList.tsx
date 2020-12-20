@@ -16,6 +16,7 @@ const LayoutList = styled(
     display: flex;
     ${({ fullScreen }) => fullScreen && css`
         position: absolute;
+        overflow: hidden;
         top: 0;
         left: 0;
         right: 0;
