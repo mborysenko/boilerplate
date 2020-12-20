@@ -5,3 +5,5 @@ export * from './ColumnDecorator';
 export * from './Row';
 export * from './Box';
 export * from './Label';
+export * from './Scroller';
+export * from './Reducer';
