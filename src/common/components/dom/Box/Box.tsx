@@ -33,7 +33,10 @@ const Box = styled(Div)`
         flex-flow: column;
         flex-wrap: nowrap;
         flex: 1 auto;
-    `}
+    `};
+    ${({ relative }) => relative && css`
+        position: relative;
+    `};
 `;
 
 export {
