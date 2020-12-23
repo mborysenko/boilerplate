@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { registerRootRouting } from '@common/routing';
+import { registerRootRouting } from '../../../core/routing';
 
-import { ErrorPage, } from '../components/dom';
+import { ErrorPage, } from '../components/sections';
 
 registerRootRouting([
     {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { registerRootRouting } from '@common/routing';
-
+import { registerRootRouting } from '../../../core/routing';
 registerRootRouting([
     {
         id: 'default',

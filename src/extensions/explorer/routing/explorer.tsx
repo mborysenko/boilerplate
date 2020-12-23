@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { Navigation, registerRootRouting, RoutingArea } from '@common/routing';
+import { Navigation, registerRootRouting, RoutingArea } from '../../../core/routing';
 
-import { AppLayout, Box, Column } from '@common/components';
-import { Footer, ErrorPage, Copyright, Breadcrumbs } from '../components/dom';
-import { Reducer } from '@common/components/dom/Reducer';
-import { Scroller } from '@common/components/dom/Scroller';
+import { AppLayout, Box, Column } from '../../../core/components';
+import { Footer, ErrorPage, Copyright, Breadcrumbs } from '../components/sections';
+import { Reducer } from '../../../core/components/dom/Reducer';
+import { Scroller } from '../../../core/components/dom/Scroller';
 
 registerRootRouting([
     {

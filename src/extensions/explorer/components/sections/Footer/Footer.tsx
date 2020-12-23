@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RouteProps } from 'react-router';
-import { Area, Column, isAreaVisible, RoutingArea, Row } from '@common';
+import { Area, Column, isAreaVisible, RoutingArea, Row } from '../../../../../core';
 
 export interface FooterProps extends RouteProps {
 }
