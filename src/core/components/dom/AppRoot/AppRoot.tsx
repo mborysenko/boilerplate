@@ -1,10 +1,10 @@
 import { FunctionComponent, HTMLAttributes } from 'react';
 import { RouteProps } from 'react-router';
-import { getRoutingRegistry, history } from '@common';
+import { getRoutingRegistry, history } from '../../..';
 import { ConnectedRouter } from 'connected-react-router';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import * as React from 'react';
-import { AppRootProps } from '@common/components/dom/AppRoot/API';
+import { AppRootProps } from '../../../components/dom/AppRoot/API';
 
 export const AppRoot: FunctionComponent<AppRootProps & RouteProps & HTMLAttributes<any>> = () => {
     const routes = getRoutingRegistry();

@@ -5,7 +5,7 @@ import { RouteProps } from 'react-router';
 import cx from 'classnames';
 
 import styles from './styles.less';
-import { Label } from '@common/components/dom/Label/Label';
+import { Label } from '../../../components/dom/Label/Label';
 
 export interface NavigationDataItem {
     to: string;

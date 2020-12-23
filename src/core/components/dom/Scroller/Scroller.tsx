@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollerProps } from './API';
 import styled, { css } from 'styled-components';
 import { forwardRef, Ref } from 'react';
-import { Column } from '@common';
+import { Column } from '../../..';
 
 const Scroller = styled(
     forwardRef<HTMLDivElement, ScrollerProps & React.HTMLAttributes<HTMLDivElement>>(

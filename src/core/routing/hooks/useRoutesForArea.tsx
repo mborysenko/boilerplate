@@ -1,5 +1,5 @@
 import { getRoutingRegistry } from './getRoutingRegistry';
-import { RoutingArea, EnhancedAreaRoute, flattenRoutes, RouteWithChildren } from '@common';
+import { RoutingArea, EnhancedAreaRoute, flattenRoutes, RouteWithChildren } from '../..';
 import * as React from 'react';
 
 const useRoutesForArea: (area: RoutingArea, currentPath: string) => EnhancedAreaRoute[] = (area, currentPath) => {

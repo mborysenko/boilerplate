@@ -7,8 +7,8 @@ import {
     LayoutList,
     LayoutListDirection,
     Row
-} from '@common/components';
-import { RoutingArea, Area, isAreaVisible } from '@common/routing';
+} from '../../../components';
+import { RoutingArea, Area, isAreaVisible } from '../../../routing';
 
 const AppLayout: React.FunctionComponent<AppLayoutProps> = ({ ...rest }) => {
 

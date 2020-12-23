@@ -1,4 +1,4 @@
-import { RoutingArea, useRoutesForArea } from '@common';
+import { RoutingArea, useRoutesForArea } from '../../..';
 import { takeLast } from 'ramda';
 
 export const isAreaVisible = (area: RoutingArea, currentPath: string): boolean => {
