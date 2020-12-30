@@ -15,10 +15,8 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "paths": {
-            "@explorer": ["./explorer"],
-            "@explorer/*": ["./explorer/*"],
-            "@common": ["./common"],
-            "@common/*": ["./common/*"]
+            "@core/*": ["./src/core/*"],
+            "@extensions/*": ["./src/extensions/*"],
         },
         "declaration": false,
         "declarationMap": false,
