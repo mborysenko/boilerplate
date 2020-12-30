@@ -17,7 +17,7 @@ export const App: React.FunctionComponent<ApplicationProps> = (props) => {
     const Application = useRootApplication();
     return (
         <Provider store={store}>
-            ({Application ? <Application /> : null})
+            {Application ? <Application /> : null}
         </Provider>
     );
 };
