@@ -4,8 +4,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import * as React from 'react';
 import { AppRootProps } from './API';
-import { getRoutingRegistry, history } from '../../routing';
-import { store } from '../../store';
+import { getRoutingRegistry, history } from '@core/routing';
+import { store } from '@core/store';
 import { Provider } from 'react-redux';
 
 export const AppRoot: FunctionComponent<AppRootProps & RouteProps & HTMLAttributes<any>> = () => {

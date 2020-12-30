@@ -1,5 +1,4 @@
 import merge from "webpack-merge";
-import path from "path";
 import BUILD_MODES from "../common/constants";
 import webpack from "webpack";
 
@@ -10,7 +9,7 @@ import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin"
 import devConfig from "./env/dev";
 import prodConfig from "./env/prod";
 import testConfig from "./env/test";
-import configuration from "../configuration";
+import { configuration } from "../configuration";
 
 let envMapping = {
     [BUILD_MODES.DEV]: devConfig,
@@ -63,7 +62,6 @@ export default function webpackConfigFactory(options) {
                 source,
                 "node_modules",
             ],
-            // Add '.ts' and '.tsx' as resolvable extensions.
             extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".dev.js"],
             plugins: [new TsconfigPathsPlugin()]
         },

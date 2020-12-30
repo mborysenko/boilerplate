@@ -15,8 +15,8 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "paths": {
-            "@core/*": ["./src/core/*"],
-            "@extensions/*": ["./src/extensions/*"]
+            "@core/*": ["./core/*"],
+            "@extensions/*": ["./extensions/*"]
         },
         "declaration": false,
         "declarationMap": false,
