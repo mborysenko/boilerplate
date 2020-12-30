@@ -1,4 +1,4 @@
-import { EnhancedRootRoute, registry } from '../factory';
+import { EnhancedRootRoute, registry } from '../../routing';
 
 const registerRootRouting: (routes: EnhancedRootRoute[]) => void = (routing = []) => {
     routing.forEach(rootRoute => {

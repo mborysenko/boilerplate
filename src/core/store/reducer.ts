@@ -3,9 +3,9 @@ import { History } from 'history';
 import { combineReducers, Reducer } from 'redux';
 
 
-import { ApplicationState } from './ApplicationState';
+import { ApplicationState } from './API';
 
-export function rootReducer(history: History): Reducer<ApplicationState> {
+export function reducer(history: History): Reducer<ApplicationState> {
     return combineReducers<ApplicationState>({
         router: connectRouter(history),
     });

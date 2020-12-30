@@ -1,4 +1,4 @@
-import { EnhancedAreaRoute, RouteWithChildren, RoutingArea } from '../..';
+import { EnhancedAreaRoute, RouteWithChildren, RoutingArea } from '../../index';
 
 const flattenRoutes = (
     routes: RouteWithChildren[] = [],
@@ -16,7 +16,7 @@ const flattenRoutes = (
         const routePath = `${firstPart}${sealed.path}`.replace(/\/{2,}/gi, '/');
         sealed.path = routePath;
         const areaRendering = rendering && rendering.find(item => {
-            return !!item.exact ? (routePath === currentPath && item.area === area) : item.area === area;
+            return item.exact ? (routePath === currentPath && item.area === area) : item.area === area;
         });
         if (areaRendering) {
             sealed.rendering = [areaRendering];
