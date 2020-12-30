@@ -16,7 +16,7 @@
         "allowSyntheticDefaultImports": true,
         "paths": {
             "@core/*": ["./src/core/*"],
-            "@extensions/*": ["./src/extensions/*"],
+            "@extensions/*": ["./src/extensions/*"]
         },
         "declaration": false,
         "declarationMap": false,
