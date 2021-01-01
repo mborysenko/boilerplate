@@ -1,1 +1,2 @@
-import './routing'
+import './routing';
+import './store';
