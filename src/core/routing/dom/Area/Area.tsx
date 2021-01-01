@@ -35,10 +35,7 @@ const Area: React.FunctionComponent<AreaProps & RouteProps> = ({area, location})
             };
 
             const key = Array.isArray(path) ? path.join('_') : path
-            return <>
-                <Route {...{key, path, exact, ...props}} />
-                {(redirect && redirect !== '') && renderRedirect(path as string, redirect)}
-            </>;
+            return <Route {...{key, path, exact, ...props}} />
         })}
     </Switch>;
 };

@@ -1,8 +1,8 @@
-import { EnhancedRootRoute, registry } from '../..';
+import { EnhancedRootRoute, routingRegistry } from '../..';
 import * as React from 'react';
 
 const getRoutingRegistry: () => EnhancedRootRoute[] = () => {
-    return registry;
+    return routingRegistry;
 };
 
 export { getRoutingRegistry }

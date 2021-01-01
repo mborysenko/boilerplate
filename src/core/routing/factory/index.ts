@@ -1,2 +1,2 @@
-export * from './registry';
+export * from './routingRegistry';
 export * from './API';

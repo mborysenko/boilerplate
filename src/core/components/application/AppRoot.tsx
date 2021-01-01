@@ -5,12 +5,11 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import * as React from 'react';
 import { AppRootProps } from './API';
 import { getRoutingRegistry, history } from '@core/routing';
-import { store } from '@core/store';
-import { Provider } from 'react-redux';
+import { StorageConnector } from '@core/components/business/StorageConnector';
 
 export const AppRoot: FunctionComponent<AppRootProps & RouteProps & HTMLAttributes<any>> = () => {
     const routes = getRoutingRegistry();
-    return <Provider store={store}>
+    return <StorageConnector>
         <ConnectedRouter history={history}>
             <Switch>
                 {routes.map(({ path, redirect, component, children, render, exact }) => {
@@ -30,5 +29,5 @@ export const AppRoot: FunctionComponent<AppRootProps & RouteProps & HTMLAttribut
                 })}
             </Switch>
         </ConnectedRouter>
-    </Provider>
+    </StorageConnector>
 };
