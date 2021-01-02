@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {Route, Redirect, Switch, RouteProps} from 'react-router';
+import { Route, Redirect, Switch, RouteProps } from 'react-router';
 
-import {EnhancedAreaRoute, RoutingArea, useRoutesForArea} from '../../../routing';
+import { EnhancedAreaRoute, RoutingArea, useRoutesForArea } from '../../../routing';
 
 interface AreaProps {
     area: RoutingArea;
@@ -13,7 +13,7 @@ const renderRedirect = (from: string, to: string) => {
     </Route>;
 }
 
-const Area: React.FunctionComponent<AreaProps & RouteProps> = ({area, location}) => {
+const Area: React.FunctionComponent<AreaProps & RouteProps> = ({ area, location }) => {
     const routes: EnhancedAreaRoute[] = useRoutesForArea(area, location?.pathname!);
     return <Switch>
         {routes.map(({
@@ -27,7 +27,7 @@ const Area: React.FunctionComponent<AreaProps & RouteProps> = ({area, location})
                 return;
             }
 
-            const {component, render, children} = rendering[0];
+            const { component, render, children } = rendering[0];
             const props: RouteProps = {
                 component,
                 render,
@@ -35,9 +35,9 @@ const Area: React.FunctionComponent<AreaProps & RouteProps> = ({area, location})
             };
 
             const key = Array.isArray(path) ? path.join('_') : path
-            return <Route {...{key, path, exact, ...props}} />
+            return <Route {...{ key, path, exact, ...props }} />
         })}
     </Switch>;
 };
 
-export {Area};
+export { Area };

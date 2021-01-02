@@ -1,7 +1,7 @@
 import { Middleware } from 'redux';
 import { StoreRegistry } from '@core/store/storeRegistry';
 
-export function createMiddleware<T>(registry: StoreRegistry): Middleware[] {
+export function createMiddleware(registry: StoreRegistry): Middleware[] {
     const ids = Object.keys(registry);
 
     return ids.reduce<Middleware[]>((acc, id) => {
