@@ -6,5 +6,3 @@ export interface CallbackRegistry {
 export enum CallbackScope {
     STORE = "store",
 }
-
-export const callbackRegistry: CallbackRegistry = {};

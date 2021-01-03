@@ -2,8 +2,8 @@ import { registerStore } from '@core/utils/store/registerStore';
 import { reducer } from '@extensions/explorer/store/application';
 import { middleware as sagaMiddleware } from '@extensions/explorer/store/saga/middleware';
 import { rootSaga } from '@extensions/explorer/store/saga/rootSaga';
-import { registerCallback } from '@core/utils/store/registerCallback';
-import { CallbackScope } from '@core/callbacks/callbackReistry';
+import { registerCallback } from '@core/utils/callbacks/registerCallback';
+import { CallbackScope } from '@core/callbacks/callbackRegistry';
 
 registerStore("explorer-application", {
     reducer: {

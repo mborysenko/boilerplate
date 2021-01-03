@@ -1,7 +1,7 @@
 import { storeRegistry } from '@core/store';
 import { configureStore, createMiddleware, createReducer } from '@core/utils';
-import { CallbackScope } from '@core/callbacks/callbackReistry';
-import { runCallbackScope } from '@core/utils/store/runCallbackScope';
+import { CallbackScope } from '@core/callbacks/callbackRegistry';
+import { runCallbackScope } from '@core/utils/callbacks/runCallbackScope';
 
 export const createStore = () => {
     const rootReducer = createReducer(storeRegistry)

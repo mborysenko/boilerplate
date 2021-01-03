@@ -1,4 +1,4 @@
-import { callbackRegistry, CallbackScope } from '@core/callbacks/callbackReistry';
+import { callbackRegistry, CallbackScope } from '@core/callbacks/callbackRegistry';
 import { compose } from 'redux';
 
 export const runCallbackScope = (scope: CallbackScope) => {
