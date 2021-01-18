@@ -16,14 +16,17 @@ export default function devConfig(options) {
 
     return {
         devtool: "source-map",
+        resolve: {
+            alias: {
+                'react-dom': '@hot-loader/react-dom'
+            }
+        },
         entry: {
             app: [
-                "react-hot-loader/patch",
                 middlewareEntry,
                 path.resolve(source, "index.dev.tsx")
             ],
             vendors: [
-                "react-hot-loader/patch",
                 middlewareEntry
             ]
         },
