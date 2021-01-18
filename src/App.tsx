@@ -10,7 +10,7 @@ import { useRootApplication } from './core/hooks/useRootApplication';
 export type ApplicationProps = {};
 
 export const App: React.FunctionComponent<ApplicationProps> = () => {
-    const Application = useRootApplication();
+    const application = useRootApplication();
 
-    return Application ? <Application /> : null;
+    return application ? <application.component {...application.props} /> : null;
 };

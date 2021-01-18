@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 export interface ExtensionContextType {
-    version?: number;
+    version: number;
     incrementVersion?: () => void;
 }
 

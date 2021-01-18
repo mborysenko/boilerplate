@@ -1,2 +1,4 @@
 export * from './useRootApplication';
-export * from './useStore';
+export * from './useDataProvider';
+export * from './useRootApplication';
+export * from './useStorageConnector';

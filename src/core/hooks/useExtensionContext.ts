@@ -1,12 +1,14 @@
 import { ExtensionContext, ExtensionContextType } from '@core/context';
-import { useCallback, useState, Provider } from 'react';
+import { useCallback, useState, Provider, useContext } from 'react';
 
 export type ExtensionContextData = () => {
     Provider: Provider<ExtensionContextType>,
     context: ExtensionContextType,
 }
+
 export const useExtensionContext: ExtensionContextData = () => {
-    const [version, setVersion] = useState(1);
+    const { version: currentVersion } = useContext(ExtensionContext);
+    const [version, setVersion] = useState(currentVersion);
 
     const increaseVersion = useCallback(() => {
         setVersion(version + 1);

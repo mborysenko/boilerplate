@@ -1,6 +1,23 @@
-import { AppRoot } from '../components/application';
-import { ApplicationRegistry, ROOT_APPLICATION_ID } from './API';
+import { ApplicationRegistry, ApplicationRegistryEntry, ROOT_APPLICATION_ID } from './API';
 
-export const registry: ApplicationRegistry = {
-    [ROOT_APPLICATION_ID]: AppRoot,
-};
+const registry: ApplicationRegistry<any> = {};
+
+export const getRootApplication = <P>(id: string): ApplicationRegistryEntry<P> => {
+    const application = registry[id];
+
+    if (!application) {
+        throw Error(`No root application with ID: ${id}`);
+    }
+
+    return application;
+}
+
+export const registerRootApplication = <P>(id: string, entry: ApplicationRegistryEntry<P>): void => {
+    const application = registry[id];
+
+    if (application) {
+        throw Error(`Root application with ID "${id}" exists. Please choose another ID`);
+    }
+
+    registry[id] = entry;
+}

@@ -1,15 +1,17 @@
-import { FunctionComponent, useEffect, useState, ComponentClass } from 'react';
-import { registry, ROOT_APPLICATION_ID } from '@core/application';
+import { useEffect, useState } from 'react';
+import { ApplicationRegistryEntry, getRootApplication, ROOT_APPLICATION_ID } from '@core/application';
+import { RootApplicationProps } from '@core/components/RootApplication';
 
-export type RootAppHook = () => FunctionComponent | ComponentClass | undefined;
+export type RootApplicationHook = <P extends RootApplicationProps>() => ApplicationRegistryEntry<P> | undefined;
 
-export const useRootApplication: RootAppHook = () => {
-    const ra = registry[ROOT_APPLICATION_ID];
-    const [application, setApplication] = useState<FunctionComponent | ComponentClass>(() => ra);
+export const useRootApplication: RootApplicationHook = <P>(props?: P) => {
+    const [application, setApplication] = useState<ApplicationRegistryEntry<P>>();
+
+    const appFromRegistry = getRootApplication<P>(ROOT_APPLICATION_ID);
 
     useEffect(() => {
-        setApplication(() => ra)
-    }, [ra, setApplication])
+        setApplication(appFromRegistry);
+    }, [appFromRegistry, setApplication])
 
     return application;
 }
