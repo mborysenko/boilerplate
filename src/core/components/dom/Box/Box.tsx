@@ -11,6 +11,7 @@ const Div = forwardRef<HTMLDivElement, BoxProps & React.HTMLAttributes<HTMLDivEl
         className,
         onClick,
         greedy,
+        holdsAbsolute,
         ...other
     },
     ref: Ref<HTMLDivElement>) => {
@@ -34,7 +35,7 @@ const Box = styled(Div)`
         flex-wrap: nowrap;
         flex: 1 auto;
     `};
-    ${({ relative }) => relative && css`
+    ${({ holdsAbsolute }) => holdsAbsolute && css`
         position: relative;
     `};
 `;

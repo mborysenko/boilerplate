@@ -10,7 +10,7 @@ export const Page: React.FunctionComponent<PageOptions> = props => {
 
     dispatch(progress(true));
 
-    return <Column greedy={true} relative={true}>
+    return <Column greedy={true} holdsAbsolute={true}>
         <Scroller>
             <Reducer>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
