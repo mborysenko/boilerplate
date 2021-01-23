@@ -1,6 +1,6 @@
-import { ReactQueryConnector, ReduxConnector } from '../';
 import { StorageConnectorConfig } from '@core/hooks';
-import { StorageType }  from '../API'
+import { StorageType } from '@core/connectors/API';
+import { ReactQueryConnector, ReduxConnector } from '@core/connectors/dom';
 export type ConnectorsRegistry = {
     [connectorId: string]: StorageConnectorConfig
 };

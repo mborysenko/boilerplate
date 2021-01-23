@@ -1,4 +1,4 @@
-import { ApplicationRegistry, ApplicationRegistryEntry, ROOT_APPLICATION_ID } from './API';
+import { ApplicationRegistry, ApplicationRegistryEntry } from './API';
 
 const registry: ApplicationRegistry<any> = {};
 

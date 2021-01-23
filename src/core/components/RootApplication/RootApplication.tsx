@@ -1,7 +1,7 @@
-import React, { FunctionComponent  } from 'react';
+import React, { FunctionComponent } from 'react';
 import { RootApplicationProps } from './API';
-import { ReduxConnector } from '@core/components/business/storage/redux/dom/ReduxConnector';
-import { useExtensionContext } from '@core/hooks/useExtensionContext';
+import { StorageType } from '@core/connectors';
+import { useExtensionContext, useStorageConnector } from '@core/hooks';
 import { RootArea } from '@core/routing';
 
 export const RootApplication: FunctionComponent<RootApplicationProps> = () => {
@@ -10,9 +10,14 @@ export const RootApplication: FunctionComponent<RootApplicationProps> = () => {
         Provider: ExtensionProvider,
     } = useExtensionContext();
 
-    return <ReduxConnector>
+    const {
+        Connector,
+        props: connectorProps,
+    } = useStorageConnector(StorageType.REDUX, {})!;
+
+    return <Connector {...connectorProps}>
         <ExtensionProvider value={context}>
             <RootArea />
         </ExtensionProvider>
-    </ReduxConnector>
+    </Connector>
 };
