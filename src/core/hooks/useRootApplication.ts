@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ApplicationRegistryEntry, getRootApplication, ROOT_APPLICATION_ID } from '@core/application';
 import { RootApplicationProps } from '@core/components/RootApplication';
+import { ExtensionContext } from '@core/context';
 
-export type RootApplicationHook = <P extends RootApplicationProps>() => ApplicationRegistryEntry<P> | undefined;
+export type RootApplicationHook = (props: RootApplicationProps) => ApplicationRegistryEntry<RootApplicationProps> | undefined;
 
-export const useRootApplication: RootApplicationHook = <P>(props?: P) => {
-    const [application, setApplication] = useState<ApplicationRegistryEntry<P>>();
+export const useRootApplication: RootApplicationHook = ({ storageType }) => {
+    const [application, setApplication] = useState<ApplicationRegistryEntry<RootApplicationProps>>();
 
-    const appFromRegistry = getRootApplication<P>(ROOT_APPLICATION_ID);
+    const { version } = useContext(ExtensionContext);
 
     useEffect(() => {
-        setApplication(appFromRegistry);
-    }, [appFromRegistry, setApplication])
+        setApplication(getRootApplication<RootApplicationProps>(ROOT_APPLICATION_ID));
+    }, [version])
 
     return application;
 }

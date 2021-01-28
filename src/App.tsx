@@ -5,12 +5,18 @@ import './styles.less';
 
 /* Routing */
 import './extensions';
-import { useRootApplication } from './core/hooks/useRootApplication';
+
+import { useRootApplication } from '@core/hooks';
+import { StorageType } from '@core/connectors';
 
 export type ApplicationProps = {};
 
 export const App: React.FunctionComponent<ApplicationProps> = () => {
-    const application = useRootApplication();
+    const application = useRootApplication({
+        storageType: StorageType.REDUX
+    });
 
-    return application ? <application.component {...application.props} /> : null;
+    return <>
+        {application !== undefined && <application.component {...application.props} />}
+    </>;
 };
