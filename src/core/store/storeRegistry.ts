@@ -1,14 +1,14 @@
 import { history } from '../routing';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { ROOT_APPLICATION_ID } from '@core/application/API';
-import { Middleware, Reducer } from 'redux';
+import { Middleware, ReducersMapObject } from 'redux';
 
 export interface StoreRegistry {
     [extensionId: string]: StoreRegistryEntry;
 }
 
 export interface StoreRegistryEntry {
-    reducer: Reducer,
+    reducer: ReducersMapObject<any, any>,
     middleware?: Middleware[],
 }
 

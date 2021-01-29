@@ -2,8 +2,9 @@ import * as React from 'react';
 
 import { Navigation, registerRootRouting, RoutingArea } from '../../../core/routing';
 
-import { AppLayout } from '../../../core/components';
+import { AppLayout } from '@core/components';
 import { Footer, Copyright, Breadcrumbs, Page } from '../components/sections';
+import { LeftBar } from '@extensions/explorer/components/sections/LeftBar/LeftBar';
 
 registerRootRouting([
     {
@@ -44,9 +45,7 @@ registerRootRouting([
                             {
                                 exact: true,
                                 area: RoutingArea.LEFT,
-                                render: props => {
-                                    return <div>TreeView</div>;
-                                },
+                                component: LeftBar,
                             },
                             {
                                 area: RoutingArea.MAIN,
@@ -62,19 +61,19 @@ registerRootRouting([
                         rendering: [
                             {
                                 area: RoutingArea.LEFT,
-                                render: props => {
+                                render: () => {
                                     return <div>Publishing Servers List</div>;
                                 },
                             },
                             {
                                 area: RoutingArea.MAIN,
-                                render: props => {
+                                render: () => {
                                     return <div>Task List</div>;
                                 },
                             },
                             {
                                 area: RoutingArea.RIGHT,
-                                render: props => {
+                                render: () => {
                                     return <div>Task Details</div>;
                                 },
                             },
@@ -89,13 +88,13 @@ registerRootRouting([
                         rendering: [
                             {
                                 area: RoutingArea.MAIN,
-                                render: props => {
+                                render: () => {
                                     return <div>Jobs List</div>;
                                 },
                             },
                             {
                                 area: RoutingArea.RIGHT,
-                                render: props => {
+                                render: () => {
                                     return <div>Job Details</div>;
                                 },
                             },

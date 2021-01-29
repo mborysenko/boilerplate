@@ -1,15 +1,9 @@
 import * as React from 'react';
 
 import { PageOptions } from './API';
-import { useDispatch } from 'react-redux';
-import { progress } from '@extensions/explorer/store/application/action';
 import { Column, Reducer, Scroller } from '@core/components';
 
-export const Page: React.FunctionComponent<PageOptions> = props => {
-    const dispatch = useDispatch();
-
-    dispatch(progress(true));
-
+export const Page: React.FunctionComponent<PageOptions> = () => {
     return <Column greedy={true} holdsAbsolute={true}>
         <Scroller>
             <Reducer>

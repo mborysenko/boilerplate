@@ -1,1 +1,1 @@
-export * from './ExplorerRootApplication';
+export * from './sections';

@@ -18,7 +18,9 @@ const AppLayout: React.FunctionComponent<AppLayoutProps> = ({ ...rest }) => {
     return (
         <LayoutList fullScreen={true} direction={LayoutListDirection.VERTICAL}>
             {isAreaVisible(RoutingArea.HEADING, location.pathname) && <Row>
-                <ColumnDecorator position={DecoratorPosition.BOTTOM}><Area area={RoutingArea.HEADING} {...rest}/></ColumnDecorator>
+                <ColumnDecorator position={DecoratorPosition.BOTTOM}>
+                    <Area area={RoutingArea.HEADING} {...rest}/>
+                </ColumnDecorator>
             </Row>}
             {isAreaVisible(RoutingArea.SUBHEADING, location.pathname) && <Row>
                 <ColumnDecorator position={DecoratorPosition.BOTTOM}><Area area={RoutingArea.SUBHEADING} {...rest}/></ColumnDecorator>

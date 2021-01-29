@@ -1,5 +1,5 @@
 import { RouterState } from 'connected-react-router';
 
-export interface ApplicationState {
+export interface ApplicationRootState {
     router: RouterState;
 }
