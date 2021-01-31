@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { Provider } from 'react-redux';
-import { useDataProvider } from '@core/hooks';
+import { useDataProvider } from '../../../hooks/useDataProvider';
 
 const ReduxConnector: FunctionComponent = ({ children }) => {
     const store = useDataProvider();

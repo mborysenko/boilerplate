@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { RootApplicationProps } from './API';
-import { useExtensionContext, useStorageConnector } from '@core/hooks';
-import { RootArea } from '@core/routing';
+import { useStorageConnector } from '../../hooks/useStorageConnector';
+import { useExtensionContext } from '../../hooks/useExtensionContext';
+import { RootArea } from '../../routing/dom';
 
 export const RootApplication: FunctionComponent<RootApplicationProps> = ({ storageType }) => {
     const {

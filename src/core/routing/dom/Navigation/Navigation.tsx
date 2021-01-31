@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import React from 'react';
+import React, { useContext } from 'react';
 import { RouteProps } from 'react-router';
 
 import cx from 'classnames';
 
 import styles from './styles.less';
-import { Label } from '../../../components/dom/Label/Label';
+import { NavigationNode } from '../../factory/API';
+import { Label, NavigationContext } from '../../../components';
 
 export interface NavigationDataItem {
     to: string;
@@ -13,11 +14,10 @@ export interface NavigationDataItem {
 }
 
 export interface NavigationProps extends RouteProps {
-    items: NavigationDataItem[];
+    items?: NavigationDataItem[];
     inline?: boolean;
-    onClick?: (data: NavigationDataItem, event: React.SyntheticEvent<HTMLLIElement>) => void
+    onClick?: (data: NavigationNode, event: React.SyntheticEvent<HTMLLIElement>) => void
 }
-
 
 export const Navigation: React.FunctionComponent<NavigationProps> = ({
                                                                          items,
@@ -25,7 +25,8 @@ export const Navigation: React.FunctionComponent<NavigationProps> = ({
                                                                          onClick,
                                                                      }) => {
 
-    const onClickHandler: (data: NavigationDataItem) => (event: React.SyntheticEvent<HTMLLIElement>) => void = React.useCallback((item) => {
+    const { nodes = [] } = useContext(NavigationContext);
+    const onClickHandler: (data: NavigationNode) => (event: React.SyntheticEvent<HTMLLIElement>) => void = React.useCallback((item) => {
         return (event) => onClick && onClick(item, event);
     }, [onClick]);
     const {
@@ -39,13 +40,15 @@ export const Navigation: React.FunctionComponent<NavigationProps> = ({
         [horizontal]: inline,
     });
     return <ul className={className}>
-        {items.map((data) => {
-            const { to, label } = data;
+        {nodes.map((data) => {
+            const { path, label } = data;
+            let calculatedPath = Array.isArray(path) ? path[0] : path;
+
             return <li
                 className={item}
-                key={`${to}_${label}`}
+                key={`${path}_${label}`}
                 onClick={onClickHandler(data)}>
-                <NavLink activeClassName={styles.active} to={to}><Label>{label}</Label></NavLink>
+                <NavLink activeClassName={styles.active} to={calculatedPath}><Label>{label}</Label></NavLink>
             </li>;
         })}
     </ul>;

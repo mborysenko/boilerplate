@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { Navigation, registerRootRouting, RoutingArea } from '../../../core/routing';
-
-import { AppLayout } from '../../../core/components';
+import { AppLayout } from '@core/components';
 import { Footer, Copyright } from '../components/sections';
+import { Navigation, registerRootRouting, RoutingArea } from '@core/routing';
 
 registerRootRouting([
     {

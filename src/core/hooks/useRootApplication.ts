@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { ApplicationRegistryEntry, getRootApplication, ROOT_APPLICATION_ID } from '@core/application';
-import { RootApplicationProps } from '@core/components/RootApplication';
-import { ExtensionContext } from '@core/context';
+import { getRootApplication, } from '../application/registry';
+import { ApplicationRegistryEntry, ROOT_APPLICATION_ID } from '../application/API';
+import { RootApplicationProps } from '../components/RootApplication';
+import { ExtensionContext } from '../context/ExtensionContext';
 
 export type RootApplicationHook = (props: RootApplicationProps) => ApplicationRegistryEntry<RootApplicationProps> | undefined;
 

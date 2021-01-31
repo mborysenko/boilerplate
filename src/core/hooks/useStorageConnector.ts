@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useContext, useEffect, useState } from 'react';
-import { ExtensionContext } from '@core/context';
-import { getConnector, StorageType } from '@core/connectors';
+import { ExtensionContext } from '../context/ExtensionContext';
+import { getConnector } from '../connectors/registry';
+import { StorageType } from '../connectors/API';
 
 export interface StorageConnectorConfig<P = any> {
     Connector: React.FunctionComponent<P> | React.ComponentClass<P>;
