@@ -1,10 +1,10 @@
-import { getRoutingRegistry } from './getRoutingRegistry';
-import { RoutingArea, EnhancedAreaRoute, flattenRoutes, RouteWithChildren } from '../..';
+import { getRootRoutes } from './getRootRoutes';
 import * as React from 'react';
 import {useMemo} from "react";
+import { EnhancedAreaRoute, flattenRoutes, RoutingArea } from '@core/routing';
 
 const useRoutesForArea: (area: RoutingArea, currentPath: string) => EnhancedAreaRoute[] = (area, currentPath) => {
-    const rootRoutes = getRoutingRegistry();
+    const rootRoutes = getRootRoutes();
     const [areaRoutes, setAreaRoutes] = React.useState<EnhancedAreaRoute[]>([]);
     const routes = useMemo(
         () => flattenRoutes(rootRoutes, area, currentPath),

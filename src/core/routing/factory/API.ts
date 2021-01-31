@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { RouteChildrenProps, RouteComponentProps, RouteProps } from 'react-router';
+import { RouteProps } from 'react-router';
 
 export enum RoutingArea {
     HEADING = 'heading',
@@ -15,6 +14,10 @@ export enum RoutingArea {
 
 export interface RouteNavigationOptions {
     label?: string;
+}
+
+export interface NavigationNode extends RouteNavigationOptions {
+    path: string | string[];
 }
 
 export interface RouteWithNavigation<OPTIONS> {
