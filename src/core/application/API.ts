@@ -1,5 +1,5 @@
 import React from 'react';
-import { RootApplicationProps } from '@core/components/RootApplication';
+import { RootApplicationProps } from '@core/components';
 
 export type ApplicationRegistryEntry<P extends RootApplicationProps> = {
     component: React.FunctionComponent<P> | React.ComponentClass<P>;

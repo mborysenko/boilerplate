@@ -1,6 +1,15 @@
-import { ApplicationRegistry, ApplicationRegistryEntry } from './API';
+import { ApplicationRegistry, ApplicationRegistryEntry, ROOT_APPLICATION_ID } from './API';
+import { RootApplication } from '../components/RootApplication';
+import { StorageType } from '../connectors/API';
 
-const registry: ApplicationRegistry<any> = {};
+const registry: ApplicationRegistry<any> = {
+    [ROOT_APPLICATION_ID]: {
+        component: RootApplication,
+        props: {
+            storageType: StorageType.REDUX
+        }
+    }
+};
 
 export const getRootApplication = <P>(id: string): ApplicationRegistryEntry<P> => {
     const application = registry[id];
