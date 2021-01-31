@@ -1,4 +1,4 @@
-import { EnhancedAreaRoute, RouteWithChildren, RoutingArea } from '../../index';
+import { EnhancedAreaRoute, RouteWithChildren, RoutingArea } from '@core/routing';
 
 const flattenRoutes = (
     routes: RouteWithChildren[] = [],
