@@ -18,7 +18,6 @@ export default function (options) {
     let {
         server,
         paths,
-        mode
     } = options;
 
     let webpackConfig = webpackConfigFactory(options);
@@ -27,14 +26,12 @@ export default function (options) {
     return function (cb) {
         let compiler = webpack(webpackConfig);
 
-        if (mode === BUILD_MODES.DEV) {
-            app.use(dev(compiler, {
-                noInfo: true,
-                publicPath: "/"
-            }));
+        app.use(dev(compiler, {
+            noInfo: true,
+            publicPath: "/"
+        }));
 
-            app.use(hot(compiler));
-        }
+        app.use(hot(compiler));
 
         serve(cb);
 
