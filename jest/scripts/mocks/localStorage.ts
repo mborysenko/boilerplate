@@ -1,7 +1,5 @@
 export class LocalStorage {
-    constructor () {
-        this.storage = {};
-    }
+    private storage: Object = {};
 
     clear () {
         this.storage = {};

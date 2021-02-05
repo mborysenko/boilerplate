@@ -94,6 +94,26 @@ registerRootRouting([
                     label: 'Content'
                 }
             },
+            {
+                path: '/system',
+                rendering: [
+                    {
+                        area: RoutingArea.LEFT,
+                        render: (props) => <div>System Left</div>,
+                    },
+                    {
+                        area: RoutingArea.RIGHT,
+                        render: (props) => <div>System Right</div>,
+                    },
+                ],
+                exact: false,
+                routes: [
+
+                ],
+                navigation: {
+                    label: 'System'
+                }
+            },
         ],
         component: AppLayout,
         rendering: [
