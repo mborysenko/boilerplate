@@ -1,12 +1,16 @@
-export { Config } from '@jest/types'
-const config = {
+import { Config } from '@jest/types';
+
+const config: Config.InitialOptions = {
     runner: "jest-runner-eslint",
     displayName: "lint:javascript",
     rootDir: "../..",
     moduleFileExtensions: ["ts", "tsx"],
-    "testMatch": [
+    testMatch: [
         "<rootDir>/src/**/*.ts",
         "<rootDir>/src/**/*.tsx"
+    ],
+    preprocessorIgnorePatterns: [
+
     ]
 }
 
