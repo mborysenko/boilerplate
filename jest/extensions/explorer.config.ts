@@ -3,7 +3,7 @@ import { Config } from '@jest/types';
 const config: Config.InitialOptions = {
     runner: "jest-runner",
     displayName: "test:unit",
-    rootDir: "../../",
+    rootDir: "../..",
     verbose: true,
     notify: true,
     bail: false,
