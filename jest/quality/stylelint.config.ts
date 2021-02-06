@@ -1,11 +1,11 @@
-export { Config } from '@jest/types'
+import { Config } from '@jest/types'
 
-const config = {
+const config: Config.InitialOptions = {
     runner: "jest-runner-stylelint",
-    displayName: "lint:css",
-    rootDir: "../..",
-    moduleFileExtensions: ["css"],
-    testMatch: ["<rootDir>/src/**/*.css"]
+    displayName: "lint:less",
+    rootDir: "../../src",
+    moduleFileExtensions: ["less"],
+    testMatch: ["<rootDir>/**/*.less"]
 };
 
 export {
