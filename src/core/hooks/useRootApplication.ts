@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { getRootApplication, } from '../application/registry';
+import { getRootApplication, } from '../application/applicationRegistry';
 import { ApplicationRegistryEntry, ROOT_APPLICATION_ID } from '../application/API';
 import { RootApplicationProps } from '../components/RootApplication';
 import { ExtensionContext } from '../context/ExtensionContext';

@@ -17,6 +17,6 @@ export const App: React.FunctionComponent<ApplicationProps> = () => {
     });
 
     return <>
-        {application !== undefined && <application.component {...application.props} />}
+        {application !== undefined && <application.Component {...application.props} />}
     </>;
 };
