@@ -1,19 +1,30 @@
 import { useContext, useEffect, useState } from 'react';
 import { ExtensionContext } from '@core/context';
-import { applicationRegistry, ApplicationRegistryEntry, ApplicationScope } from '@core/application';
+import { ApplicationRegistry, applicationRegistry, ApplicationScope } from '@core/application';
 
-export const useApplicationsByScope: (scope?: ApplicationScope) => Array<ApplicationRegistryEntry<any>> = (scope = ApplicationScope.MULTIPLE) => {
+
+const getScopeApps = (scope: ApplicationScope): ApplicationRegistry<any> => {
+    const ids = Object
+        .keys(applicationRegistry)
+        .filter(appId => applicationRegistry[appId]?.scope === scope)
+
+    const appList = {};
+
+    ids.reduce<ApplicationRegistry<any>>((acc, appId) => {
+        acc[appId] = applicationRegistry[appId];
+        return acc;
+    }, appList);
+
+    return appList || {};
+};
+
+export const useApplicationsByScope: (scope?: ApplicationScope) => ApplicationRegistry<any> = (scope = ApplicationScope.MULTIPLE) => {
     const { version } = useContext(ExtensionContext);
-    const [applications, setApplications] = useState<ApplicationRegistryEntry<any>[]>([]);
+    const [applications, setApplications] = useState(getScopeApps(scope));
 
     useEffect(() => {
-        const appList = Object
-            .keys(applicationRegistry)
-            .filter(appId => applicationRegistry[appId]?.scope === scope)
-            .map<ApplicationRegistryEntry<any>>(appId => applicationRegistry[appId])
-            .filter(app => !!app);
-        setApplications(appList || []);
-    }, [version])
+        setApplications(getScopeApps(scope));
+    }, [version, scope]);
 
     return applications;
 };
