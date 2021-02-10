@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactElement, useCallback, useEffect, useState } from 'react';
 import { useApplicationsByScope } from '@core/application/hooks';
-import { ApplicationScope } from '@core/application';
+import { ApplicationRegistryEntry, ApplicationScope, AppNavigation, AppNavigationItem } from '@core/application';
+import { useApplicationsById } from '@core/application/hooks/useApplicationsById';
 
 export interface ApplicationManagerProps {
     scope?: ApplicationScope;
@@ -12,26 +13,33 @@ export const ApplicationManager: FunctionComponent<ApplicationManagerProps> = ({
     const applications = useApplicationsByScope(scope);
 
     const [navigation, setNavigation] = useState<{ [appId: string]: { name: string }}>({});
+    const [currentAppId, setCurrentAppId] = useState<string>();
+
+    const currentApp = useApplicationsById(currentAppId!);
 
     useEffect(() => {
-        const result = Object
-            .keys(applications)
+        const result =
+            Object.keys(applications)
             .reduce((acc, appId) => {
-                return acc[appId] = { name: applications[appId].name };
+                acc[appId] = { name: applications[appId].name };
+                return acc;
             }, {})
         setNavigation(result);
     }, [applications]);
 
-    const onAppChange = useCallback(() => {
-
-    }, []);
+    const onAppChange = useCallback((id: string) => {
+        setCurrentAppId(id);
+    }, [currentAppId]);
 
     return <>
-        {(Object.keys(navigation).length > 0) && <ul className={''}>
+        {(Object.keys(navigation).length > 0) && <AppNavigation>
             {Object.keys(navigation).map<ReactElement>((appId) => {
                 const navItem = navigation[appId];
-                return <li key={appId} onClick={onAppChange}>{navItem.name}</li>
+                return <AppNavigationItem id={appId} label={navItem.name} key={appId} onClick={onAppChange}>{navItem.name}</AppNavigationItem>
             })}
-        </ul>}
+        </AppNavigation>}
+        <>
+            {!!currentApp && <currentApp.Component {...currentApp.props} />}
+        </>
     </>
 }
