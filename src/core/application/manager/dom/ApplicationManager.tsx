@@ -1,11 +1,11 @@
 import React, { FunctionComponent, ReactElement, useCallback, useEffect, useState } from 'react';
 import { useApplicationsByScope } from '@core/application/hooks';
-import { ApplicationRegistryEntry, ApplicationScope, AppNavigation, AppNavigationItem } from '@core/application';
+import { ApplicationScope, AppNavigation, AppNavigationItem } from '@core/application';
 import { useApplicationsById } from '@core/application/hooks/useApplicationsById';
 
 export interface ApplicationManagerProps {
     scope?: ApplicationScope;
-};
+}
 
 export const ApplicationManager: FunctionComponent<ApplicationManagerProps> = ({
                                                                                    scope = ApplicationScope.MULTIPLE

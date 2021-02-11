@@ -1,1 +1,2 @@
 import './Store';
+import './Checkout';

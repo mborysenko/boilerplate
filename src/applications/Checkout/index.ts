@@ -1,7 +1,7 @@
 import { ApplicationScope, registerRootApplication } from '@core/application';
-import { CheckoutApplication, StoreApplicationProps } from './CheckoutApplication';
+import { CheckoutApplication, CheckoutApplicationProps } from './CheckoutApplication';
 
-registerRootApplication<StoreApplicationProps>('store', {
+registerRootApplication<CheckoutApplicationProps>('checkout', {
     Component: CheckoutApplication,
     scope: ApplicationScope.MULTIPLE,
     props: {
