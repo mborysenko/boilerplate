@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { AppLayout } from '@core/components';
 import { Footer, Copyright } from '../components/sections';
-import { Navigation, registerRootRouting, RoutingArea } from '@core/routing';
+import { Navigation, RoutingArea } from '@core/routing';
 
-registerRootRouting([
+export default [
     {
         id: 'staging',
         path: '/staging',
@@ -39,4 +39,4 @@ registerRootRouting([
             },
         ],
     },
-]);
+];

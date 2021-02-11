@@ -1,9 +1,8 @@
 import * as React from 'react';
 
 import { ErrorPage, } from '../components/sections';
-import { registerRootRouting } from '@core/routing';
 
-registerRootRouting([
+export default [
     {
         id: 'pageNotFound',
         path: '/error/404',
@@ -12,9 +11,9 @@ registerRootRouting([
         component: ErrorPage
     },
     {
-        id: 'defaultRoute',
+        id: 'unknownRoute',
         exact: true,
         path: ['/*'],
         redirect: '/error/404',
     },
-]);
+];

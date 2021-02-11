@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { registerRootRouting } from '@core/routing';
 
-registerRootRouting([
+export default [
     {
-        id: 'default',
+        id: 'defaultRoute',
         exact: true,
         path: ['/'],
         redirect: '/explorer',
     },
-]);
+];
