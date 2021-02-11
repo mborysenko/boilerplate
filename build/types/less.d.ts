@@ -1,4 +1,7 @@
 declare module '*.less' {
-    const resource: {[key: string]: string};
-    export = resource;
+    declare const styles: {
+        readonly [key: string]: string;
+    };
+
+    export default styles;
 }
