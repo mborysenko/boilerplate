@@ -1,9 +1,9 @@
 import merge from "webpack-merge";
 import BUILD_MODES from "../common/constants";
 import webpack from "webpack";
+import path from 'path';
 
 import HTMLPlugin from "html-webpack-plugin"
-import HtmlWebpackTemplate from "html-webpack-template"
 import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin"
 
 import devConfig from "./env/dev";
@@ -18,11 +18,10 @@ let envMapping = {
 };
 
 export default function webpackConfigFactory(options) {
-
     let {
         paths,
         title,
-        mode
+        mode,
     } = options;
 
     let {
@@ -32,7 +31,7 @@ export default function webpackConfigFactory(options) {
     let {
         projectDir,
         source,
-        dist
+        dist,
     } = paths;
 
     console.log(`Running mode is: ${mode}`);
@@ -41,7 +40,7 @@ export default function webpackConfigFactory(options) {
     if (!envConfig) {
         console.warn(`Building mode is not set or is incorrect. Check NODE_ENV variable. Falling back to 'production'`);
         mode = BUILD_MODES.PROD;
-        envConfig = envMapping[mode]
+        envConfig = envMapping[mode];
     }
 
     let commonConfig = {
@@ -49,8 +48,13 @@ export default function webpackConfigFactory(options) {
         entry: {
             vendors: [
                 "react",
-                "react-dom"
+                "react-dom",
             ]
+        },
+        optimization: {
+            moduleIds: "named",
+            emitOnErrors: false,
+            chunkIds: 'named',
         },
         output: {
             path: dist,
@@ -87,21 +91,28 @@ export default function webpackConfigFactory(options) {
                 {
                     test: /\.less$/,
                     use: [
-                        // MiniCssExtractPlugin.loader,
                         {
                             loader: "style-loader"
+                        },
+                        {
+                            loader: 'webpack-typings-for-css'
                         },
                         {
                             loader: 'css-loader',
                             options: {
                                 sourceMap: true,
                                 modules: {
-                                    mode: "local",
-                                    localIdentName: "[local]-[hash:base64:5]"
-                                }
+                                    exportLocalsConvention: "camelCaseOnly"
+                                },
                             }
                         }, {
-                            loader: "less-loader"
+                            loader: "less-loader",
+                            options: {
+                                sourceMap: true,
+                                lessOptions: {
+                                    javascriptEnabled: true,
+                                },
+                            },
                         }
                     ],
                 },
@@ -118,15 +129,13 @@ export default function webpackConfigFactory(options) {
         },
         // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
         plugins: [
-            new webpack.NamedModulesPlugin(),
-            new webpack.NoEmitOnErrorsPlugin(),
             new webpack.DefinePlugin({
                 'process.env': {
                     NODE_ENV: JSON.stringify(mode)
                 }
             }),
             new HTMLPlugin({
-                template: HtmlWebpackTemplate,
+                template: path.join(__dirname, './template/index.ejs'),
                 filename: 'index.html',
                 favicon: "src/static/favicon.ico",
                 title: title,
@@ -138,16 +147,12 @@ export default function webpackConfigFactory(options) {
                     removeComments: true,
                     removeEmptyAttributes: true,
                     useShortDoctype: true,
-                    collapseWhitespace: true
+                    collapseWhitespace: false,
                 },
                 showErrors: true,
-                inject: false
-            }),]
-
-        // When importing a module whose path matches one of the following, just
-        // assume a corresponding global variable exists and use that instead.
-        // This is important because it allows us to avoid bundling all of our
-        // dependencies, which allows browsers to cache those libraries between builds.
+                inject: false,
+            }),
+        ]
     };
 
     return merge(commonConfig, envConfig(options));
