@@ -1,5 +1,8 @@
 import React, { FunctionComponent, ReactNode, useCallback } from 'react';
-import { Column, Row } from '@core/components';
+import { Row } from '@core/components';
+import classnames from 'classnames'
+
+import styles from './styles.less';
 
 export interface AppNavigationItemOption {
 }
@@ -21,20 +24,29 @@ export const AppNavigationItem: FunctionComponent<AppNavigationItemProps> = (pro
         onClick?.(id);
     }, [id]);
 
-    return <Column>
-        <div onClick={onClickInner}>{label}</div>
-    </Column>;
+    return <span className={styles.item} onClick={onClickInner}>{label}</span>;
 };
 
 export interface AppNavigationProps {
     items?: AppNavigationItemOption[];
     onSelect?: (id: string) => void;
-};
+}
 
 export const AppNavigation: FunctionComponent<AppNavigationProps> = (props) => {
     const { children } = props;
+    const {
+        appNav,
+        appMenu,
+        caller,
+        button,
+    } = styles;
 
-    return <Row asGrid={true}>
-        {children}
-    </Row>;
+    return <div className={appNav}>
+        <div className={caller}>
+            <a className={button}>Menu</a>
+        </div>
+        <Row className={appMenu} asGrid={true}>
+            {children}
+        </Row>
+    </div>;
 };
