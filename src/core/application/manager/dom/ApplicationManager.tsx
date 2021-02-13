@@ -7,12 +7,13 @@ export interface ApplicationManagerProps {
     scope?: ApplicationScope;
 }
 
-export const ApplicationManager: FunctionComponent<ApplicationManagerProps> = ({
-                                                                                   scope = ApplicationScope.MULTIPLE
-}) => {
+export const ApplicationManager: FunctionComponent<ApplicationManagerProps> = (
+    {
+        scope = ApplicationScope.MULTIPLE
+    }) => {
     const applications = useApplicationsByScope(scope);
 
-    const [navigation, setNavigation] = useState<{ [appId: string]: { name: string }}>({});
+    const [navigation, setNavigation] = useState<{ [appId: string]: { name: string } }>({});
     const [currentAppId, setCurrentAppId] = useState<string>();
 
     const currentApp = useApplicationsById(currentAppId!);
@@ -20,10 +21,10 @@ export const ApplicationManager: FunctionComponent<ApplicationManagerProps> = ({
     useEffect(() => {
         const result =
             Object.keys(applications)
-            .reduce((acc, appId) => {
-                acc[appId] = { name: applications[appId].name };
-                return acc;
-            }, {})
+                .reduce((acc, appId) => {
+                    acc[appId] = { name: applications[appId].name };
+                    return acc;
+                }, {})
         setNavigation(result);
     }, [applications]);
 
@@ -35,7 +36,13 @@ export const ApplicationManager: FunctionComponent<ApplicationManagerProps> = ({
         {(Object.keys(navigation).length > 0) && <AppNavigation>
             {Object.keys(navigation).map<ReactElement>((appId) => {
                 const navItem = navigation[appId];
-                return <AppNavigationItem id={appId} label={navItem.name} key={appId} onClick={onAppChange}>{navItem.name}</AppNavigationItem>
+                return <AppNavigationItem
+                    id={appId}
+                    label={navItem.name}
+                    key={appId}
+                    onClick={onAppChange}>
+                    {navItem.name}
+                </AppNavigationItem>
             })}
         </AppNavigation>}
         <>
