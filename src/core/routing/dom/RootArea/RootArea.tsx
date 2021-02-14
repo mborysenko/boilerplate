@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { getRootRoutes, history } from '@core/routing';
+import { getRootRoutes, history, NOT_FOUND_PATH } from '@core/routing';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { RouteProps } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
@@ -25,6 +25,7 @@ export const RootArea: FunctionComponent = () => {
                     </Route>
                     : <Route key={id} path={path} {...relevant} />
             })}
+            <Redirect to={NOT_FOUND_PATH} />
         </Switch>
     </ConnectedRouter>
 }
