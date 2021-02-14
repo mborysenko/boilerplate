@@ -1,5 +1,5 @@
 export * from './Footer'
-export * from './ErrorPage'
+export * from '../ErrorPage'
 export * from './Page'
 export * from './Breadcrumbs'
 export * from './Copyright'
