@@ -1,4 +1,4 @@
-import { EnhancedAreaRoute, RouteWithChildren, RoutingArea } from '@core/routing';
+import { EnhancedAreaRoute, PATH_SEPARATOR, RouteWithChildren, RoutingArea } from '@core/routing';
 
 const flattenRoutes = (
     routes: RouteWithChildren[] = [],
@@ -13,11 +13,13 @@ const flattenRoutes = (
         const { rendering } = sealed;
         const firstPart = rootRoute?.path || '';
 
-        const routePath = `${firstPart}${sealed.path}`.replace(/\/{2,}/gi, '/');
+        const routePath = [firstPart, sealed.path].join(PATH_SEPARATOR).replace(/\/{2,}/gi, PATH_SEPARATOR);
         sealed.path = routePath;
+
         const areaRendering = rendering && rendering.find(item => {
             return item.exact ? (routePath === currentPath && item.area === area) : item.area === area;
         });
+
         if (areaRendering) {
             sealed.rendering = [areaRendering];
         }

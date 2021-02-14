@@ -8,15 +8,27 @@ const getDescendantRoutes = (
         parentPath = parentPath[0]
     }
 
-    const parts = parentPath
+    const parts = (parentPath === PATH_SEPARATOR) ? [parentPath] : [...parentPath
         .split(PATH_SEPARATOR)
         .filter(part => !!part)
-        .map(part => `/${part}`)
+        .map(path => normalizePath(path))];
 
     return retrieveRoutes(getRootRoutes(), parts);
 };
 
-const retrieveRoutes = (routes: EnhancedAreaRoute[] = [], parts: string[], prefix: string = ''): EnhancedAreaRoute[] => {
+export const normalizePath = (path) => {
+    if(!path) {
+        return path;
+    }
+
+    return `${PATH_SEPARATOR}${path}`.replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR);
+}
+
+const createPathFinder = (path: string) => (route: EnhancedAreaRoute) => {
+    return Array.isArray(route.path) ? route.path.includes(path) : normalizePath(route.path) === path;
+}
+
+const retrieveRoutes = (routes: EnhancedAreaRoute[] = [], parts: string[] = [], prefix: string = ''): EnhancedAreaRoute[] => {
     let result = [];
 
     if(routes.length === 0) {
@@ -24,16 +36,16 @@ const retrieveRoutes = (routes: EnhancedAreaRoute[] = [], parts: string[], prefi
     }
 
     const head = parts.shift();
-    const route = routes.find(route => route.path === head)
+    const route = routes.find(createPathFinder(head!))
 
     if (route === undefined) {
         return result;
     }
-    const fullPath = [prefix, head].join(PATH_SEPARATOR).replace(RegExp(`\\${PATH_SEPARATOR}+`, 'gi'), PATH_SEPARATOR);
 
     if(parts.length === 0) {
-        return route.routes!;
+        return route.routes || [];
     } else {
+        const fullPath = normalizePath([prefix, head].join(PATH_SEPARATOR));
         return retrieveRoutes(route.routes!, parts, fullPath);
     }
 }
