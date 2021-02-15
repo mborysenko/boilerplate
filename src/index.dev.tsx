@@ -6,7 +6,6 @@ import "core-js/stable";
 import "regenerator-runtime/runtime"
 
 import { configuration } from "../build/configuration";
-import { MultipleApps } from './MultipleApps';
 
 declare const require: {
     (path: string): any;
@@ -28,7 +27,7 @@ const render = (Component) => {
 };
 
 window.onload = () => {
-    render(MultipleApps);
+    render(App);
 };
 
 // Hot Module Replacement API
