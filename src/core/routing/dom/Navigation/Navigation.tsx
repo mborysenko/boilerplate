@@ -5,7 +5,7 @@ import { RouteProps } from 'react-router';
 import cx from 'classnames';
 
 import styles from './styles.less';
-import { NavigationNode } from '../../factory/API';
+import { NavigationNode } from '@core/routing';
 import { Label, NavigationContext } from '../../../components';
 
 export interface NavigationDataItem {
@@ -20,7 +20,6 @@ export interface NavigationProps extends RouteProps {
 }
 
 export const Navigation: React.FunctionComponent<NavigationProps> = ({
-                                                                         items,
                                                                          inline = true,
                                                                          onClick,
                                                                      }) => {
@@ -48,7 +47,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> = ({
                 className={item}
                 key={`${path}_${label}`}
                 onClick={onClickHandler(data)}>
-                <NavLink activeClassName={styles.active} to={calculatedPath}><Label>{label}</Label></NavLink>
+                <NavLink activeClassName={styles.active} className={styles.link} to={calculatedPath}><Label>{label}</Label></NavLink>
             </li>;
         })}
     </ul>;

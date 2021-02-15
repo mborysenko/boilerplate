@@ -27,7 +27,6 @@ export default function (options) {
         let compiler = webpack(webpackConfig);
 
         app.use(dev(compiler, {
-            noInfo: true,
             publicPath: "/"
         }));
 

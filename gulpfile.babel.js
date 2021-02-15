@@ -5,6 +5,7 @@ import gulp from 'gulp';
 
 import bundle from './build/gulp-tasks/package-project';
 import start from './build/gulp-tasks/serve';
+import jest from './build/gulp-tasks/jest';
 
 const srcFolder = path.resolve(__dirname, 'src');
 
@@ -21,6 +22,9 @@ let BUILD_OPTIONS = {
                 '!./{[.]idea,[.]idea/**}'
             ],
         }
+    },
+    jest: {
+        configFile: path.join(path.resolve(__dirname), 'jest/jest.config.ts'),
     },
     mode: process.env.NODE_ENV !== undefined ? process.env.NODE_ENV : BUILD_MODES.PROD, //Production mode is the default
     server: {
@@ -41,6 +45,10 @@ gulp.task("build", (cb) => {
 
 gulp.task("serve", (cb) => {
     start(BUILD_OPTIONS)(cb);
+});
+
+gulp.task("jest", (cb) => {
+    jest(BUILD_OPTIONS)(cb);
 });
 
 gulp.task("default", gulp.series("clean", "build", (cb) => cb()));
