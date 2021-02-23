@@ -1,4 +1,4 @@
-import { Column, LayoutList } from '@core/index';
+import { Column, LayoutList } from '@dhampir/core';
 import * as React from 'react';
 
 export const ErrorPage = props => {

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { EnhancedRootRoute, Navigation, RoutingArea } from '@core/routing';
-import { AppLayout, NavDataProvider } from '@core/components';
+import { EnhancedRootRoute, Navigation, RoutingArea, AppLayout, NavDataProvider } from '@dhampir/core';
 
 const routes: EnhancedRootRoute = {
     id: 'defaultRoute',

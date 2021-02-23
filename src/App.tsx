@@ -6,8 +6,7 @@ import './styles.less';
 /* Routing */
 import './extensions';
 
-import { useRootApplication } from '@core/hooks';
-import { StorageType } from '@core/connectors';
+import { useRootApplication, StorageType } from '@dhampir/core';
 
 export type ApplicationProps = {};
 

@@ -6,8 +6,7 @@ import './styles.less';
 /* Routing */
 import './applications';
 
-import { ApplicationManager } from '@core/application/manager/dom/ApplicationManager';
-import { ApplicationScope } from '@core/application';
+import { ApplicationManager, ApplicationScope } from '@dhampir/core';
 
 export type ApplicationProps = {};
 

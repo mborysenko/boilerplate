@@ -19,11 +19,11 @@ export default function prodConfig(options) {
         },
         plugins: [
             new CompressionPlugin({
-                filename: "[path].gz[query]",
+                filename: "[path][base].gz[query]",
                 algorithm: "gzip",
                 test: /\.(js|html|css)$/,
                 threshold: 10240,
-                minRatio: 0.4
+                minRatio: 0.4,
             }),
         ],
         optimization: {

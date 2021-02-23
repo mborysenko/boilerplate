@@ -1,4 +1,4 @@
-import { ApplicationScope, registerRootApplication } from '@core/application';
+import { ApplicationScope, registerRootApplication } from '@dhampir/core';
 import { CheckoutApplication, CheckoutApplicationProps } from './CheckoutApplication';
 
 registerRootApplication<CheckoutApplicationProps>('checkout', {

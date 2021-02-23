@@ -1,4 +1,4 @@
-import { ApplicationRootState } from '@core/store';
+import { ApplicationRootState } from '@dhampir/core';
 import { UIState } from '@extensions/management/store/application/ui/API';
 import { GitState } from '@extensions/management/store/application/git/API';
 

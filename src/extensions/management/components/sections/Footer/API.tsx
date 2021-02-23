@@ -1,4 +1,4 @@
-import { RoutingArea } from '../../../../../core';
+import { RoutingArea } from '@dhampir/core';
 
 enum FooterArea {
     FOOTER_LEFT = 'footer_left',
