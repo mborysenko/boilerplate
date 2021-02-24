@@ -1,7 +1,7 @@
 import HMRPlugin from "webpack/lib/HotModuleReplacementPlugin";
 import CircularDependencyPlugin from "circular-dependency-plugin";
 
-import path from "path";
+import { resolve, normalize } from "path";
 
 export default function devConfig(options) {
     const {
@@ -10,7 +10,8 @@ export default function devConfig(options) {
     } = options;
 
     const {
-        source
+        source,
+        projectDir,
     } = paths;
 
     let middlewareEntry = "webpack-hot-middleware/client?http://" + server.host + ":" + server.port;
@@ -19,13 +20,20 @@ export default function devConfig(options) {
         devtool: "source-map",
         resolve: {
             alias: {
-                'react-dom': '@hot-loader/react-dom'
+                'react-dom': '@hot-loader/react-dom',
+                'react': resolve(projectDir, 'node_modules/react'),
+                'react-is': resolve(projectDir, 'node_modules/react-is'),
+                'react-redux': resolve(projectDir, 'node_modules/react-redux'),
+                'react-router': resolve(projectDir, 'node_modules/react-router'),
+                'react-router-dom': resolve(projectDir, 'node_modules/react-router-dom'),
+                'redux': resolve(projectDir, 'node_modules/redux'),
+                'styled-components': resolve(projectDir, 'node_modules/styled-components'),
             }
         },
         entry: {
             app: [
                 middlewareEntry,
-                path.resolve(source, "index.dev.tsx")
+                resolve(source, "index.dev.tsx")
             ],
             vendors: [
                 middlewareEntry
@@ -44,7 +52,7 @@ export default function devConfig(options) {
                 // e.g. via import(/* webpackMode: "weak" */ './file.js')
                 allowAsyncCycles: true,
                 // set the current working directory for displaying module paths
-                cwd: path.normalize('../../..'),
+                cwd: normalize('../../..'),
             })
         ]
     }

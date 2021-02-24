@@ -67,7 +67,7 @@ export default function webpackConfigFactory(options) {
                 "node_modules",
             ],
             extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".dev.js"],
-            plugins: [new TsconfigPathsPlugin()]
+            plugins: [new TsconfigPathsPlugin()],
         },
         module: {
             rules: [
