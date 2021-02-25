@@ -1,23 +1,20 @@
-﻿'use strict';
+﻿import gulp from 'gulp';
+import debug from 'gulp-debug';
 
 /**
  * Copy all source files to the dist folder.
- * @module copy-sources
  * @param {Object} options Build options.
- * @param {Object} gulp Instance of gulp.
  */
-export default function (options, gulp) {
-    let debug = require('gulp-debug');
-    let paths = options.paths;
+export default function (options) {
+    const {
+        dist,
+        filesToCopy,
+    } = options;
 
-    return function (cb) {
-        // Copy sources
-        gulp.src([
-            paths.source + '**/*{.html,.xml,.json}',
-            '!' + paths.dist
-        ].concat(paths.exclude.global))
-            .pipe(debug({ title: 'Copying' }))
-            .pipe(gulp.dest(paths.dist))
-            .on('end', cb);
+    return function (done) {
+        gulp.src(filesToCopy)
+            .pipe(debug({ title: 'Copying files' }))
+            .pipe(gulp.dest(dist))
+            .on('end', done);
     }
 };

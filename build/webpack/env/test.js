@@ -1,3 +1,3 @@
-export default function (options) {
+export default function (props) {
     return {}
 };

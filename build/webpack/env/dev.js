@@ -3,18 +3,14 @@ import CircularDependencyPlugin from "circular-dependency-plugin";
 
 import { resolve, normalize } from "path";
 
-export default function devConfig(options) {
-    const {
-        paths,
-        server,
-    } = options;
-
+export default function devConfig(props) {
     const {
         source,
         projectDir,
-    } = paths;
+        server,
+    } = props;
 
-    let middlewareEntry = "webpack-hot-middleware/client?http://" + server.host + ":" + server.port;
+    const middlewareEntry = `webpack-hot-middleware/client?http://${server.host}:${server.port}`;
 
     return {
         devtool: "source-map",
@@ -52,7 +48,7 @@ export default function devConfig(options) {
                 // e.g. via import(/* webpackMode: "weak" */ './file.js')
                 allowAsyncCycles: true,
                 // set the current working directory for displaying module paths
-                cwd: normalize('../../..'),
+                cwd: projectDir,
             })
         ]
     }

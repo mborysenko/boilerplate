@@ -11,31 +11,30 @@ import prodConfig from "./env/prod";
 import testConfig from "./env/test";
 import { configuration } from "../configuration";
 
-let envMapping = {
+const envMapping = {
     [BUILD_MODES.DEV]: devConfig,
     [BUILD_MODES.PROD]: prodConfig,
     [BUILD_MODES.TEST]: testConfig,
 };
 
-export default function webpackConfigFactory(options) {
-    let {
-        paths,
-        title,
-        mode,
-    } = options;
-
-    let {
-        mountPoint,
-    } = configuration;
-
-    let {
+export default function webpackConfigFactory(props) {
+    const {
         projectDir,
         source,
         dist,
-    } = paths;
+        title,
+    } = props;
+
+    let {
+        mode,
+    } = props;
+
+    const {
+        mountPoint,
+    } = configuration;
 
     console.log(`Running mode is: ${mode}`);
-    let envConfig = envMapping[mode];
+    const envConfig = envMapping[mode];
 
     if (!envConfig) {
         console.warn(`Building mode is not set or is incorrect. Check NODE_ENV variable. Falling back to 'production'`);
@@ -43,7 +42,7 @@ export default function webpackConfigFactory(options) {
         envConfig = envMapping[mode];
     }
 
-    let commonConfig = {
+    const commonConfig = {
         mode: mode,
         entry: {
             vendors: [
@@ -143,10 +142,10 @@ export default function webpackConfigFactory(options) {
                 appMountIds: [mountPoint],
                 baseHref: '/',
                 minify: {
-                    removeAttributeQuotes: true,
+                    removeAttributeQuotes: false,
                     removeComments: true,
                     removeEmptyAttributes: true,
-                    useShortDoctype: true,
+                    useShortDoctype: false,
                     collapseWhitespace: false,
                 },
                 showErrors: true,
@@ -155,5 +154,5 @@ export default function webpackConfigFactory(options) {
         ]
     };
 
-    return merge(commonConfig, envConfig(options));
+    return merge(commonConfig, envConfig(props));
 };

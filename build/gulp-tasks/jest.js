@@ -1,19 +1,21 @@
 import {run} from 'jest-cli';
 
 /**
- * Setup a server.
+ * Run Jest unit tests.
  * @module jest
- * @param {Object} options Build options.
+ * @param {Object} props Build properties.
  */
-export default function (options) {
-    const {jest} = options;
-    return (cb) => {
+export default function (props) {
+    const {
+        jest,
+    } = props;
+    return (done) => {
         run([], jest.configFile)
             .then(() => {
-                cb && cb();
+                done?.();
             })
             .catch((error) => {
-                cb && cb(error);
+                done?.(error);
             });
     }
 };

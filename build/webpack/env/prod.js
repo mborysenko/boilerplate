@@ -1,20 +1,16 @@
 import CompressionPlugin from "compression-webpack-plugin";
 
-import path from "path";
+import { resolve } from "path";
 
-export default function prodConfig(options) {
-    const {
-        paths,
-    } = options;
-
+export default function prodConfig(props) {
     const {
         source,
-    } = paths;
+    } = props;
 
     return {
         entry: {
             app: [
-                path.resolve(source, "index.tsx")
+                resolve(source, "index.tsx")
             ]
         },
         plugins: [
