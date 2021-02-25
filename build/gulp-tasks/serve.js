@@ -1,29 +1,29 @@
 import BUILD_MODES from "../common/constants";
 import open from 'open';
-import path from 'path';
+import {join} from 'path';
 import webpack from 'webpack';
 import express from 'express';
 import dev from 'webpack-dev-middleware';
 import hot from 'webpack-hot-middleware';
 import webpackConfigFactory from '../webpack/config-factory';
+
 /**
- * Setup a server.
+ * Setup a server and run it.
  * @module serve
- * @param {Object} options Build options.
- * @param {Object} gulp Instance of gulp.
+ * @param {Object} props Build props.
  */
-export default function (options) {
+export default function (props) {
     const app = express();
 
     let {
         server,
-        paths,
-    } = options;
+        dist,
+    } = props;
 
-    let webpackConfig = webpackConfigFactory(options);
+    let webpackConfig = webpackConfigFactory(props);
 
 
-    return function (cb) {
+    return function (done) {
         let compiler = webpack(webpackConfig);
 
         app.use(dev(compiler, {
@@ -32,31 +32,37 @@ export default function (options) {
 
         app.use(hot(compiler));
 
-        serve(cb);
+        serve(done);
 
-        function serve(callback) {
+        function serve(cb) {
             //Middleware
-            app.use(express.static(path.join(paths.dist, '/assets')));
+            app.use(express.static(join(dist, '/assets')));
 
             //Routing. Order does matter
             app.get('/favicon.ico', function (req, res) {
-                res.sendFile(path.join(paths.dist, 'favicon.ico'));
+                res.sendFile(join(dist, 'favicon.ico'));
             });
 
             app.get('*', function (req, res) {
-                res.sendFile(path.join(paths.dist, 'index.html'));
+                res.sendFile(join(dist, 'index.html'));
             });
 
             //Starting
             app.listen(server.port, function (err) {
                 if (err) {
                     console.log(err);
+                    cb?.(err)
                 } else {
-                    open(`http://${server.host}:${server.port}/`);
+                    open(`http://${server.host}:${server.port}/`)
+                        .then(() => {
+                            cb?.()
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            cb?.(err)
+                        });
                 }
             });
-
-            callback && callback();
         }
     };
 };

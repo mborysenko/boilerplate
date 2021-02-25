@@ -1,29 +1,25 @@
 import CompressionPlugin from "compression-webpack-plugin";
 
-import path from "path";
+import { resolve } from "path";
 
-export default function prodConfig(options) {
-    const {
-        paths,
-    } = options;
-
+export default function prodConfig(props) {
     const {
         source,
-    } = paths;
+    } = props;
 
     return {
         entry: {
             app: [
-                path.resolve(source, "index.tsx")
+                resolve(source, "index.tsx")
             ]
         },
         plugins: [
             new CompressionPlugin({
-                filename: "[path].gz[query]",
+                filename: "[path][base].gz[query]",
                 algorithm: "gzip",
                 test: /\.(js|html|css)$/,
                 threshold: 10240,
-                minRatio: 0.4
+                minRatio: 0.4,
             }),
         ],
         optimization: {

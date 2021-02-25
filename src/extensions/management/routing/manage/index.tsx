@@ -1,8 +1,7 @@
 import * as React from 'react';
 
-import { AppLayout, NavDataProvider } from '@core/components';
+import { AppLayout, NavDataProvider, EnhancedRootRoute, Navigation, RoutingArea } from '@dhampir/core';
 import { Breadcrumbs, Page } from '../../components/sections';
-import { EnhancedRootRoute, Navigation, RoutingArea } from '@core/routing';
 import { LeftBar } from '@extensions/management/components/sections/LeftBar';
 
 const routes: EnhancedRootRoute = {

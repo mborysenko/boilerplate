@@ -1,7 +1,7 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react';
 
 import styles from './styles.less';
-import { Box, Reducer } from '@core/components';
+import { Box, Reducer } from '@dhampir/core';
 
 export const Copyright: FunctionComponent<{} & HTMLAttributes<HTMLDivElement>> = (props) => {
     const { breadcrumbs } = styles;

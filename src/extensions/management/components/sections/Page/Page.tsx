@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { PageOptions } from './API';
-import { Column, Reducer, Scroller } from '@core/components';
+import { Column, Reducer, Scroller } from '@dhampir/core';
 
 export const Page: React.FunctionComponent<PageOptions> = () => {
     return <Column greedy={true} holdsAbsolute={true}>

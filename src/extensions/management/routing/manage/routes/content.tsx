@@ -1,8 +1,6 @@
 import React from 'react';
-import {Navigation, RoutingArea} from '@core/routing';
-import {NavDataProvider} from '@core/components';
-import {Breadcrumbs, Page} from '@extensions/management/components';
-import {LeftBar} from '@extensions/management/components/sections/LeftBar';
+import {Navigation, RoutingArea, NavDataProvider} from '@dhampir/core';
+import {Breadcrumbs} from '@extensions/management/components';
 
 export default {
     path: 'content',

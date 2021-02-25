@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { Row } from '@core/components';
+import { Row } from '@dhampir/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { progress } from '@extensions/management/store/application';
 import { ExplorerState } from '@extensions/management/store/application/API';
