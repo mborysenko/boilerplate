@@ -16,12 +16,7 @@
         "/node_modules/",
         "/build/",
         "/coverage/",
-        "/dist/",
-        "<rootDir>/src/index.tsx",
-        "<rootDir>/src/index.dev.tsx",
-        "<rootDir>/src/components/index.js",
-        "<rootDir>/src/actions/index.js",
-        "<rootDir>/src/reducers/index.js"
+        "/dist/"
     ],
     "coverageThreshold": {
         "global": {
