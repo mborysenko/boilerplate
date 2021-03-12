@@ -1,16 +1,16 @@
 import React from 'react'
-import { AppLayout, NavDataProvider, EnhancedRootRoute, Navigation, RoutingArea } from '@dhampir/core';
+import { NavDataProvider, EnhancedRootRoute, Navigation, RoutingArea } from '@dhampir/core';
 
 const routes: EnhancedRootRoute = {
     id: 'anglerCom',
     path: '/angler',
     rendering: [
         {
-            area: RoutingArea.HEADING,
+            area: RoutingArea.TOP_CENTER,
             render: (props) => <NavDataProvider {...props}><Navigation {...props}/></NavDataProvider>
         },
         {
-            area: RoutingArea.MAIN,
+            area: RoutingArea.BODY_MAIN,
             render: () => <div>Welcome to Angler Online Store!</div>
         }
     ],
@@ -19,11 +19,11 @@ const routes: EnhancedRootRoute = {
             path: '/store',
             rendering: [
                 {
-                    area: RoutingArea.LEFT,
+                    area: RoutingArea.BODY_LEFT,
                     component: undefined, // Filtering
                 },
                 {
-                    area: RoutingArea.MAIN, // Product List
+                    area: RoutingArea.BODY_MAIN, // Product List
                     component: undefined,
                 },
             ],
@@ -35,7 +35,7 @@ const routes: EnhancedRootRoute = {
             path: '/cart',
             rendering: [
                 {
-                    area: RoutingArea.MAIN,
+                    area: RoutingArea.BODY_MAIN,
                     component: undefined, // List of ordered Products
                 },
             ],
@@ -47,7 +47,7 @@ const routes: EnhancedRootRoute = {
             path: '/checkout',
             rendering: [
                 {
-                    area: RoutingArea.MAIN,
+                    area: RoutingArea.BODY_MAIN,
                     component: undefined,
                 },
 
@@ -57,7 +57,6 @@ const routes: EnhancedRootRoute = {
     navigation: {
         label: 'Online Store'
     },
-    component: AppLayout,
 };
 
 export {
