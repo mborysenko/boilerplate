@@ -1,7 +1,7 @@
 {
     "name": "@leviafan/boilerplate",
     "repository": "https://github.com/mborysenko/boilerplate.git",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Project contains boilerplate that allows you to start writing web apps with using Typescript, React, Redux, Rect Router v5, webpack(HMR), express and gulp",
     "main": "index.js",
     "scripts": {
@@ -15,7 +15,7 @@
     "types": "node_modules/@types",
     "dependencies": {
         "@babel/runtime": "7.13.2",
-        "@dhampir/core": "1.0.0-beta2",
+        "@dhampir/core": "1.0.0-beta6",
         "@fortawesome/fontawesome-svg-core": "1.2.34",
         "@fortawesome/free-solid-svg-icons": "5.15.2",
         "@fortawesome/react-fontawesome": "0.1.14",

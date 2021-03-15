@@ -16,6 +16,7 @@
         "allowSyntheticDefaultImports": true,
         "paths": {
             "@extensions/*": ["./extensions/*"],
+            "@components/*": ["./components/*"],
         },
         "declaration": false,
         "declarationMap": false,

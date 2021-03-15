@@ -1,15 +1,15 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react';
 
 import styles from './styles.less';
-import { Box, Reducer } from '@dhampir/core';
+import { Box, Spacer } from '@dhampir/core';
 
 export const Copyright: FunctionComponent<{} & HTMLAttributes<HTMLDivElement>> = (props) => {
     const { breadcrumbs } = styles;
-    return <Reducer>
+    return <Spacer>
         <Box className={breadcrumbs}>
             <div className={breadcrumbs}>
                 Copyright
             </div>
         </Box>
-    </Reducer>;
+    </Spacer>;
 }
