@@ -2,27 +2,35 @@ import React, { FunctionComponent } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import {
     Area,
-    BorderSide,
     Column,
     Decorator,
     isAreaVisible,
     RoutingArea,
-    Row
+    Row, Units,
+    Spacer, areAreasVisible
 } from '@dhampir/core';
 
 export const Footer: FunctionComponent<{} & RouteChildrenProps<{}>> = (props) => {
     const { location } = props;
-    return (<Row>
-        <Decorator borderPosition={[BorderSide.TOP]} borderWidth={1}>
-            {isAreaVisible(RoutingArea.BOTTOM_LEFT, location.pathname) && <Column>
-                <Area area={RoutingArea.BOTTOM_LEFT} {...props} />
-            </Column>}
-            {isAreaVisible(RoutingArea.BOTTOM_CENTER, location.pathname) && <Column greedy={true}>
-                <Area area={RoutingArea.BOTTOM_CENTER} {...props} />
-            </Column>}
-            {isAreaVisible(RoutingArea.BOTTOM_RIGHT, location.pathname) && <Column>
-                <Area area={RoutingArea.BOTTOM_RIGHT} {...props}/>
-            </Column>}
-        </Decorator>
-    </Row>);
+    const {
+        BOTTOM_RIGHT,
+        BOTTOM_CENTER,
+        BOTTOM_LEFT
+    } = RoutingArea;
+    return areAreasVisible([BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT], location.pathname)
+        ? <Row>
+            <Decorator fill={true}>
+                <Spacer space={0.5} units={Units.EM}>
+                    {isAreaVisible(BOTTOM_LEFT, location.pathname) && <Column>
+                        <Area area={BOTTOM_LEFT} {...props} />
+                    </Column>}
+                    {isAreaVisible(BOTTOM_CENTER, location.pathname) && <Column greedy={true}>
+                        <Area area={BOTTOM_CENTER} {...props} />
+                    </Column>}
+                    {isAreaVisible(BOTTOM_RIGHT, location.pathname) && <Column>
+                        <Area area={BOTTOM_RIGHT} {...props}/>
+                    </Column>}
+                </Spacer>
+            </Decorator>
+        </Row> : null;
 };

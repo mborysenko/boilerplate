@@ -1,6 +1,9 @@
-import { Column, Layout } from '@dhampir/core';
-import * as React from 'react';
+import { Column, Screen } from '@dhampir/core';
+import React, { FunctionComponent } from 'react';
+import { ErrorPageProps } from './API';
 
-export const ErrorPage = props => {
-    return <Layout fullScreen={true}><Column greedy={true}>404. Page not found.</Column></Layout>;
+export const ErrorPage: FunctionComponent<ErrorPageProps> = props => {
+    return <Screen fullScreen={true}>
+        <Column greedy={true}>404. Page not found.</Column>
+    </Screen>;
 }

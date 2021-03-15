@@ -1,14 +1,16 @@
 import React, { FunctionComponent } from 'react';
-import { Area, Layout, RoutingArea, LayoutDirection } from '@dhampir/core';
+import { Area, Screen, RoutingArea, Direction, isAreaVisible } from '@dhampir/core';
+import { RouteChildrenProps } from 'react-router';
 
-export interface LayoutProps {
+export interface CustomLayoutProps extends RouteChildrenProps {
 }
 
-export const CustomLayout: FunctionComponent<LayoutProps> = (props) => {
-    return <Layout direction={LayoutDirection.VERTICAL} fullScreen={true}>
-        <Area {...props} area={RoutingArea.TOP}/>
-        <Area {...props} area={RoutingArea.MENU}/>
+export const CustomLayout: FunctionComponent<CustomLayoutProps> = (props) => {
+    const { location } = props;
+    return <Screen direction={Direction.VERTICAL} fullScreen={true}>
+        {isAreaVisible(RoutingArea.TOP, location.pathname) && <Area {...props} area={RoutingArea.TOP}/>}
+        {isAreaVisible(RoutingArea.MENU, location.pathname) && <Area {...props} area={RoutingArea.MENU}/>}
         <Area {...props} area={RoutingArea.BODY}/>
-        <Area {...props} area={RoutingArea.BOTTOM}/>
-    </Layout>
+        {isAreaVisible(RoutingArea.BOTTOM, location.pathname) && <Area {...props} area={RoutingArea.BOTTOM}/>}
+    </Screen>
 };

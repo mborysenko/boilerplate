@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { NavDataProvider, EnhancedRootRoute, Navigation, RoutingArea } from '@dhampir/core';
-import { Breadcrumbs, Page, LeftBar } from '@components/sections';
+import { BorderSide, Decorator, EnhancedRootRoute, NavDataProvider, Navigation, RoutingArea, Spacer, Units } from '@dhampir/core';
+import { Breadcrumbs, LeftBar, Page } from '@components/sections';
 import { CustomLayout, Footer } from '@components/layout';
 
 const routes: EnhancedRootRoute = {
@@ -31,7 +31,11 @@ const routes: EnhancedRootRoute = {
                 {
                     area: RoutingArea.BODY_LEFT,
                     render: () => {
-                        return <div>Group of Brands</div>;
+                        return <Decorator fill={true}>
+                            <Spacer space={0.5} units={Units.EM} size={24}>
+                                <div>Group of Brands</div>
+                            </Spacer>
+                        </Decorator>;
                     },
                 },
                 {
@@ -52,7 +56,11 @@ const routes: EnhancedRootRoute = {
                 {
                     area: RoutingArea.BODY_LEFT,
                     render: () => {
-                        return <div>Order List</div>;
+                        return <Decorator borderWidth={1} borderPosition={[BorderSide.TOP, BorderSide.BOTTOM]} fill={true}>
+                            <Spacer space={0.5} units={Units.EM} size={24}>
+                                <div>Order List</div>
+                            </Spacer>
+                        </Decorator>;
                     },
                 },
                 {
@@ -73,10 +81,6 @@ const routes: EnhancedRootRoute = {
             render: props => <NavDataProvider {...props}>
                 <Navigation  {...props} />
             </NavDataProvider>,
-        },
-        {
-            area: RoutingArea.BOTTOM,
-            component: Footer,
         },
         {
             area: RoutingArea.BOTTOM_LEFT,
