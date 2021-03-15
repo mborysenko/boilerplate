@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { AppLayout, NavDataProvider, EnhancedRootRoute, Navigation, RoutingArea } from '@dhampir/core';
-import { Breadcrumbs, Page } from '../../components/sections';
-import { LeftBar } from '@extensions/management/components/sections/LeftBar';
+import { BorderSide, Decorator, EnhancedRootRoute, NavDataProvider, Navigation, RoutingArea, Spacer, Units } from '@dhampir/core';
+import { Breadcrumbs, LeftBar, Page } from '@components/sections';
+import { CustomLayout, Footer } from '@components/layout';
 
 const routes: EnhancedRootRoute = {
     id: 'management',
@@ -13,11 +13,11 @@ const routes: EnhancedRootRoute = {
             rendering: [
                 {
                     exact: true,
-                    area: RoutingArea.LEFT,
+                    area: RoutingArea.BODY_LEFT,
                     component: LeftBar,
                 },
                 {
-                    area: RoutingArea.MAIN,
+                    area: RoutingArea.BODY_MAIN,
                     component: Page,
                 },
             ],
@@ -29,13 +29,17 @@ const routes: EnhancedRootRoute = {
             path: '/brands',
             rendering: [
                 {
-                    area: RoutingArea.LEFT,
+                    area: RoutingArea.BODY_LEFT,
                     render: () => {
-                        return <div>Group of Brands</div>;
+                        return <Decorator fill={true}>
+                            <Spacer space={0.5} units={Units.EM} size={24}>
+                                <div>Group of Brands</div>
+                            </Spacer>
+                        </Decorator>;
                     },
                 },
                 {
-                    area: RoutingArea.MAIN,
+                    area: RoutingArea.BODY_MAIN,
                     render: () => {
                         return <div>List od Brands</div>;
                     },
@@ -50,13 +54,17 @@ const routes: EnhancedRootRoute = {
             exact: true,
             rendering: [
                 {
-                    area: RoutingArea.LEFT,
+                    area: RoutingArea.BODY_LEFT,
                     render: () => {
-                        return <div>Order List</div>;
+                        return <Decorator borderWidth={1} borderPosition={[BorderSide.TOP, BorderSide.BOTTOM]} fill={true}>
+                            <Spacer space={0.5} units={Units.EM} size={24}>
+                                <div>Order List</div>
+                            </Spacer>
+                        </Decorator>;
                     },
                 },
                 {
-                    area: RoutingArea.MAIN,
+                    area: RoutingArea.BODY_MAIN,
                     render: () => {
                         return <div>Order Details</div>;
                     },
@@ -69,20 +77,20 @@ const routes: EnhancedRootRoute = {
     ],
     rendering: [
         {
-            area: RoutingArea.HEADING,
+            area: RoutingArea.TOP_CENTER,
             render: props => <NavDataProvider {...props}>
                 <Navigation  {...props} />
             </NavDataProvider>,
         },
         {
-            area: RoutingArea.FOOTER,
+            area: RoutingArea.BOTTOM_LEFT,
             component: Breadcrumbs,
         },
     ],
     navigation: {
         label: 'Control Panel'
     },
-    component: AppLayout,
+    component: CustomLayout
 };
 
 export {

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import { PageOptions } from './API';
-import { Column, Reducer, Scroller } from '@dhampir/core';
+import { Column, Spacer, Scroller, Units } from '@dhampir/core';
 
 export const Page: React.FunctionComponent<PageOptions> = () => {
     return <Column greedy={true} holdsAbsolute={true}>
         <Scroller>
-            <Reducer>
+            <Spacer space={1} units={Units.EM}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Nullam non leo nunc. Praesent in facilisis libero. Vestibulum vel mi
                 ullamcorper, cursus libero in, congue turpis.
@@ -202,7 +202,7 @@ export const Page: React.FunctionComponent<PageOptions> = () => {
                 molestie.
                 Nam efficitur porttitor blandit. Etiam vestibulum elementum mauris molestie
                 ultrices. Donec id nisi a nibh interdum cursus at et nisl.
-            </Reducer>
+            </Spacer>
         </Scroller>
     </Column>;
 };
