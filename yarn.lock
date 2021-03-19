@@ -1063,10 +1063,10 @@
   dependencies:
     conventional-changelog-conventionalcommits "^4.3.1"
 
-"@dhampir/core@1.0.0-beta5":
-  version "1.0.0-beta5"
-  resolved "https://registry.yarnpkg.com/@dhampir/core/-/core-1.0.0-beta5.tgz#17eca4caf5947b2ee73a26b1f311159212ba3c8d"
-  integrity sha512-EM9ApPwFGf8VPMLvgKZ/PBZMey/+F1jkcX6wEFm5UxF1dqgkXxYkLMEIxJdxoOQ8G6RlcXgeLeUrVCMwYNrbCQ==
+"@dhampir/core@1.0.0-beta7":
+  version "1.0.0-beta7"
+  resolved "https://registry.yarnpkg.com/@dhampir/core/-/core-1.0.0-beta7.tgz#757d5cfbe42af6da00b893ffc792d053bf1a580c"
+  integrity sha512-ApaZPagDYop3ewwVYb0WK553rFIggzcsRGTrGDubV3Dn/FgAyWU47f8skGfZrisgr4RyX/IqbkWRVpYxVMwrpw==
   dependencies:
     "@babel/runtime" "7.12.18"
     "@fortawesome/fontawesome-svg-core" "1.2.34"
