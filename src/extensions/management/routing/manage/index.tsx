@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { BorderSide, Decorator, EnhancedRootRoute, NavDataProvider, Navigation, RoutingArea, Spacer, Units } from '@dhampir/core';
 import { Breadcrumbs, LeftBar, Page } from '@components/sections';
-import { CustomLayout, Footer } from '@components/layout';
+import { CustomLayout } from '@components/layout';
 
 const routes: EnhancedRootRoute = {
     id: 'management',
