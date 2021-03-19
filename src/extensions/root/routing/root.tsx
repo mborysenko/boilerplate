@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { EnhancedRootRoute, RoutingArea } from '@dhampir/core';
-import { Menu, Header, Body, CustomLayout, Footer } from '@components/layout';
+import { Menu, Header, Body, CustomLayout, Footer, Logo, UserPanel } from '@components/layout';
 import { MainMenu } from '@components/widgets';
 
 const routes: EnhancedRootRoute = {
@@ -12,10 +12,19 @@ const routes: EnhancedRootRoute = {
             component: Header,
         },
         {
+            area: RoutingArea.TOP_LEFT,
+            component: Logo
+        },
+        {
             area: RoutingArea.TOP_CENTER,
             // We are using `exact={true}` to render it only when route matches exactly
             exact: true,
             component: MainMenu
+        },
+        {
+            area: RoutingArea.TOP_RIGHT,
+            // We are using `exact={true}` to render it only when route matches exactly
+            component: UserPanel
         },
         {
             area: RoutingArea.MENU,
