@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { RouteChildrenProps } from 'react-router';
+import { useLocation } from 'react-router';
 import {
     Decorator,
     Column,
@@ -10,8 +10,8 @@ import {
     areAreasVisible
 } from '@dhampir/core';
 
-export const Header: FunctionComponent<{} & RouteChildrenProps<{}>> = (props) => {
-    const { location } = props;
+export const Header: FunctionComponent<{}> = () => {
+    const location = useLocation();
     const {
         TOP_LEFT,
         TOP_CENTER,
@@ -20,13 +20,13 @@ export const Header: FunctionComponent<{} & RouteChildrenProps<{}>> = (props) =>
     return areAreasVisible([TOP_LEFT, TOP_CENTER, TOP_RIGHT], location.pathname) ? <Row>
         <Decorator fill={true}>
             {isAreaVisible(TOP_LEFT, location.pathname) && <Column>
-                <Area area={TOP_LEFT} {...props} />
+                <Area area={TOP_LEFT} />
             </Column>}
             {isAreaVisible(TOP_CENTER, location.pathname) && <Column greedy={true}>
-                <Area area={TOP_CENTER} {...props} />
+                <Area area={TOP_CENTER} />
             </Column>}
             {isAreaVisible(TOP_RIGHT, location.pathname) && <Column>
-                <Area area={TOP_RIGHT} {...props} />
+                <Area area={TOP_RIGHT} />
             </Column>}
         </Decorator>
     </Row> : null;

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { RouteChildrenProps } from 'react-router';
+import { useLocation } from 'react-router';
 import {
     Area,
     Column,
@@ -10,8 +10,8 @@ import {
     Spacer, areAreasVisible
 } from '@dhampir/core';
 
-export const Footer: FunctionComponent<{} & RouteChildrenProps<{}>> = (props) => {
-    const { location } = props;
+export const Footer: FunctionComponent<{}> = () => {
+    const location = useLocation();
     const {
         BOTTOM_RIGHT,
         BOTTOM_CENTER,
@@ -22,13 +22,13 @@ export const Footer: FunctionComponent<{} & RouteChildrenProps<{}>> = (props) =>
             <Decorator fill={true}>
                 <Spacer space={0.5} units={Units.EM}>
                     {isAreaVisible(BOTTOM_LEFT, location.pathname) && <Column>
-                        <Area area={BOTTOM_LEFT} {...props} />
+                        <Area area={BOTTOM_LEFT} />
                     </Column>}
                     {isAreaVisible(BOTTOM_CENTER, location.pathname) && <Column greedy={true}>
-                        <Area area={BOTTOM_CENTER} {...props} />
+                        <Area area={BOTTOM_CENTER} />
                     </Column>}
                     {isAreaVisible(BOTTOM_RIGHT, location.pathname) && <Column>
-                        <Area area={BOTTOM_RIGHT} {...props}/>
+                        <Area area={BOTTOM_RIGHT} />
                     </Column>}
                 </Spacer>
             </Decorator>

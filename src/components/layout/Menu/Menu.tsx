@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
-import { RouteChildrenProps } from 'react-router';
+import { useLocation } from 'react-router';
 import { Column, Area, Row, isAreaVisible, RoutingArea, Decorator } from '@dhampir/core';
 
-export const Menu: FunctionComponent<{} & RouteChildrenProps<{}>> = (props) => {
-    const { location } = props;
+export const Menu: FunctionComponent<{}> = (props) => {
+    const location = useLocation();
 
     return (<Row>
         <Decorator>
