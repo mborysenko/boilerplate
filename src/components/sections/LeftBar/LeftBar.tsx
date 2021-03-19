@@ -1,24 +1,22 @@
-import React, { FunctionComponent, useCallback } from 'react';
-import { Row, Spacer, Units, Decorator } from '@dhampir/core';
-import { useDispatch, useSelector } from 'react-redux';
-import { progress } from '@extensions/management/store/application';
-import { ExplorerState } from '@extensions/management/store/application/API';
+import React, { FunctionComponent, useCallback, useContext } from 'react';
+import { Row, Spacer, Units, Decorator, SkinContext, SkinContextValue, THEME_DEFAULT_ID } from '@dhampir/core';
 
 export const LeftBar: FunctionComponent<any> = () => {
-    const dispatch = useDispatch();
+    const { setTheme } = useContext<SkinContextValue>(SkinContext);
 
-    const loading = useSelector<ExplorerState>((state) => {
-        return state.ui.progress
-    });
+    const setCustom = useCallback(() => {
+        setTheme?.('custom');
+    }, [setTheme]);
 
-    const click = useCallback(() => {
-        dispatch(progress(!loading));
-    }, [loading, dispatch]);
+    const setDefault = useCallback(() => {
+        setTheme?.(THEME_DEFAULT_ID);
+    }, [setTheme]);
 
     return <Decorator fill={true}>
         <Spacer space={0.5} units={Units.EM} size={24}>
             <Row>
-                <button onClick={click}>Toggle Progress</button>
+                <button onClick={setCustom}>Custom</button>
+                <button onClick={setDefault}>Default</button>
             </Row>
         </Spacer>
     </Decorator>;
