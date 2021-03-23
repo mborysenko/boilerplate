@@ -7,7 +7,8 @@ import {
     RoutingArea,
     Row,
     isAreaVisible,
-    areAreasVisible
+    areAreasVisible,
+    BorderSide
 } from '@dhampir/core';
 
 export const Header: FunctionComponent<{}> = () => {
@@ -18,7 +19,7 @@ export const Header: FunctionComponent<{}> = () => {
         TOP_RIGHT,
     } = RoutingArea;
     return areAreasVisible([TOP_LEFT, TOP_CENTER, TOP_RIGHT], location.pathname) ? <Row>
-        <Decorator fill={true}>
+        <Decorator borderPosition={[BorderSide.BOTTOM]} borderWidth={1} fill={true}>
             {isAreaVisible(TOP_LEFT, location.pathname) && <Column>
                 <Area area={TOP_LEFT} />
             </Column>}

@@ -1,21 +1,21 @@
 import React, { FunctionComponent } from 'react';
 import { useLocation } from 'react-router';
-import { Column, Area, Row, isAreaVisible, RoutingArea, Decorator } from '@dhampir/core';
+import { Area, Row, isAreaVisible, RoutingArea, Decorator } from '@dhampir/core';
 
 export const Menu: FunctionComponent<{}> = (props) => {
     const location = useLocation();
 
-    return (<Row>
+    return (<Row asGrid={true}>
         <Decorator>
-            {isAreaVisible(RoutingArea.MENU_LEFT, location.pathname) && <Column>
+            {isAreaVisible(RoutingArea.MENU_LEFT, location.pathname) && <Row>
                 <Area area={RoutingArea.MENU_LEFT} {...props} />
-            </Column>}
-            {isAreaVisible(RoutingArea.MENU_CENTER, location.pathname) && <Column greedy={true}>
+            </Row>}
+            {isAreaVisible(RoutingArea.MENU_CENTER, location.pathname) && <Row greedy={true}>
                 <Area area={RoutingArea.MENU_CENTER} {...props} />
-            </Column>}
-            {isAreaVisible(RoutingArea.MENU_RIGHT, location.pathname) && <Column>
+            </Row>}
+            {isAreaVisible(RoutingArea.MENU_RIGHT, location.pathname) && <Row>
                 <Area area={RoutingArea.MENU_RIGHT} {...props} />
-            </Column>}
+            </Row>}
         </Decorator>
     </Row>);
 

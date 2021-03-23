@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-import { BorderSide, Decorator, EnhancedRootRoute, NavDataProvider, Navigation, RoutingArea, Spacer, Units } from '@dhampir/core';
+import { Decorator, EnhancedRootRoute, RoutingArea, Spacer, Units } from '@dhampir/core';
 import { Breadcrumbs, LeftBar, Page } from '@components/sections';
 import { CustomLayout } from '@components/layout';
+import { Nav } from '@components/widgets';
 
 const routes: EnhancedRootRoute = {
     id: 'management',
@@ -31,7 +32,7 @@ const routes: EnhancedRootRoute = {
                 {
                     area: RoutingArea.BODY_LEFT,
                     render: () => {
-                        return <Decorator fill={true}>
+                        return <Decorator>
                             <Spacer space={0.5} units={Units.EM} size={24}>
                                 <div>Group of Brands</div>
                             </Spacer>
@@ -56,7 +57,7 @@ const routes: EnhancedRootRoute = {
                 {
                     area: RoutingArea.BODY_LEFT,
                     render: () => {
-                        return <Decorator borderWidth={1} borderPosition={[BorderSide.TOP, BorderSide.BOTTOM]} fill={true}>
+                        return <Decorator>
                             <Spacer space={0.5} units={Units.EM} size={24}>
                                 <div>Order List</div>
                             </Spacer>
@@ -78,9 +79,7 @@ const routes: EnhancedRootRoute = {
     rendering: [
         {
             area: RoutingArea.TOP_CENTER,
-            render: props => <NavDataProvider {...props}>
-                <Navigation  {...props} />
-            </NavDataProvider>,
+            component: Nav,
         },
         {
             area: RoutingArea.BOTTOM_LEFT,
