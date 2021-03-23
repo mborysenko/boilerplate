@@ -1,5 +1,6 @@
 import React from 'react'
-import { NavDataProvider, EnhancedRootRoute, Navigation, RoutingArea } from '@dhampir/core';
+import { EnhancedRootRoute, RoutingArea } from '@dhampir/core';
+import { Nav } from '@components/widgets';
 
 const routes: EnhancedRootRoute = {
     id: 'anglerCom',
@@ -7,7 +8,7 @@ const routes: EnhancedRootRoute = {
     rendering: [
         {
             area: RoutingArea.TOP_CENTER,
-            render: (props) => <NavDataProvider {...props}><Navigation {...props}/></NavDataProvider>
+            component: Nav
         },
         {
             area: RoutingArea.BODY_MAIN,

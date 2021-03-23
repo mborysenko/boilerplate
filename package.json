@@ -15,7 +15,7 @@
     "types": "node_modules/@types",
     "dependencies": {
         "@babel/runtime": "7.13.2",
-        "@dhampir/core": "1.0.0-beta6",
+        "@dhampir/core": "1.0.0-beta9",
         "@fortawesome/fontawesome-svg-core": "1.2.34",
         "@fortawesome/free-solid-svg-icons": "5.15.2",
         "@fortawesome/react-fontawesome": "0.1.14",
