@@ -12,7 +12,7 @@ import {
     BorderSide
 } from '@dhampir/core';
 
-export const Footer: FunctionComponent<{}> = () => {
+export const Footer: FunctionComponent = () => {
     const location = useLocation();
     const {
         BOTTOM_RIGHT,

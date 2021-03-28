@@ -5,7 +5,7 @@ export interface ProgressAction extends Action {
 }
 export const PROGRESS_ACTION = 'PROGRESS_ACTION';
 
-export const progress = (progress: boolean = false) => {
+export const progress = (progress = false): ProgressAction => {
     return {
         type: PROGRESS_ACTION,
         progress: progress,

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { EnhancedRootRoute, RoutingArea } from '@dhampir/core';
+import { RouteWithChildren, RoutingArea } from '@dhampir/core';
 import { Menu, Header, Body, CustomLayout, Footer, Logo, UserPanel } from '@components/layout';
 import { MainMenu } from '@components/widgets';
 
-const routes: EnhancedRootRoute = {
+const routes: RouteWithChildren = {
     id: 'defaultRoute',
     path: ['/'],
     rendering: [
