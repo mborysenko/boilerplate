@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { RouteChildrenProps, useLocation } from 'react-router';
 import { Column, Area, RoutingArea, Row, Decorator, isAreaVisible } from '@dhampir/core';
 
-export const Body: FunctionComponent<{} & RouteChildrenProps<{}>> = () => {
+export const Body: FunctionComponent = () => {
     const location = useLocation();
     const {
         BODY_LEFT,

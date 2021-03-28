@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { useLocation } from 'react-router';
 import { Area, Row, isAreaVisible, RoutingArea, Decorator } from '@dhampir/core';
 
-export const Menu: FunctionComponent<{}> = (props) => {
+export const Menu: FunctionComponent = (props) => {
     const location = useLocation();
 
     return (<Row asGrid={true}>

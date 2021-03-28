@@ -11,7 +11,7 @@ import {
     BorderSide
 } from '@dhampir/core';
 
-export const Header: FunctionComponent<{}> = () => {
+export const Header: FunctionComponent = () => {
     const location = useLocation();
     const {
         TOP_LEFT,

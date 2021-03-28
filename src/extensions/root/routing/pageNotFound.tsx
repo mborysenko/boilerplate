@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { EnhancedRootRoute, NOT_FOUND_PATH } from '@dhampir/core';
+import { RouteWithChildren, NOT_FOUND_PATH } from '@dhampir/core';
 import { ErrorPage } from '@components/ErrorPage';
 
-const route: EnhancedRootRoute = {
+const route: RouteWithChildren = {
     id: 'pageNotFound',
     path: NOT_FOUND_PATH,
     component: ErrorPage
