@@ -6,4 +6,4 @@ registerTheme({
     default: false,
     title: 'Boilerplate Theme',
     colors,
-}, true);
+}, false);
