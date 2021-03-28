@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { Decorator, EnhancedRootRoute, RoutingArea, Spacer, Units } from '@dhampir/core';
+import { Decorator, RouteWithChildren, RoutingArea, Spacer, Units } from '@dhampir/core';
 import { Breadcrumbs, LeftBar, Page } from '@components/sections';
 import { CustomLayout } from '@components/layout';
 import { Nav } from '@components/widgets';
+import { ReactNode } from 'react';
 
-const routes: EnhancedRootRoute = {
+const routes: RouteWithChildren = {
     id: 'management',
     path: '/manage',
     routes: [
@@ -31,7 +32,7 @@ const routes: EnhancedRootRoute = {
             rendering: [
                 {
                     area: RoutingArea.BODY_LEFT,
-                    render: () => {
+                    render: (): ReactNode => {
                         return <Decorator>
                             <Spacer space={0.5} units={Units.EM} size={24}>
                                 <div>Group of Brands</div>
@@ -41,7 +42,7 @@ const routes: EnhancedRootRoute = {
                 },
                 {
                     area: RoutingArea.BODY_MAIN,
-                    render: () => {
+                    render: (): ReactNode => {
                         return <div>List od Brands</div>;
                     },
                 },
@@ -56,7 +57,7 @@ const routes: EnhancedRootRoute = {
             rendering: [
                 {
                     area: RoutingArea.BODY_LEFT,
-                    render: () => {
+                    render: (): ReactNode => {
                         return <Decorator>
                             <Spacer space={0.5} units={Units.EM} size={24}>
                                 <div>Order List</div>
@@ -66,7 +67,7 @@ const routes: EnhancedRootRoute = {
                 },
                 {
                     area: RoutingArea.BODY_MAIN,
-                    render: () => {
+                    render: (): ReactNode => {
                         return <div>Order Details</div>;
                     },
                 },

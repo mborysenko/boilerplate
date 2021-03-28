@@ -1,8 +1,8 @@
 import React from 'react'
-import { EnhancedRootRoute, RoutingArea } from '@dhampir/core';
+import { AreaRouteRendering, RouteWithChildren, RoutingArea } from '@dhampir/core';
 import { Nav } from '@components/widgets';
 
-const routes: EnhancedRootRoute = {
+const routes: RouteWithChildren = {
     id: 'anglerCom',
     path: '/angler',
     rendering: [
@@ -21,13 +21,13 @@ const routes: EnhancedRootRoute = {
             rendering: [
                 {
                     area: RoutingArea.BODY_LEFT,
-                    component: undefined, // Filtering
+                    render: () => <div>Product Filters</div>
                 },
                 {
                     area: RoutingArea.BODY_MAIN, // Product List
-                    component: undefined,
+                    render: () => <div>Product List</div>,
                 },
-            ],
+            ] as AreaRouteRendering<RoutingArea>[],
             navigation: {
                 label: 'Web Store'
             }

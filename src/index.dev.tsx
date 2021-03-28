@@ -33,7 +33,8 @@ window.onload = () => {
 // Hot Module Replacement API
 if (module.hot) {
     module.hot.accept('./App', () => {
-        let NextApp = require('./App');
+        /* eslint-disable @typescript-eslint/no-var-requires */
+        const NextApp = require('./App');
         render(NextApp);
     });
 }

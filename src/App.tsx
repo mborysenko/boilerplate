@@ -8,9 +8,7 @@ import './extensions';
 
 import { useRootApplication, StorageType } from '@dhampir/core';
 
-export type ApplicationProps = {};
-
-export const App: React.FunctionComponent<ApplicationProps> = () => {
+export const App: React.FunctionComponent = () => {
     const application = useRootApplication({
         storageType: StorageType.REDUX
     });

@@ -34,7 +34,7 @@ export default function webpackConfigFactory(props) {
     } = configuration;
 
     console.log(`Running mode is: ${mode}`);
-    const envConfig = envMapping[mode];
+    let envConfig = envMapping[mode];
 
     if (!envConfig) {
         console.warn(`Building mode is not set or is incorrect. Check NODE_ENV variable. Falling back to 'production'`);

@@ -8,8 +8,6 @@ import './applications';
 
 import { ApplicationManager, ApplicationScope } from '@dhampir/core';
 
-export type ApplicationProps = {};
-
-export const MultipleApps: React.FunctionComponent<ApplicationProps> = () => {
+export const MultipleApps: React.FunctionComponent = () => {
     return <ApplicationManager scope={ApplicationScope.MULTIPLE} />;
 };
