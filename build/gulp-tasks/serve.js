@@ -1,7 +1,7 @@
-import BUILD_MODES from "../common/constants";
 import open from 'open';
 import {join} from 'path';
 import webpack from 'webpack';
+import path from 'path';
 import express from 'express';
 import dev from 'webpack-dev-middleware';
 import hot from 'webpack-hot-middleware';
@@ -44,7 +44,15 @@ export default function (props) {
             });
 
             app.get('*', function (req, res) {
-                res.sendFile(join(dist, 'index.html'));
+                const filename = path.resolve(compiler.outputPath, 'index.html');
+                compiler.outputFileSystem.readFile(filename, (err, result) => {
+                    if (err) {
+                        return cb?.(err);
+                    }
+                    res.set('content-type','text/html');
+                    res.send(result);
+                    res.end();
+                });
             });
 
             //Starting
