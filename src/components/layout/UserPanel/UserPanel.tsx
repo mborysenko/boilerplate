@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useContext } from 'react';
+import { FunctionComponent, useCallback, useContext } from 'react';
 import { BorderSide, Decorator, Label, Row, SkinContext, SkinContextValue, Spacer, Units, useThemeList } from '@dhampir/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBicycle } from '@fortawesome/free-solid-svg-icons';

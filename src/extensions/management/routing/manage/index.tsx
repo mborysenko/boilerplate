@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { Decorator, RouteWithChildren, RoutingArea, Spacer, Units } from '@dhampir/core';
 import { Breadcrumbs, LeftBar, Page } from '@components/sections';
 import { CustomLayout } from '@components/layout';

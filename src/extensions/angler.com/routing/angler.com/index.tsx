@@ -1,4 +1,3 @@
-import React from 'react'
 import { AreaRouteRendering, RouteWithChildren, RoutingArea } from '@dhampir/core';
 import { Nav } from '@components/widgets';
 

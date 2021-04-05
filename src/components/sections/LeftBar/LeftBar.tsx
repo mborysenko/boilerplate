@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { Column, Spacer, Units, Decorator } from '@dhampir/core';
 
 export const LeftBar: FunctionComponent<any> = () => {
