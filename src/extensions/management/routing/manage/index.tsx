@@ -17,6 +17,10 @@ const routes: RouteWithChildren = {
                     component: LeftBar,
                 },
                 {
+                    area: RoutingArea.MENU_LEFT,
+                    component: Nav,
+                },
+                {
                     area: RoutingArea.BODY_MAIN,
                     component: Page,
                 },
