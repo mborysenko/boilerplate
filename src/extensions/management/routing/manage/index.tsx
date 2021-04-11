@@ -43,6 +43,10 @@ const routes: RouteWithChildren = {
                     },
                 },
                 {
+                    area: RoutingArea.MENU_LEFT,
+                    component: Nav,
+                },
+                {
                     area: RoutingArea.BODY_MAIN,
                     render: (): ReactNode => {
                         return <div>List od Brands</div>;
