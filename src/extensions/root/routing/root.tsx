@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { RouteWithChildren, RoutingArea } from '@dhampir/core';
 import { Menu, Header, Body, CustomLayout, Footer, Logo, UserPanel } from '@components/layout';
 import { MainMenu } from '@components/widgets';

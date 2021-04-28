@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import { RouteChildrenProps, useLocation } from 'react-router';
+import { FunctionComponent } from 'react';
+import { useLocation } from 'react-router';
 import { Column, Area, RoutingArea, Row, Decorator, isAreaVisible } from '@dhampir/core';
 
 export const Body: FunctionComponent = () => {

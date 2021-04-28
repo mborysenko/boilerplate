@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { NavDataProvider, Navigation, Units, Spacer } from '@dhampir/core';
 

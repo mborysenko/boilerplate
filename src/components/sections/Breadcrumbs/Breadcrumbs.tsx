@@ -1,4 +1,4 @@
-import React, { FunctionComponent, HTMLAttributes } from 'react';
+import { FunctionComponent, HTMLAttributes } from 'react';
 
 import styles from './styles.less';
 import { Box, Spacer } from '@dhampir/core';

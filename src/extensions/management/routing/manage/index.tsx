@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { Decorator, RouteWithChildren, RoutingArea, Spacer, Units } from '@dhampir/core';
 import { Breadcrumbs, LeftBar, Page } from '@components/sections';
 import { CustomLayout } from '@components/layout';
@@ -17,6 +15,10 @@ const routes: RouteWithChildren = {
                     exact: true,
                     area: RoutingArea.BODY_LEFT,
                     component: LeftBar,
+                },
+                {
+                    area: RoutingArea.MENU_LEFT,
+                    component: Nav,
                 },
                 {
                     area: RoutingArea.BODY_MAIN,
@@ -39,6 +41,10 @@ const routes: RouteWithChildren = {
                             </Spacer>
                         </Decorator>;
                     },
+                },
+                {
+                    area: RoutingArea.MENU_LEFT,
+                    component: Nav,
                 },
                 {
                     area: RoutingArea.BODY_MAIN,

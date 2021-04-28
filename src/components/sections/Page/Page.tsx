@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { PageOptions } from './API';
 import { Column, Decorator, Spacer, Scroller, Units } from '@dhampir/core';
 
