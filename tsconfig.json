@@ -15,7 +15,8 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "paths": {
-            "@extensions/*": ["./extensions/*"],
+            "@application/*": ["./application/*"],
+            "@extensions/*": ["./application/extensions/*"],
             "@components/*": ["./components/*"],
         },
         "declaration": false,

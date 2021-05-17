@@ -4,7 +4,6 @@ import { CheckoutApplication, CheckoutApplicationProps } from './CheckoutApplica
 registerRootApplication<CheckoutApplicationProps>('checkout', {
     Component: CheckoutApplication,
     scope: ApplicationScope.MULTIPLE,
-    props: {
-    },
+    props: {},
     name: "Checkout"
 })

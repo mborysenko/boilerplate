@@ -1,7 +1,7 @@
 import { uiReducer } from './ui/uiReducer';
 import { CallbackScope, registerCallback, registerStore } from '@dhampir/core';
-import { middleware, rootSaga } from '@extensions/management/store/saga';
-import { gitReducer } from '@extensions/management/store/application/git/gitReducer';
+import { middleware, rootSaga } from '../../../management/store/saga';
+import { gitReducer } from '../../../management/store/application/git/gitReducer';
 import { combineReducers } from 'redux';
 
 registerStore("explorer", {

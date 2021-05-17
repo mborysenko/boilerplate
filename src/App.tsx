@@ -1,12 +1,13 @@
+import { FunctionComponent } from 'react';
+import { useRootApplication, StorageType } from '@dhampir/core';
+
 /* Styles */
 import './styles.less';
 
 /* Routing */
-import './extensions';
+import './application';
 
-import { useRootApplication, StorageType } from '@dhampir/core';
-
-export const App: React.FunctionComponent = () => {
+export const App: FunctionComponent = () => {
     const application = useRootApplication({
         storageType: StorageType.REDUX
     });

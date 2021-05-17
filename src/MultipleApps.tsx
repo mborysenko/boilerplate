@@ -1,4 +1,4 @@
-
+import { FunctionComponent } from 'react';
 /* Styles */
 import './styles.less';
 
@@ -7,6 +7,7 @@ import './applications';
 
 import { ApplicationManager, ApplicationScope } from '@dhampir/core';
 
-export const MultipleApps: React.FunctionComponent = () => {
+
+export const MultipleApps: FunctionComponent = () => {
     return <ApplicationManager scope={ApplicationScope.MULTIPLE} />;
 };

@@ -1,9 +1,10 @@
-import { AreaRouteRendering, RouteWithChildren, RoutingArea } from '@dhampir/core';
-import { Nav } from '@components/widgets';
+import { RouteWithChildren, RoutingArea } from '@dhampir/core';
+import { Nav } from '../../../components/widgets';
+import { Cart, ProductList, Filters } from '@application/store/components';
 
 const routes: RouteWithChildren = {
-    id: 'anglerCom',
-    path: '/angler',
+    id: 'store',
+    path: '/store',
     rendering: [
         {
             area: RoutingArea.TOP_CENTER,
@@ -16,19 +17,19 @@ const routes: RouteWithChildren = {
     ],
     routes: [
         {
-            path: '/store',
+            path: '/products',
             rendering: [
                 {
                     area: RoutingArea.BODY_LEFT,
-                    render: () => <div>Product Filters</div>
+                    component: Filters
                 },
                 {
                     area: RoutingArea.BODY_MAIN, // Product List
-                    render: () => <div>Product List</div>,
+                    component: ProductList,
                 },
-            ] as AreaRouteRendering<RoutingArea>[],
+            ],
             navigation: {
-                label: 'Web Store'
+                label: 'Products'
             }
         },
         {
@@ -36,7 +37,7 @@ const routes: RouteWithChildren = {
             rendering: [
                 {
                     area: RoutingArea.BODY_MAIN,
-                    component: undefined, // List of ordered Products
+                    component: Cart, // List of ordered Products
                 },
             ],
             navigation: {
