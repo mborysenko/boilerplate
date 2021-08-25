@@ -3,7 +3,7 @@ import { Nav } from '@components/widgets';
 
 const routes: RouteWithChildren = {
     id: 'anglerCom',
-    path: '/angler',
+    path: '/store',
     rendering: [
         {
             area: RoutingArea.TOP_CENTER,
@@ -16,7 +16,7 @@ const routes: RouteWithChildren = {
     ],
     routes: [
         {
-            path: '/store',
+            path: '/products',
             rendering: [
                 {
                     area: RoutingArea.BODY_LEFT,
@@ -28,7 +28,7 @@ const routes: RouteWithChildren = {
                 },
             ] as AreaRouteRendering<RoutingArea>[],
             navigation: {
-                label: 'Web Store'
+                label: 'Products'
             }
         },
         {
