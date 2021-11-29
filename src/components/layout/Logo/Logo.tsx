@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { Column, Units, Spacer } from '@dhampir/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBacterium } from '@fortawesome/free-solid-svg-icons'
+import { faBacterium } from '@fortawesome/free-solid-svg-icons/faBacterium'
 
 
 export const Logo: FunctionComponent = () => {

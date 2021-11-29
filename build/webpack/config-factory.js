@@ -10,6 +10,7 @@ import devConfig from "./env/dev";
 import prodConfig from "./env/prod";
 import testConfig from "./env/test";
 import { configuration } from "../configuration";
+import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 
 const envMapping = {
     [BUILD_MODES.DEV]: devConfig,
@@ -150,6 +151,9 @@ export default function webpackConfigFactory(props) {
                 },
                 showErrors: true,
                 inject: false,
+            }),
+            new BundleAnalyzerPlugin({
+                analyzerMode: 'static'
             }),
         ]
     };

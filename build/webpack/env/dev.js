@@ -1,7 +1,7 @@
 import HMRPlugin from "webpack/lib/HotModuleReplacementPlugin";
 import CircularDependencyPlugin from "circular-dependency-plugin";
 
-import { resolve, normalize } from "path";
+import { resolve } from "path";
 
 export default function devConfig(props) {
     const {
