@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 /* Styles */
 import './styles.less';
 
@@ -7,8 +5,9 @@ import './styles.less';
 import './extensions';
 
 import { useRootApplication, StorageType } from '@dhampir/core';
+import { FunctionComponent } from 'react';
 
-export const App: React.FunctionComponent = () => {
+export const App: FunctionComponent = () => {
     const application = useRootApplication({
         storageType: StorageType.REDUX
     });

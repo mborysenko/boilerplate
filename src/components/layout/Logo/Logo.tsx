@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { Column, Units, Spacer } from '@dhampir/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBacterium } from '@fortawesome/free-solid-svg-icons'

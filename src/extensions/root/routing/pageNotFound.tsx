@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { RouteWithChildren, NOT_FOUND_PATH } from '@dhampir/core';
 import { ErrorPage } from '@components/ErrorPage';
 

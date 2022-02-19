@@ -1,4 +1,6 @@
 import './root';
 import './theme';
 import './management';
-import './angler.com';
+import './store';
+import './productList';
+import './brandList';

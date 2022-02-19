@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { Area, Screen, RoutingArea, Direction, isAreaVisible } from '@dhampir/core';
 import { useLocation } from 'react-router';
 

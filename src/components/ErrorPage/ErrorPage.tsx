@@ -1,5 +1,5 @@
 import { Column, Screen } from '@dhampir/core';
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { ErrorPageProps } from './API';
 
 export const ErrorPage: FunctionComponent<ErrorPageProps> = props => {
