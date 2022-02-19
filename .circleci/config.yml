@@ -23,7 +23,7 @@ jobs:
           node-version: "16.14"
       - run: yarn install --frozen-lockfile
       - run: yarn add gulp-cli
-      - run: gulp build
+      - run: yarn run build
 
 
 # Invoke jobs via workflows
