@@ -22,7 +22,7 @@ jobs:
           install-yarn: true
           node-version: "16.14"
       - run: yarn install --frozen-lockfile
-      - run: yarn install gulp
+      - run: yarn add gulp-cli
       - run: gulp build
 
 
