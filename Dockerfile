@@ -12,8 +12,11 @@ RUN useradd application -p $PASSWORD
 
 USER application
 
+WORKDIR $HOME
+
 RUN ls -la
 RUN mkdir boilerplate
+
 COPY . ./boilerplate
 WORKDIR ./boilerplate
 
