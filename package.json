@@ -6,6 +6,9 @@
     "version": "1.0.0",
     "description": "Project contains boilerplate that allows you to start writing web apps with using Typescript, React, Redux, Rect Router v5, webpack(HMR), express and gulp",
     "main": "index.js",
+    "engines": {
+        "node": "^14.17.5 || ^16.4.0"
+    },
     "scripts": {
         "eslint": "cross-env NODE_ENV=production gulp eslint",
         "eslint:fix": "cross-env NODE_ENV=production gulp eslint:fix",
