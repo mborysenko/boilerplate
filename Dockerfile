@@ -7,7 +7,9 @@ USER root
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y curl
-RUN apt-get install -y yarnpkg
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get install -y yarn
 
 RUN useradd application -p $PASSWORD -d /home/application -m
 
@@ -24,7 +26,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | b
         && export NVM_DIR="$HOME/.nvm" \
         && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --install
 
-RUN ls -la .
-RUN /usr/bin/yarn install
+RUN yarn --version
+RUN yarn install
 
-CMD /usr/bin/yarn run start
+CMD yarn run start
