@@ -32,8 +32,8 @@ jobs:
       - docker/build:
           image: mborysenko/dampir
       - docker/push:
-        image: mborysenko/dampir
-        tag: latest
+            image: mborysenko/dampir
+            tag: latest
 
 
 # Invoke jobs via workflows
