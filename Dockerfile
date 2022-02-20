@@ -12,7 +12,7 @@ RUN useradd application -p $PASSWORD
 
 USER application
 
-WORKDIR $HOME
+WORKDIR /home/application
 
 RUN ls -la
 RUN mkdir boilerplate
