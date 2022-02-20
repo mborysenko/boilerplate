@@ -3,15 +3,15 @@ SHELL ["/bin/bash", "-l", "-c"]
 
 ARG PASSWORD=de12miurg
 
+USER root
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y curl
 RUN apt-get install -y yarn
 
-RUN useradd application -p $PASSWORD
+RUN useradd application -p $PASSWORD -b /home -U application
 
 USER application
-
 WORKDIR /home/application
 
 RUN ls -la
