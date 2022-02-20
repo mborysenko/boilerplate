@@ -30,9 +30,9 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: mborysenko/dampir
+          image: mborysenko/dhampir
       - docker/push:
-            image: mborysenko/dampir
+            image: mborysenko/dhampir
             tag: latest
 
 
