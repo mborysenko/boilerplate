@@ -4,11 +4,10 @@ SHELL ["/bin/bash", "-l", "-c"]
 ARG PASSWORD=de12miurg
 
 USER root
-RUN apt-get remove cmdtest
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y curl
-RUN apt-get install -y yarn
+RUN apt-get install -y yarnpkg
 
 RUN useradd application -p $PASSWORD -d /home/application -m
 
