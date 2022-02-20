@@ -10,9 +10,6 @@ RUN apt-get install -y curl
 RUN apt-get install -y yarn
 
 RUN useradd application -p $PASSWORD -d /home/application -m
-RUN ls -la /
-RUN ls -la /home
-RUN chown application:application /home/application
 
 USER application
 WORKDIR /home/application
@@ -27,7 +24,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | b
         && export NVM_DIR="$HOME/.nvm" \
         && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --install
 
-RUN which yarn
-RUN yarn install
+RUN /usr/bin/yarn install
 
-CMD yarn run start
+CMD /usr/bin/yarn run start
