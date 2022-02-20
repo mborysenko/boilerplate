@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:latest
 SHELL ["/bin/bash", "-l", "-c"]
 
 ARG PASSWORD=de12miurg
