@@ -10,6 +10,8 @@ RUN apt-get install -y curl
 RUN apt-get install -y yarn
 
 RUN useradd application -p $PASSWORD -d /home/application
+RUN ls -la /
+RUN ls -la /home
 RUN chown application:application /home/application
 
 USER application
