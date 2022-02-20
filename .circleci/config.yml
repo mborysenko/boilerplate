@@ -25,13 +25,12 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn run build
   docker:
-      docker:
-        - image: cimg/base:stable
-      steps:
-          - checkout
-          - docker/check
-          - docker/build:
-                image: "@dhampir/implementation"
+    executor: docker/machine
+    steps:
+      - checkout
+      - docker/check
+      - docker/build:
+          image: "dhampir/implementation"
 
 
 # Invoke jobs via workflows
