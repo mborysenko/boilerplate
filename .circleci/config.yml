@@ -30,7 +30,9 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: mborysenko/dhampir
+            registry: hub.docker.com
+            image: mborysenko/dhampir
+            tag: latest
       - docker/push:
             registry: hub.docker.com
             image: mborysenko/dhampir
