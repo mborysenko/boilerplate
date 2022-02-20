@@ -30,7 +30,10 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: "dhampir/implementation"
+          image: mborysenko/dampir
+      - docker/push:
+        image: mborysenko/dampir
+        tag: latest
 
 
 # Invoke jobs via workflows
