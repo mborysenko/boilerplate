@@ -24,7 +24,7 @@ jobs:
           node-version: "16.14"
       - run: yarn install --frozen-lockfile
       - run: yarn run build
-  docker:
+  image:
     executor: docker/machine
     steps:
       - checkout
