@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:16.14.0
 
 RUN mkdir /usr/boilerplate
 

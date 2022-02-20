@@ -4,12 +4,13 @@ version: 2.1
 
 orbs:
     node: circleci/node@5.0.0
+    docker: circleci/docker@2.0.2
 
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build-client:
+  client:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -22,8 +23,15 @@ jobs:
           install-yarn: true
           node-version: "16.14"
       - run: yarn install --frozen-lockfile
-      - run: yarn add gulp-cli
       - run: yarn run build
+  docker:
+      docker:
+        - image: cimg/base:stable
+      steps:
+          - checkout
+          - docker/check
+          - docker/build:
+                image: "@dhampir/implementation"
 
 
 # Invoke jobs via workflows
@@ -31,4 +39,5 @@ jobs:
 workflows:
   build:
     jobs:
-      - build-client
+      - client
+      - docker
