@@ -43,4 +43,4 @@ workflows:
   build:
     jobs:
       - client
-      - docker
+      - image
