@@ -1,9 +1,10 @@
 FROM ubuntu:latest
 
+RUN adduser application
+
 USER application
 
 RUN mkdir ~/boilerplate
-
 COPY . ~/boilerplate
 WORKDIR ~/boilerplate
 
