@@ -9,7 +9,8 @@ RUN apt-get upgrade -y
 RUN apt-get install -y curl
 RUN apt-get install -y yarn
 
-RUN useradd application -p $PASSWORD -b /home -U application
+RUN useradd application -p $PASSWORD -b /home
+RUN chowm application:application /home/application
 
 USER application
 WORKDIR /home/application
