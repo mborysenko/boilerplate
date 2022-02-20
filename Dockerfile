@@ -1,12 +1,14 @@
-FROM ubuntu:latest
+FROM debian:stable
 SHELL ["/bin/bash", "-l", "-c"]
+
+ARG PASSWORD=de12miurg
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y curl
 RUN apt-get install -y yarn
 
-RUN adduser application
+RUN userdd application -p $PASSWORD
 
 USER application
 
