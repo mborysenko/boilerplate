@@ -1,4 +1,5 @@
 FROM ubuntu:latest
+SHELL ["/bin/bash", "-l", "-c"]
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
