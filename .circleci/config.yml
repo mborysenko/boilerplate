@@ -32,6 +32,7 @@ jobs:
       - docker/build:
           image: mborysenko/dhampir
       - docker/push:
+            registry: docker.com
             image: mborysenko/dhampir
             tag: latest
 
