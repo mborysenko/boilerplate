@@ -12,9 +12,9 @@ RUN useradd application -p $PASSWORD
 
 USER application
 
-RUN mkdir ~/boilerplate
-COPY . ~/boilerplate
-WORKDIR ~/boilerplate
+RUN mkdir boilerplate
+COPY . ./boilerplate
+WORKDIR ./boilerplate
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
         && export NVM_DIR="$HOME/.nvm" \
