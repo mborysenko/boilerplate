@@ -8,7 +8,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y curl
 RUN apt-get install -y yarn
 
-RUN userdd application -p $PASSWORD
+RUN useradd application -p $PASSWORD
 
 USER application
 
