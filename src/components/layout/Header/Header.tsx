@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { useLocation } from 'react-router';
+import {Route, Routes, useLocation} from 'react-router';
 import {
     Decorator,
     Column,
@@ -18,17 +18,14 @@ export const Header: FunctionComponent = () => {
         TOP_CENTER,
         TOP_RIGHT,
     } = RoutingArea;
-    return areAreasVisible([TOP_LEFT, TOP_CENTER, TOP_RIGHT], location.pathname) ? <Row>
+    return /*areAreasVisible([TOP_LEFT, TOP_CENTER, TOP_RIGHT], location.pathname)*/ <Row>
         <Decorator borderPosition={[BorderSide.BOTTOM]} borderWidth={1} fill={true}>
-            {isAreaVisible(TOP_LEFT, location.pathname) && <Column>
-                <Area area={TOP_LEFT} />
-            </Column>}
-            {isAreaVisible(TOP_CENTER, location.pathname) && <Column greedy={true}>
-                <Area area={TOP_CENTER} />
-            </Column>}
-            {isAreaVisible(TOP_RIGHT, location.pathname) && <Column>
-                <Area area={TOP_RIGHT} />
-            </Column>}
+            <Routes>
+                <Route path={'/one'} element={<div>One</div>} />
+                <Route path={'/two'} element={<div>Twee</div>} />
+                <Route path={'/three'} element={<div>Three</div>} />
+                <Route path={'/four'} element={<div>Four</div>} />
+            </Routes>
         </Decorator>
-    </Row> : null;
+    </Row>;
 };

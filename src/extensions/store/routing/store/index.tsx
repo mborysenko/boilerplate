@@ -3,20 +3,20 @@ import { Nav } from '@components/widgets';
 
 const routes: RouteWithChildren = {
     id: 'anglerCom',
-    path: '/store',
+    path: 'store/*',
     rendering: [
         {
             area: RoutingArea.TOP_CENTER,
-            component: Nav
+            element: <Nav />,
         },
         {
             area: RoutingArea.BODY_MAIN,
-            render: () => <div>Welcome to Angler Online Store!</div>
+            element: <div>Welcome to Angler Online Store!</div>,
         }
     ],
     routes: [
         {
-            path: '/products',
+            path: 'products',
             rendering: [
                 {
                     area: RoutingArea.BODY_LEFT,
@@ -24,7 +24,7 @@ const routes: RouteWithChildren = {
                 },
                 {
                     area: RoutingArea.BODY_MAIN, // Product List
-                    render: () => <div>Product List</div>,
+                    element: <div>Product List</div>,
                 },
             ] as AreaRouteRendering<RoutingArea>[],
             navigation: {
@@ -36,7 +36,6 @@ const routes: RouteWithChildren = {
             rendering: [
                 {
                     area: RoutingArea.BODY_MAIN,
-                    component: undefined, // List of ordered Products
                 },
             ],
             navigation: {
@@ -48,7 +47,6 @@ const routes: RouteWithChildren = {
             rendering: [
                 {
                     area: RoutingArea.BODY_MAIN,
-                    component: undefined,
                 },
 
             ]

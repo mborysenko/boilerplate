@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { useLocation } from 'react-router';
+import {Routes, useLocation, Route} from 'react-router';
 import {
     Area,
     Column,
@@ -19,20 +19,16 @@ export const Footer: FunctionComponent = () => {
         BOTTOM_CENTER,
         BOTTOM_LEFT
     } = RoutingArea;
-    return areAreasVisible([BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT], location.pathname)
-        ? <Row>
+    return <Row>
             <Decorator fill={true} borderPosition={[BorderSide.TOP]} borderWidth={1}>
                 <Spacer space={0.5} units={Units.EM}>
-                    {isAreaVisible(BOTTOM_LEFT, location.pathname) && <Column>
-                        <Area area={BOTTOM_LEFT} />
-                    </Column>}
-                    {isAreaVisible(BOTTOM_CENTER, location.pathname) && <Column greedy={true}>
-                        <Area area={BOTTOM_CENTER} />
-                    </Column>}
-                    {isAreaVisible(BOTTOM_RIGHT, location.pathname) && <Column>
-                        <Area area={BOTTOM_RIGHT} />
-                    </Column>}
+                    <Routes>
+                        <Route path={'/one'} element={<div>One</div>} />
+                        <Route path={'/two'} element={<div>Two</div>} />
+                        <Route path={'/three'} element={<div>Three</div>} />
+                        <Route path={'/four'} element={<div>Four</div>} />
+                    </Routes>
                 </Spacer>
             </Decorator>
-        </Row> : null;
+        </Row>;
 };

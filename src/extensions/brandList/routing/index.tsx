@@ -5,11 +5,11 @@ extendRoute(['/manage', '/brands'], {
     rendering: [
         {
             area: RoutingArea.BODY_LEFT,
-            render: () => <div>Brand List</div>
+            element: <div>Brand List</div>
         },
         {
             area: RoutingArea.BODY_MAIN,
-            render: () => <div>Brand Details</div>
+            element: <div>Brand Details</div>
         },
     ],
     navigation: {
