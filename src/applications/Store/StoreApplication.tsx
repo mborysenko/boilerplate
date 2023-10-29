@@ -1,9 +1,4 @@
-import { FunctionComponent } from 'react';
-export interface StoreApplicationProps {
-
-}
-
-export const StoreApplication: FunctionComponent<StoreApplicationProps> = () => {
+export const StoreApplication = () => {
     return <div>
         StoreApplication
     </div>

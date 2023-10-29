@@ -1,4 +1,4 @@
-import { extendRoute, RoutingArea, Row } from '@dhampir/core';
+import { extendRoute, RoutingArea } from '@dhampir/core';
 
 extendRoute(['/manage', '/brands'], {
     path: '/list',

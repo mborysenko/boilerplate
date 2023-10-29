@@ -1,10 +1,13 @@
-import { FunctionComponent } from 'react';
+import { RootApplicationComponent } from "@dhampir/core";
+
 export interface CheckoutApplicationProps {
 
 }
 
-export const CheckoutApplication: FunctionComponent<CheckoutApplicationProps> = () => {
-    return <div>
-        Checkout Application
+export const CheckoutApplication: RootApplicationComponent<CheckoutApplicationProps> = () => {
+  return <>
+    <div>
+      Checkout Application
     </div>
+  </>
 }

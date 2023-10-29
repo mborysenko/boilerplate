@@ -3,7 +3,7 @@ import { Menu, Header, Body, CustomLayout, Footer, Logo, UserPanel } from '@comp
 import { MainMenu } from '@components/widgets';
 
 const routes: RouteWithChildren = {
-    id: 'defaultRoute',
+    id: 'route:default',
     path: '/',
     rendering: [
         {
