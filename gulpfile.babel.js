@@ -3,7 +3,7 @@ import * as fs from 'fs-extra';
 import gulp from 'gulp';
 import clean from 'gulp-clean';
 
-import bundle from './build/gulp-tasks/bundle';
+import { bundle } from './build/gulp-tasks/bundle';
 import start from './build/gulp-tasks/serve';
 import jest from './build/gulp-tasks/jest';
 import eslint from './build/gulp-tasks/eslint';

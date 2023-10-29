@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { useLocation } from 'react-router';
+import {Routes, useLocation, Route} from 'react-router';
 import {
     Area,
     Column,
@@ -8,7 +8,6 @@ import {
     RoutingArea,
     Row, Units,
     Spacer,
-    areAreasVisible,
     BorderSide
 } from '@dhampir/core';
 
@@ -19,8 +18,7 @@ export const Footer: FunctionComponent = () => {
         BOTTOM_CENTER,
         BOTTOM_LEFT
     } = RoutingArea;
-    return areAreasVisible([BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT], location.pathname)
-        ? <Row>
+    return <Row>
             <Decorator fill={true} borderPosition={[BorderSide.TOP]} borderWidth={1}>
                 <Spacer space={0.5} units={Units.EM}>
                     {isAreaVisible(BOTTOM_LEFT, location.pathname) && <Column>
@@ -34,5 +32,5 @@ export const Footer: FunctionComponent = () => {
                     </Column>}
                 </Spacer>
             </Decorator>
-        </Row> : null;
+        </Row>;
 };

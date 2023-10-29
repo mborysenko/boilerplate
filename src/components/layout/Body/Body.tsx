@@ -1,9 +1,7 @@
 import { FunctionComponent } from 'react';
-import { useLocation } from 'react-router';
-import { Column, Area, RoutingArea, Row, Decorator, isAreaVisible } from '@dhampir/core';
+import { Column, Area, RoutingArea, Row, Decorator } from '@dhampir/core';
 
-export const Body: FunctionComponent = () => {
-    const location = useLocation();
+export const Body = () => {
     const {
         BODY_LEFT,
         BODY_MAIN,
@@ -11,15 +9,15 @@ export const Body: FunctionComponent = () => {
     } = RoutingArea;
     return <Row asGrid={true} greedy={true}>
         <Decorator>
-            {isAreaVisible(BODY_LEFT, location.pathname) && <Column>
+            <Column>
                 <Area area={BODY_LEFT}/>
-            </Column>}
-            {isAreaVisible(BODY_MAIN, location.pathname) && <Column greedy={true}>
+            </Column>
+            <Column greedy={true}>
                 <Area area={BODY_MAIN}/>
-            </Column>}
-            {isAreaVisible(BODY_RIGHT, location.pathname) && <Column>
+            </Column>
+            <Column>
                 <Area area={BODY_RIGHT}/>
-            </Column>}
+            </Column>
         </Decorator>
     </Row>;
 };

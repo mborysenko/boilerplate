@@ -4,7 +4,7 @@ import { ErrorPage } from '@components/ErrorPage';
 const route: RouteWithChildren = {
     id: 'pageNotFound',
     path: NOT_FOUND_PATH,
-    component: ErrorPage
+    element: <ErrorPage />
 };
 
 export {
