@@ -2,9 +2,9 @@ import { ESLint } from 'eslint';
 import glob from 'glob';
 
 /**
- * Setup a server.
- * @module jest
+ * Checks the code base corresponds to coding conventions.
  * @param {Object} options Build options.
+ * @param boolean Whether ESLinter should fix issue automatically if possible
  */
 export default function (options, fix = false) {
     const { eslint, projectDir } = options;

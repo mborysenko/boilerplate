@@ -8,7 +8,7 @@ import hot from 'webpack-hot-middleware';
 import webpackConfigFactory from '../webpack/config-factory';
 
 /**
- * Setup a server and run it.
+ * Sets up the server and run it.
  * @module serve
  * @param {Object} props Build props.
  */
