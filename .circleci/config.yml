@@ -3,8 +3,8 @@
 version: 2.1
 
 orbs:
-    node: circleci/node@5.0.0
-    docker: circleci/docker@2.0.2
+    node: circleci/node@  6.1.0
+    docker: circleci/docker@2.6.0
 
 
 # Define a job to be invoked later in a workflow.
@@ -21,7 +21,7 @@ jobs:
       - checkout
       - node/install:
           install-yarn: true
-          node-version: "16.14"
+          node-version: "20.17"
       - run: npm i -g corepack
       - run: corepack enable
       - run: yarn set version berry
