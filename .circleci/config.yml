@@ -22,6 +22,8 @@ jobs:
       - node/install:
           install-yarn: true
           node-version: "16.14"
+      - run: yarn global add corepack
+      - run: corepack enable
       - run: yarn install --frozen-lockfile
       - run: yarn run build
   image:
@@ -30,10 +32,10 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-            image: mborysenko/dhampir
+            image: dhampirjs/boilerplate
             tag: latest
       - docker/push:
-            image: mborysenko/dhampir
+            image: dhampirjs/boilerplate
             tag: latest
 
 
