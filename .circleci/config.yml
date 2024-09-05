@@ -22,7 +22,7 @@ jobs:
       - node/install:
           install-yarn: true
           node-version: "16.14"
-      - run: yarn global add corepack
+      - run: npm i -g corepack
       - run: corepack enable
       - run: yarn install --frozen-lockfile
       - run: yarn run build
