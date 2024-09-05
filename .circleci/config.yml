@@ -35,9 +35,10 @@ jobs:
       - docker/build:
             image: dhampirjs/boilerplate
             tag: latest
-      - docker/push:
+      - docker/publish:
             image: dhampirjs/boilerplate
             tag: latest
+            registry: $CONTAINER_REGISTRY
 
 
 # Invoke jobs via workflows
