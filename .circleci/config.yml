@@ -35,7 +35,7 @@ jobs:
       - docker/build:
             image: dhampirjs/boilerplate
             tag: latest
-      - docker/publish:
+      - docker/push:
             image: dhampirjs/boilerplate
             tag: latest
             registry: $CONTAINER_REGISTRY
