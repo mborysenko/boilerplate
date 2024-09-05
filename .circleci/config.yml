@@ -28,7 +28,8 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn run build
   image:
-    executor: docker/machine
+    registry: $CONTAINER_REGISTRY
+    executor: docker/docker
     steps:
       - checkout
       - docker/check
@@ -38,7 +39,6 @@ jobs:
       - docker/push:
             image: dhampirjs/boilerplate
             tag: latest
-            registry: $CONTAINER_REGISTRY
 
 
 # Invoke jobs via workflows
