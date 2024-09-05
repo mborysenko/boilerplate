@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import {Screen, Direction, Column, Row} from '@dhampir/core';
+import {Screen, Direction, Column, Row} from '@dhampirjs/core';
 import {LeftBar, Page} from "../../sections";
 import {Footer} from "@components/layout/Footer";
 import {Header} from "@components/layout/Header";

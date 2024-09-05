@@ -1,5 +1,5 @@
 import merge from "webpack-merge";
-import BUILD_MODES from "../common/constants";
+import { BUILD_MODES } from "../common/constants";
 import webpack from "webpack";
 import path from 'path';
 
@@ -11,6 +11,7 @@ import devConfig from "./env/dev";
 import prodConfig from "./env/prod";
 import testConfig from "./env/test";
 import {configuration} from "../configuration";
+import { Configuration } from "../../configuration";
 
 const envMapping = {
     [BUILD_MODES.DEV]: devConfig,
@@ -18,23 +19,23 @@ const envMapping = {
     [BUILD_MODES.TEST]: testConfig,
 };
 
-export default function webpackConfigFactory(props) {
+export default function webpackConfigFactory(options: Configuration) {
     const {
         projectDir,
         source,
         dist,
         title,
-    } = props;
+    } = options;
 
     let {
         mode,
-    } = props;
-
+    } = options;
     const {
         mountPoint,
     } = configuration;
 
     console.log(`Running mode is: ${mode}`);
+
     let envConfig = envMapping[mode];
 
     if (!envConfig) {
@@ -76,13 +77,6 @@ export default function webpackConfigFactory(props) {
                     test: /\.(tsx|ts)$/,
                     use: [
                         {
-                            loader: "babel-loader",
-                            options: {
-                                presets: ["@babel/env", {}, "@babel/react", {}],
-                                plugins: [],
-                            }
-                        },
-                        {
                             loader: "ts-loader",
                             options: {
                                 getCustomTransformers: () => ({
@@ -93,7 +87,7 @@ export default function webpackConfigFactory(props) {
                             }
                         }
                     ],
-                    exclude: "/node_modules/"
+                    exclude: ["/node_modules/", "/scripts/"]
                 },
                 {
                     test: /\.less$/,
@@ -163,5 +157,5 @@ export default function webpackConfigFactory(props) {
         ]
     };
 
-    return merge(commonConfig, envConfig(props));
+    return merge(commonConfig, envConfig(options));
 };

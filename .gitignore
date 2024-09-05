@@ -2,4 +2,6 @@
 /node_modules/
 /.idea/
 /dist/
+.pnp.cjs
+.pnp.loader.mjs
 

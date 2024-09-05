@@ -1,5 +1,5 @@
 import { FunctionComponent, useCallback, useContext } from 'react';
-import { BorderSide, Decorator, Label, Row, SkinContext, SkinContextValue, Spacer, Units, useThemeList } from '@dhampir/core';
+import { BorderSide, Decorator, Label, Row, SkinContext, SkinContextValue, Spacer, Units, useThemeList } from '@dhampirjs/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const UserPanel = () => {

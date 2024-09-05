@@ -1,8 +1,8 @@
 /* Order of imports does matter, will influence route resolving order */
-import { registerRootRouting, RoutingArea } from "@dhampir/core";
+import { registerRootRouting, RoutingArea } from "@dhampirjs/core";
 import { Body, CustomLayout, Footer, Header, Logo } from "@components/layout";
 import { MainMenu } from "@components/widgets";
-import { ProductDetails } from "@components/custom/ProductDetails";
+
 registerRootRouting([
     {
         id: 'route:store',
@@ -58,7 +58,7 @@ registerRootRouting([
                     rendering: [
                         {
                             area: RoutingArea.BOTTOM_LEFT,
-                            element: <ProductDetails/>
+                            element: <div>Product Details</div>
                         },
                         {
                             area: RoutingArea.BOTTOM_CENTER,

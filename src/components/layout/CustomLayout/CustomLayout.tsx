@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Area, Screen, RoutingArea, Direction, isAreaVisible } from '@dhampir/core';
+import { Area, Screen, RoutingArea, Direction, isAreaVisible } from '@dhampirjs/core';
 import { useLocation } from 'react-router';
 
 export interface CustomLayoutProps {

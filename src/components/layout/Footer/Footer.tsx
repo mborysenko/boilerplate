@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import {Routes, useLocation, Route} from 'react-router';
+import { useLocation } from 'react-router';
 import {
     Area,
     Column,
@@ -9,7 +9,7 @@ import {
     Row, Units,
     Spacer,
     BorderSide
-} from '@dhampir/core';
+} from '@dhampirjs/core';
 
 export const Footer: FunctionComponent = () => {
     const location = useLocation();

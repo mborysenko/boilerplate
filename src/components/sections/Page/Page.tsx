@@ -1,5 +1,5 @@
 import { PageOptions } from './API';
-import { Column, Decorator, Spacer, Scroller, Units } from '@dhampir/core';
+import { Column, Decorator, Spacer, Scroller, Units } from '@dhampirjs/core';
 
 export const Page: React.FunctionComponent<PageOptions> = () => {
     return <Column greedy={true}>

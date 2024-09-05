@@ -33,9 +33,9 @@ const config: Config.InitialOptions = {
         "<rootDir>/node_modules"
     ],
     moduleFileExtensions: ["js", "json", "less", "ts", "tsx"],
-    setupFiles: ["<rootDir>/jest/scripts/setupFiles.ts"],
+    setupFiles: ["<rootDir>/jest/tasks/setupFiles.ts"],
     setupFilesAfterEnv: [
-        "<rootDir>/jest/scripts/configureEnzyme.ts"
+        "<rootDir>/jest/tasks/configureEnzyme.ts"
     ],
     snapshotSerializers: ["enzyme-to-json/serializer"],
     moduleNameMapper: {
@@ -43,7 +43,6 @@ const config: Config.InitialOptions = {
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
             "<rootDir>/__mocks__/fileMock.js"
     },
-    testURL: "http://www.test.com",
     testPathIgnorePatterns: [
         "<rootDir>/node_modules/",
         "<rootDir>/build/",

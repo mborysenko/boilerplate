@@ -1,6 +1,6 @@
 /* Styles */
 import './styles.less';
-import { useRootApplication } from "@dhampir/core";
+import { useRootApplication } from "@dhampirjs/core";
 
 import './extensions';
 

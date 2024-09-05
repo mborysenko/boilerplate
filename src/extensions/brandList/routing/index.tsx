@@ -1,4 +1,4 @@
-import { extendRoute, RoutingArea } from '@dhampir/core';
+import { extendRoute, RoutingArea } from '@dhampirjs/core';
 
 extendRoute(['/manage', '/brands'], {
     path: '/list',

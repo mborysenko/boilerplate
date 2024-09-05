@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Column, Area, RoutingArea, Row, Decorator } from '@dhampir/core';
+import { Column, Area, RoutingArea, Row, Decorator } from '@dhampirjs/core';
 
 export const Body = () => {
     const {

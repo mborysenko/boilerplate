@@ -1,4 +1,4 @@
-import { ApplicationScope, registerRootApplication } from '@dhampir/core';
+import { ApplicationScope, registerRootApplication } from '@dhampirjs/core';
 import { StoreApplication } from './StoreApplication';
 
 registerRootApplication('store', {

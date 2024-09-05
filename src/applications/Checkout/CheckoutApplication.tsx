@@ -1,4 +1,4 @@
-import { RootApplicationComponent } from "@dhampir/core";
+import { RootApplicationComponent } from "@dhampirjs/core";
 
 export interface CheckoutApplicationProps {
 

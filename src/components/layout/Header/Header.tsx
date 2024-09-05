@@ -9,7 +9,7 @@ import {
     isAreaVisible,
     areAreasVisible,
     BorderSide
-} from '@dhampir/core';
+} from '@dhampirjs/core';
 
 export const Header: FunctionComponent = () => {
     const location = useLocation();

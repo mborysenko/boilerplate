@@ -1,4 +1,4 @@
-import { Decorator, RouteWithChildren, RoutingArea, Spacer, Units } from '@dhampir/core';
+import { Decorator, RouteWithChildren, RoutingArea, Spacer, Units } from '@dhampirjs/core';
 import { Breadcrumbs, LeftBar, Page } from '@components/sections';
 import { CustomLayout } from '@components/layout';
 import { Nav } from '@components/widgets';

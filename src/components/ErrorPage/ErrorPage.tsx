@@ -1,4 +1,4 @@
-import { Column, Screen } from '@dhampir/core';
+import { Column, Screen } from '@dhampirjs/core';
 import { FunctionComponent } from 'react';
 import { ErrorPageProps } from './API';
 

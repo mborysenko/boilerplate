@@ -4,7 +4,7 @@ import './styles.less';
 import {
     useRootApplication,
     StorageType, Screen, Direction, Row, Decorator, BorderSide, Spacer, Units, Column,
-} from '@dhampir/core';
+} from '@dhampirjs/core';
 import {FunctionComponent} from 'react';
 import {Route, Routes} from "react-router";
 import {BrowserRouter} from "react-router-dom";
