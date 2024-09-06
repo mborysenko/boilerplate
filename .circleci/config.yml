@@ -26,11 +26,8 @@ jobs:
       - run: yarn set version berry
       - run: yarn install --frozen-lockfile
       - run: yarn run build
-  docker/publish:
-    registry: $CONTAINER_REGISTRY
-    extra_build_args: "--build-arg DHAMPIR_REGISTRY_SERVER=$DHAMPIR_REGISTRY_SERVER --build-arg DHAMPIR_PUBLISH_REGISTRY=$DHAMPIR_PUBLISH_REGISTRY --build-arg DHAMPIR_PUBLISH_TOKEN=$DHAMPIR_PUBLISH_TOKEN"
-    image: dhampirjs/boilerplate
-    tag: latest
+
+
 
 
 
@@ -40,4 +37,9 @@ workflows:
   build:
     jobs:
       - client
-      - docker/publish
+  publish:
+    jobs:
+      - docker/publish:
+        registry: $CONTAINER_REGISTRY
+        image: dhampirjs/boilerplate
+        tag: latest
