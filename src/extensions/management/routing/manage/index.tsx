@@ -1,28 +1,26 @@
-import { Decorator, RouteWithChildren, RoutingArea, Spacer, Units } from '@dhampir/core';
+import { Decorator, RouteWithChildren, RoutingArea, Spacer, Units } from '@dhampirjs/core';
 import { Breadcrumbs, LeftBar, Page } from '@components/sections';
 import { CustomLayout } from '@components/layout';
 import { Nav } from '@components/widgets';
-import { ReactNode } from 'react';
 
 const routes: RouteWithChildren = {
     id: 'management',
-    path: '/manage',
+    path: 'manage/*',
     routes: [
         {
-            path: '/products',
+            path: 'products',
             rendering: [
                 {
-                    exact: true,
                     area: RoutingArea.BODY_LEFT,
-                    component: LeftBar,
+                    element: <LeftBar />,
                 },
                 {
                     area: RoutingArea.MENU_LEFT,
-                    component: Nav,
+                    element: <Nav />,
                 },
                 {
                     area: RoutingArea.BODY_MAIN,
-                    component: Page,
+                    element: <Page />,
                 },
             ],
             navigation: {
@@ -30,27 +28,23 @@ const routes: RouteWithChildren = {
             },
         },
         {
-            path: '/brands',
+            path: 'brands',
             rendering: [
                 {
                     area: RoutingArea.BODY_LEFT,
-                    render: (): ReactNode => {
-                        return <Decorator>
+                    element: <Decorator>
                             <Spacer space={0.5} units={Units.EM} size={24}>
                                 <div>Group of Brands</div>
                             </Spacer>
-                        </Decorator>;
-                    },
+                        </Decorator>,
                 },
                 {
                     area: RoutingArea.MENU_LEFT,
-                    component: Nav,
+                    element: <Nav />,
                 },
                 {
                     area: RoutingArea.BODY_MAIN,
-                    render: (): ReactNode => {
-                        return <div>List od Brands</div>;
-                    },
+                    element: <div>List od Brands</div>,
                 },
             ],
             navigation: {
@@ -58,24 +52,19 @@ const routes: RouteWithChildren = {
             },
         },
         {
-            path: '/orders',
-            exact: true,
+            path: 'orders',
             rendering: [
                 {
                     area: RoutingArea.BODY_LEFT,
-                    render: (): ReactNode => {
-                        return <Decorator>
+                    element: <Decorator>
                             <Spacer space={0.5} units={Units.EM} size={24}>
                                 <div>Order List</div>
                             </Spacer>
-                        </Decorator>;
-                    },
+                        </Decorator>,
                 },
                 {
                     area: RoutingArea.BODY_MAIN,
-                    render: (): ReactNode => {
-                        return <div>Order Details</div>;
-                    },
+                    element: <div>Order Details</div>,
                 },
             ],
             navigation: {
@@ -86,17 +75,17 @@ const routes: RouteWithChildren = {
     rendering: [
         {
             area: RoutingArea.TOP_CENTER,
-            component: Nav,
+            element: <Nav />,
         },
         {
             area: RoutingArea.BOTTOM_LEFT,
-            component: Breadcrumbs,
+            element: <Breadcrumbs />,
         },
     ],
     navigation: {
         label: 'Control Panel'
     },
-    component: CustomLayout
+    element: <CustomLayout />
 };
 
 export {

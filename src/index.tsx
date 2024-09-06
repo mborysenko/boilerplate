@@ -1,13 +1,15 @@
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "core-js/stable";
 import "regenerator-runtime/runtime"
 
 import { configuration } from "../build/configuration";
-import { App } from './App';
+import App from './App';
+
+import './extensions';
 
 window.onload = () => {
-    ReactDOM.render(
-        <App />,
-        document.getElementById(configuration.mountPoint)
-    );
+    ReactDOM.createRoot(
+        document.getElementById(configuration.mountPoint)!
+    ).render(<App />);
 };
+

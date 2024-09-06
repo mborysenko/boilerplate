@@ -1,9 +1,9 @@
 import { FunctionComponent, useCallback, useContext } from 'react';
-import { BorderSide, Decorator, Label, Row, SkinContext, SkinContextValue, Spacer, Units, useThemeList } from '@dhampir/core';
+import { BorderSide, Decorator, Label, Row, SkinContext, SkinContextValue, Spacer, Units, useThemeList } from '@dhampirjs/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const UserPanel: FunctionComponent = () => {
-    const { defaultThemeId, setTheme } = useContext<SkinContextValue>(SkinContext);
+export const UserPanel = () => {
+    const { defaultThemeId, setTheme } = useContext<SkinContextValue>(SkinContext as any);
 
     const themes = useThemeList();
 
@@ -13,7 +13,7 @@ export const UserPanel: FunctionComponent = () => {
 
     return <Spacer space={0.5} units={Units.EM}>
         <Row alignItems={'center'}>
-            <Label>Theme:</Label>
+            <Label>Theme 3:</Label>
             {themes.map(theme => {
                 const {
                     id,

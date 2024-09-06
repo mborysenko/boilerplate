@@ -1,18 +1,15 @@
 /* Styles */
 import './styles.less';
+import { useRootApplication } from "@dhampirjs/core";
 
-/* Routing */
 import './extensions';
 
-import { useRootApplication, StorageType } from '@dhampir/core';
-import { FunctionComponent } from 'react';
-
-export const App: FunctionComponent = () => {
-    const application = useRootApplication({
-        storageType: StorageType.REDUX
+const App = () => {
+    const Application = useRootApplication({
+        storageType: "redux"
     });
 
-    return <>
-        {application !== undefined && <application.Component {...application.props} />}
-    </>;
+    return Application !== undefined ? <Application.Component {...Application.props} /> : null;
 };
+
+export { App as default }

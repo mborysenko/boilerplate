@@ -7,7 +7,7 @@ import {
     ColorScopeApplication,
     ColorScopeContainer, ColorScopeMessages,
     ColorScopeTypography
-} from '@dhampir/core';
+} from '@dhampirjs/core';
 
 const {
     AMBER,

@@ -1,15 +1,15 @@
-import { extendRoute, RoutingArea } from '@dhampir/core';
+import { extendRoute, RoutingArea } from '@dhampirjs/core';
 
 extendRoute(['/manage', '/products'], {
-    path: '/list',
+    path: 'list',
     rendering: [
         {
             area: RoutingArea.BODY_LEFT,
-            render: () => <div>Product List</div>
+            element: <div>Product List</div>
         },
         {
             area: RoutingArea.BODY_MAIN,
-            render: () => <div>Product Details</div>
+            element: <div>Product Details</div>
         },
     ],
     navigation: {

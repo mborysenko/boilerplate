@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Column, Spacer, Units, Decorator } from '@dhampir/core';
+import { Column, Spacer, Units, Decorator } from '@dhampirjs/core';
 
 export const LeftBar: FunctionComponent<any> = () => {
 
