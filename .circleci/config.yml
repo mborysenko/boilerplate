@@ -10,7 +10,7 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  - client:
+  client:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -27,11 +27,11 @@ jobs:
       - run: yarn set version berry
       - run: yarn install --frozen-lockfile
       - run: yarn run build
-  - docker/publish:
-        registry: ${DHAMPIR_PUBLISH_REGISTRY}
-        image: dhampirjs/boilerplate
-        tag: latest
-        extra_build_args: "--build-arg DHAMPIR_REGISTRY_SERVER=$DHAMPIR_REGISTRY_SERVER --build-arg DHAMPIR_PUBLISH_REGISTRY=$DHAMPIR_PUBLISH_REGISTRY --build-arg DHAMPIR_PUBLISH_TOKEN=$DHAMPIR_PUBLISH_TOKEN"
+  docker/publish:
+    registry: $DHAMPIR_PUBLISH_REGISTRY
+    image: dhampirjs/boilerplate
+    tag: latest
+    extra_build_args: "--build-arg DHAMPIR_REGISTRY_SERVER=$DHAMPIR_REGISTRY_SERVER --build-arg DHAMPIR_PUBLISH_REGISTRY=$DHAMPIR_PUBLISH_REGISTRY --build-arg DHAMPIR_PUBLISH_TOKEN=$DHAMPIR_PUBLISH_TOKEN"
 
 
 # Invoke jobs via workflows
@@ -40,4 +40,5 @@ workflows:
   build:
     jobs:
       - client
-      - image
+      - docker/publish
+
