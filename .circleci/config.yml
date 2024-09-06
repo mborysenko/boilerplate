@@ -41,7 +41,7 @@ workflows:
     jobs:
       - docker/publish:
           registry: $CONTAINER_REGISTRY
-          image: dhampirjs/boilerplate
+          image: boilerplate
           tag: latest
           extra_build_args: "--build-arg DHAMPIR_REGISTRY_SERVER=${DHAMPIR_REGISTRY_SERVER} --build-arg DHAMPIR_PUBLISH_REGISTRY=${DHAMPIR_PUBLISH_REGISTRY} --build-arg DHAMPIR_PUBLISH_TOKEN=${DHAMPIR_PUBLISH_TOKEN}"
 
