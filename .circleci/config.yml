@@ -37,9 +37,9 @@ workflows:
   build:
     jobs:
       - client
-  publish:
+  publish-docker-image:
     jobs:
       - docker/publish:
-        registry: $CONTAINER_REGISTRY
-        image: dhampirjs/boilerplate
-        tag: latest
+          registry: $CONTAINER_REGISTRY
+          image: dhampirjs/boilerplate
+          tag: latest
