@@ -1,8 +1,7 @@
 import { FunctionComponent } from 'react';
-import { RouteChildrenProps } from 'react-router';
-import { NavDataProvider, Navigation, Units, Spacer } from '@dhampir/core';
+import { NavDataProvider, Navigation, Units, Spacer } from '@dhampirjs/core';
 
-export const Nav: FunctionComponent<RouteChildrenProps> = (props) => {
+export const Nav: FunctionComponent = (props) => {
     return <Spacer greedy={true} space={0.5} units={Units.EM}>
         <NavDataProvider {...props}>
             <Navigation inline={true} {...props} />

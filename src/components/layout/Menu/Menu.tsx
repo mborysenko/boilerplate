@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { useLocation } from 'react-router';
-import { Area, Row, isAreaVisible, RoutingArea, Decorator } from '@dhampir/core';
+import { Area, Row, isAreaVisible, RoutingArea, Decorator } from '@dhampirjs/core';
 
 export const Menu: FunctionComponent = (props) => {
     const location = useLocation();

@@ -4,11 +4,11 @@
         "outDir": "./dist/",
         "sourceMap": true,
         "noImplicitAny": false,
-        "module": "es6",
-        "target": "es6",
-        "lib": ["es6", "dom"],
-        "jsx": "react-jsx",
+        "module": "ESNext",
+        "target": "ESNext",
         "moduleResolution": "node",
+        "lib": ["ESNext", "dom"],
+        "jsx": "react-jsx",
         "typeRoots": [
             "node_modules/@types"
         ],
@@ -16,7 +16,7 @@
         "allowSyntheticDefaultImports": true,
         "paths": {
             "@extensions/*": ["./extensions/*"],
-            "@components/*": ["./components/*"],
+            "@components/*": ["./components/*"]
         },
         "declaration": false,
         "declarationMap": false,
