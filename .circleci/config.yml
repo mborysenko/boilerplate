@@ -3,9 +3,8 @@
 version: 2.1
 
 orbs:
-    node: circleci/node@5.0.0
-    docker: circleci/docker@2.0.2
-
+  node: circleci/node@6.1.0
+  docker: circleci/docker@2.6.0
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -21,21 +20,12 @@ jobs:
       - checkout
       - node/install:
           install-yarn: true
-          node-version: "16.14"
+          node-version: "20.17"
+      - run: npm i -g corepack
+      - run: corepack enable
+      - run: yarn set version berry
       - run: yarn install --frozen-lockfile
       - run: yarn run build
-  image:
-    executor: docker/machine
-    steps:
-      - checkout
-      - docker/check
-      - docker/build:
-            image: mborysenko/dhampir
-            tag: latest
-      - docker/push:
-            image: mborysenko/dhampir
-            tag: latest
-
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -43,4 +33,10 @@ workflows:
   build:
     jobs:
       - client
-      - image
+  publish-docker-image:
+    jobs:
+      - docker/publish:
+          registry: $CONTAINER_REGISTRY
+          image: boilerplate
+          tag: latest
+          extra_build_args: "--build-arg DHAMPIR_REGISTRY_SERVER=${DHAMPIR_REGISTRY_SERVER} --build-arg DHAMPIR_PUBLISH_REGISTRY=${DHAMPIR_PUBLISH_REGISTRY} --build-arg DHAMPIR_PUBLISH_TOKEN=${DHAMPIR_PUBLISH_TOKEN}"

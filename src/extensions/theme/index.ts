@@ -1,4 +1,4 @@
-import { registerTheme } from '@dhampir/core';
+import { registerTheme } from '@dhampirjs/core';
 import { colors } from './colors';
 import { faBacteria } from '@fortawesome/free-solid-svg-icons/faBacteria';
 

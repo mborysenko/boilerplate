@@ -1,7 +1,6 @@
 import HMRPlugin from "webpack/lib/HotModuleReplacementPlugin";
 import CircularDependencyPlugin from "circular-dependency-plugin";
-
-import { resolve, normalize } from "path";
+import { resolve, join } from "path";
 
 export default function devConfig(props) {
     const {
@@ -13,10 +12,20 @@ export default function devConfig(props) {
     const middlewareEntry = `webpack-hot-middleware/client?http://${server.host}:${server.port}`;
 
     return {
+        watchOptions: {
+            ignored: ["node_modules", "dist", "**/*.d.ts"]
+        },
+        devServer: {
+            static: {
+                directory: join(projectDir, "src/assets")
+            },
+            port: server.port,
+            hot: true,
+        },
         devtool: "source-map",
         resolve: {
             alias: {
-                'react-dom': '@hot-loader/react-dom',
+                'react-dom': resolve(projectDir, 'node_modules/react-dom'),
                 'react': resolve(projectDir, 'node_modules/react'),
                 'react-is': resolve(projectDir, 'node_modules/react-is'),
                 'react-redux': resolve(projectDir, 'node_modules/react-redux'),
@@ -32,7 +41,6 @@ export default function devConfig(props) {
                 resolve(source, "index.dev.tsx")
             ],
             vendors: [
-                middlewareEntry
             ]
         },
         plugins: [

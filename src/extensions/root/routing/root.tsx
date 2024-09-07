@@ -1,44 +1,43 @@
-import { RouteWithChildren, RoutingArea } from '@dhampir/core';
+import { RouteWithChildren, RoutingArea } from '@dhampirjs/core';
 import { Menu, Header, Body, CustomLayout, Footer, Logo, UserPanel } from '@components/layout';
 import { MainMenu } from '@components/widgets';
 
 const routes: RouteWithChildren = {
-    id: 'defaultRoute',
-    path: ['/'],
+    id: 'route:default',
+    path: '/',
     rendering: [
         {
             area: RoutingArea.TOP,
-            component: Header,
+            element: <Header />,
         },
         {
             area: RoutingArea.TOP_LEFT,
-            component: Logo
+            element: <Logo />,
         },
         {
             area: RoutingArea.TOP_CENTER,
             // We are using `exact={true}` to render it only when route matches exactly
-            exact: true,
-            component: MainMenu
+            element: <MainMenu />,
         },
         {
             area: RoutingArea.TOP_RIGHT,
             // We are using `exact={true}` to render it only when route matches exactly
-            component: UserPanel
+            element: <UserPanel />,
         },
         {
             area: RoutingArea.MENU,
-            component: Menu,
+            element: <Menu />,
         },
         {
             area: RoutingArea.BODY,
-            component: Body,
+            element: <Body />,
         },
         {
             area: RoutingArea.BOTTOM,
-            component: Footer,
+            element: <Footer />,
         },
     ],
-    component: CustomLayout,
+    element: <CustomLayout />,
 };
 
 export {

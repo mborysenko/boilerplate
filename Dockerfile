@@ -1,29 +1,38 @@
-FROM debian:latest
+FROM node:20.17.0-alpine as base
+
+RUN apk update
+RUN apk add --no-cache bash
+
 SHELL ["/bin/bash", "-l", "-c"]
 
-ARG PASSWORD=de12miurg
+RUN addgroup -S application
+RUN adduser --disabled-password -h /home/application application -G application
 
-USER root
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install -y curl
+FROM base as build
 
-RUN useradd application -p $PASSWORD -d /home/application -m
+ARG DHAMPIR_REGISTRY_SERVER
+ARG DHAMPIR_PUBLISH_REGISTRY
+ARG DHAMPIR_PUBLISH_TOKEN
 
-USER application
-WORKDIR /home/application
+ENV DHAMPIR_REGISTRY_SERVER=$DHAMPIR_REGISTRY_SERVER
+ENV DHAMPIR_PUBLISH_REGISTRY=$DHAMPIR_PUBLISH_REGISTRY
+ENV DHAMPIR_PUBLISH_TOKEN=$DHAMPIR_PUBLISH_TOKEN
 
 RUN mkdir boilerplate
 
-COPY . ./boilerplate
-WORKDIR ./boilerplate
+COPY . /boilerplate
+WORKDIR /boilerplate
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
-        && export NVM_DIR="$HOME/.nvm" \
-        && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --install
-
-RUN npm install -g yarn
-RUN yarn --version
+RUN npm install -g corepack
+RUN yarn set version berry
 RUN yarn install
+RUN yarn cache clean
+
+
+FROM build AS runtime
+USER application
+WORKDIR /home/application
+
+COPY --chown=application:application --from=build /boilerplate/ ./
 
 CMD yarn run start

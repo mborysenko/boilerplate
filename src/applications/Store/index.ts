@@ -1,7 +1,7 @@
-import { ApplicationScope, registerRootApplication } from '@dhampir/core';
-import { StoreApplication, StoreApplicationProps } from './StoreApplication';
+import { ApplicationScope, registerRootApplication } from '@dhampirjs/core';
+import { StoreApplication } from './StoreApplication';
 
-registerRootApplication<StoreApplicationProps>('store', {
+registerRootApplication('store', {
     Component: StoreApplication,
     scope: ApplicationScope.MULTIPLE,
     props: {

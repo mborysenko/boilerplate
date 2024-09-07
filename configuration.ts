@@ -1,9 +1,9 @@
-import { resolve, join }  from "path";
-import BUILD_MODES from "./build/common/constants";
+import { resolve, join } from "path";
+import { BUILD_MODES } from "./build/common/constants";
 
 export const configuration = {
     title: 'Demo Application!',
-    mode: process.env.NODE_ENV !== undefined ? process.env.NODE_ENV : BUILD_MODES.PROD, //Production mode is the default
+    mode: process.env.NODE_ENV !== undefined ? process.env.NODE_ENV as BUILD_MODES : BUILD_MODES.PROD, //Production mode is the default
     mountPoint: "application",
     projectDir: resolve(__dirname),
     source: resolve(__dirname, 'src'),
@@ -27,3 +27,5 @@ export const configuration = {
         port: 9090
     }
 }
+
+export type Configuration = typeof configuration;
