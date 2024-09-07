@@ -34,4 +34,5 @@ USER application
 WORKDIR /home/application
 
 COPY --chown=application:application --from=build /boilerplate/ ./
+
 CMD yarn run start
