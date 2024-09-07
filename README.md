@@ -7,14 +7,14 @@ Branch `develop`: [![CircleCI](https://dl.circleci.com/status-badge/img/gh/mbory
 Example project that uses [Dhampir Wep Application Framework
 ](https://github.com/dhampirjs/dhampir)
 
-### Getting Started
-
-#### Prerequisites
+### Prerequisites
 
 To work with the boilerplate you need:
 1. Node >=20.17
 2. Corepack
 3. Yarn Berry
+
+### Getting Started
 
 npm install -g yarn
 npm install -g corepack
