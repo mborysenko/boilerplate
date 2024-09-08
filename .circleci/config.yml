@@ -25,16 +25,28 @@ jobs:
       - run:
           command: yarn run build
           name: Build Boilerplate
-  image:
+  image-build:
     executor: docker/machine
     steps:
       - checkout
       - docker/check:
           registry: $CONTAINER_REGISTRY
       - docker/build:
+          registry: $CONTAINER_REGISTRY
           image: boilerplate
           tag: latest
           extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
+
+  image-publish:
+    executor: docker/machine
+    steps:
+      - checkout
+      - docker/publish:
+          registry: $CONTAINER_REGISTRY
+          image: boilerplate
+          tag: latest
+          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
+
 
 
 # Invoke jobs via workflows
@@ -43,18 +55,15 @@ workflows:
   build:
     jobs:
       - client
-      - image:
+      - image-build:
           requires:
             - client
-      - docker/publish:
+      - image-publish:
           filters:
             branches:
               only:
                 - develop
           requires:
             - client
-            - image
-          registry: $CONTAINER_REGISTRY
-          image: boilerplate
-          tag: latest
-          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
+            - image-build
+
