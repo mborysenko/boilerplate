@@ -29,7 +29,6 @@ jobs:
     executor: docker/machine
     steps:
       - checkout
-      - docker/check
       - docker/build:
           image: boilerplate
           tag: latest
@@ -44,7 +43,6 @@ workflows:
       - image:
           requires:
             - client
-          registry: $CONTAINER_REGISTRY
       - docker/publish:
           filters:
             branches:
