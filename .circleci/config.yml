@@ -12,7 +12,7 @@ jobs:
   client:
     executor:
       name: node/default
-      tag: '20'
+      tag: '20.17.0'
     steps:
       - checkout
       - node/install-packages:
