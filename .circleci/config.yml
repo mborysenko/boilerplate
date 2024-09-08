@@ -10,22 +10,48 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   client:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    executor:
+      name: node/default
+      tag: '20.17.0'
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: "20.17"
-      - run: npm i -g corepack
-      - run: corepack enable
-      - run: yarn set version berry
-      - run: yarn install --frozen-lockfile
-      - run: yarn run build
+      - node/install-packages:
+          check-cache: always
+          pkg-manager: yarn-berry
+          with-cache: false
+      - run:
+          command: yarn install --immutable
+          name: Install Dependencies
+      - run:
+          command: yarn run build
+          name: Build Boilerplate
+  image-build:
+    executor: docker/machine
+    steps:
+      - checkout
+      - docker/check:
+          registry: $CONTAINER_REGISTRY
+      - docker/build:
+          registry: $CONTAINER_REGISTRY
+          image: boilerplate
+          tag: latest
+          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
+
+  image-publish:
+    executor: docker/machine
+    steps:
+      - checkout
+      - docker/build:
+          registry: $CONTAINER_REGISTRY
+          image: boilerplate
+          tag: latest
+          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
+      - docker/push:
+          registry: $CONTAINER_REGISTRY
+          image: boilerplate
+          tag: latest
+
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -33,10 +59,15 @@ workflows:
   build:
     jobs:
       - client
-  publish-docker-image:
-    jobs:
-      - docker/publish:
-          registry: $CONTAINER_REGISTRY
-          image: boilerplate
-          tag: latest
-          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
+      - image-build:
+          requires:
+            - client
+      - image-publish:
+          filters:
+            branches:
+              only:
+                - develop
+          requires:
+            - client
+            - image-build
+
