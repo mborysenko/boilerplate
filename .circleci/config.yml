@@ -43,6 +43,7 @@ workflows:
       - image:
           requires:
             - client
+          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
       - docker/publish:
           filters:
             branches:
