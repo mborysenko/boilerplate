@@ -32,26 +32,9 @@ jobs:
       - docker/check:
           registry: $CONTAINER_REGISTRY
       - docker/build:
-          registry: $CONTAINER_REGISTRY
           image: boilerplate
           tag: latest
           extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
-
-  image-publish:
-    executor: docker/machine
-    steps:
-      - checkout
-      - docker/build:
-          registry: $CONTAINER_REGISTRY
-          image: boilerplate
-          tag: latest
-          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
-      - docker/push:
-          registry: $CONTAINER_REGISTRY
-          image: boilerplate
-          tag: latest
-
-
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -62,7 +45,7 @@ workflows:
       - image-build:
           requires:
             - client
-      - image-publish:
+      - docker/publish:
           filters:
             branches:
               only:
@@ -70,4 +53,7 @@ workflows:
           requires:
             - client
             - image-build
-
+          registry: $CONTAINER_REGISTRY
+          image: boilerplate
+          tag: latest
+          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
