@@ -12,7 +12,7 @@ jobs:
   client:
     executor:
       name: node/default
-      tag: '20.17.0'
+      tag: '20'
     steps:
       - checkout
       - node/install-packages:
@@ -28,32 +28,17 @@ jobs:
   image:
     executor: docker/machine
     steps:
-      - checkout
-      - docker/check
-      - docker/build:
-          image: boilerplate
-          tag: latest
+        - checkout
+        - docker/check
+        - docker/build:
+            image: boilerplate
+            tag: latest
 
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  build:
+  pull-request:
     jobs:
       - client
-      - image:
-          requires:
-            - client
-          registry: $CONTAINER_REGISTRY
-      - docker/publish:
-          filters:
-            branches:
-              only:
-                - develop
-          requires:
-            - client
-            - image
-          registry: $CONTAINER_REGISTRY
-          image: boilerplate
-          tag: latest
-          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
+      - image
