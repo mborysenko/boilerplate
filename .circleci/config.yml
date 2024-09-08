@@ -41,7 +41,10 @@ workflows:
   build:
     jobs:
       - client
-      - image
+      - image:
+          requires:
+            - client
+          registry: $CONTAINER_REGISTRY
       - docker/publish:
           filters:
             branches:
