@@ -29,9 +29,12 @@ jobs:
     executor: docker/machine
     steps:
       - checkout
+      - docker/check:
+          registry: $CONTAINER_REGISTRY
       - docker/build:
           image: boilerplate
           tag: latest
+          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
 
 
 # Invoke jobs via workflows
@@ -43,7 +46,6 @@ workflows:
       - image:
           requires:
             - client
-          extra_build_args: "--secret id=DHAMPIR_NPM_ACCESS_TOKEN --build-arg DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY"
       - docker/publish:
           filters:
             branches:
