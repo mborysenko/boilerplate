@@ -1,6 +1,6 @@
-FROM node:20.17.0-alpine as base
+FROM node:20.17.0-alpine AS base
 
-RUN apk update
+RUN apk update && apk upgrade
 RUN apk add --no-cache bash
 
 SHELL ["/bin/bash", "-l", "-c"]
@@ -8,31 +8,26 @@ SHELL ["/bin/bash", "-l", "-c"]
 RUN addgroup -S application
 RUN adduser --disabled-password -h /home/application application -G application
 
-FROM base as build
+RUN corepack enable
 
-ARG DHAMPIR_REGISTRY_SERVER
-ARG DHAMPIR_PUBLISH_REGISTRY
-ARG DHAMPIR_PUBLISH_TOKEN
+FROM base AS build
 
-ENV DHAMPIR_REGISTRY_SERVER=$DHAMPIR_REGISTRY_SERVER
-ENV DHAMPIR_PUBLISH_REGISTRY=$DHAMPIR_PUBLISH_REGISTRY
-ENV DHAMPIR_PUBLISH_TOKEN=$DHAMPIR_PUBLISH_TOKEN
+ARG DHAMPIR_NPM_REGISTRY
+ENV DHAMPIR_NPM_REGISTRY=$DHAMPIR_NPM_REGISTRY
 
 RUN mkdir boilerplate
-
 COPY . /boilerplate
 WORKDIR /boilerplate
 
-RUN npm install -g corepack
-RUN yarn set version berry
-RUN yarn install
-RUN yarn cache clean
-
+RUN --mount=type=secret,id=DHAMPIR_NPM_ACCESS_TOKEN \
+    export DHAMPIR_NPM_ACCESS_TOKEN=$(cat /run/secrets/DHAMPIR_NPM_ACCESS_TOKEN) && yarn install && yarn build
 
 FROM build AS runtime
 USER application
 WORKDIR /home/application
 
 COPY --chown=application:application --from=build /boilerplate/ ./
+
+EXPOSE 9090
 
 CMD yarn run start
